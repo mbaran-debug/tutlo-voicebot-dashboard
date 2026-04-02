@@ -98,6 +98,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .cl-item.done .cl-text{color:var(--text3);text-decoration:line-through}
 .cl-owner{font-size:11px;color:var(--text3);flex-shrink:0;padding-left:8px;background:var(--bg3);padding:2px 8px;border-radius:20px;font-weight:500}
 .cl-item.done .cl-owner{opacity:.5}
+.cl-comment{display:none;margin:2px 0 6px 40px}
+.cl-comment.open{display:block}
+.cl-comment textarea{width:100%;font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:7px 10px;resize:none;font-family:inherit;line-height:1.5;outline:none;transition:border .15s}
+.cl-comment textarea:focus{border-color:var(--yellow)}
+.cl-comment-toggle{font-size:11px;color:var(--text3);cursor:pointer;margin-left:4px;padding:1px 6px;border-radius:20px;border:1px solid var(--border);background:none;transition:all .15s}
+.cl-comment-toggle:hover{background:var(--yellow-light);border-color:var(--yellow-dark);color:#7A6000}
+.cl-comment-toggle.has-note{background:var(--yellow-light);border-color:var(--yellow-dark);color:#7A6000}
 
 /* MILESTONES */
 .m-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}
@@ -509,12 +516,21 @@ CL.forEach(function(g){
   div.appendChild(hdr);
   g.items.forEach(function(item){
     var row=document.createElement("div");row.className="cl-item"+(S["c"+item.id]?" done":"");
-    row.innerHTML='<input type="checkbox"'+(S["c"+item.id]?" checked":"")+'/><span class="cl-text">'+item.t+'</span><span class="cl-owner">'+item.o+"</span>";
+    row.innerHTML='<input type="checkbox"'+(S["c"+item.id]?" checked":"")+'/><span class="cl-text">'+item.t+'</span><button class="cl-comment-toggle'+(S["n"+item.id]?" has-note":"")+'" title="Dodaj komentarz">&#9998;</button><span class="cl-owner">'+item.o+"</span>";
+    var commentDiv=document.createElement("div");commentDiv.className="cl-comment"+(S["n"+item.id]?" open":"");
+    var ta=document.createElement("textarea");ta.rows=2;ta.placeholder="Dodaj komentarz...";ta.value=S["n"+item.id]||"";
+    ta.addEventListener("input",function(){S["n"+item.id]=ta.value;sv(S);var btn=row.querySelector(".cl-comment-toggle");btn.classList.toggle("has-note",!!ta.value)});
+    ta.addEventListener("click",function(e){e.stopPropagation()});
+    commentDiv.appendChild(ta);
     row.addEventListener("click",function(e){
-      var cb=row.querySelector("input");if(e.target!==cb)cb.checked=!cb.checked;
+      var cb=row.querySelector("input");var btn=row.querySelector(".cl-comment-toggle");
+      if(e.target===btn){e.stopPropagation();commentDiv.classList.toggle("open");return}
+      if(e.target===ta||e.target===cb)return;
+      cb.checked=!cb.checked;
       row.classList.toggle("done",cb.checked);S["c"+item.id]=cb.checked;sv(S);up();
     });
     div.appendChild(row);
+    div.appendChild(commentDiv);
   });
   var wrap=document.createElement("div");
   wrap.style.cssText="background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:4px 8px;margin-bottom:4px;box-shadow:0 1px 2px rgba(0,0,0,.04)";
