@@ -101,11 +101,17 @@ header p{font-size:13px;color:var(--text2)}
 .raci-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
 .raci-table tr:last-child td{border-bottom:none}
 .raci-table td:first-child{font-weight:500}
+.task-box{border-left:3px solid #ccc;padding:12px 16px;margin-bottom:12px;background:var(--bg2);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tech-box{background:var(--bg2);border-radius:var(--radius-sm);padding:10px 12px}
+.tech-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
+.no-item{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:6px}
 @media(max-width:600px){
   .stats{grid-template-columns:1fr 1fr}
   .tab{font-size:11px;padding:6px 10px}
   .raci-table{font-size:11px}
   .raci-table td,.raci-table th{padding:6px}
+  .tech-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -126,30 +132,15 @@ header p{font-size:13px;color:var(--text2)}
 </header>
 
 <div class="stats">
-  <div class="stat">
-    <div class="stat-label">Cel show-up rate</div>
-    <div class="stat-val">+10 pp</div>
-    <div class="stat-sub">w 60 dni od wdro&#380;enia</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Containment rate</div>
-    <div class="stat-val">&gt;80%</div>
-    <div class="stat-sub">bez eskalacji do cz&#322;owieka</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Latency bota</div>
-    <div class="stat-val">&lt;1,5s</div>
-    <div class="stat-sub">czas odpowiedzi</div>
-  </div>
-  <div class="stat">
-    <div class="stat-label">Post&#281;p checklisty</div>
-    <div class="stat-val" id="stat-pct">0%</div>
-    <div class="stat-sub" id="stat-sub">0 / 0 zada&#324;</div>
-  </div>
+  <div class="stat"><div class="stat-label">Cel show-up rate</div><div class="stat-val">+10 pp</div><div class="stat-sub">w 60 dni od wdro&#380;enia</div></div>
+  <div class="stat"><div class="stat-label">Containment rate</div><div class="stat-val">&gt;80%</div><div class="stat-sub">bez eskalacji do cz&#322;owieka</div></div>
+  <div class="stat"><div class="stat-label">Latency bota</div><div class="stat-val">&lt;1,5s</div><div class="stat-sub">czas odpowiedzi</div></div>
+  <div class="stat"><div class="stat-label">Post&#281;p checklisty</div><div class="stat-val" id="stat-pct">0%</div><div class="stat-sub" id="stat-sub">0 / 0 zada&#324;</div></div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-tab="checklist">Checklista</button>
+  <button class="tab active" data-tab="opis">O projekcie</button>
+  <button class="tab" data-tab="checklist">Checklista</button>
   <button class="tab" data-tab="milestones">Kamienie milowe</button>
   <button class="tab" data-tab="kpi">Kryteria sukcesu</button>
   <button class="tab" data-tab="risks">Ryzyka</button>
@@ -157,25 +148,75 @@ header p{font-size:13px;color:var(--text2)}
   <button class="tab" data-tab="raci">Wsp&oacute;&#322;praca dzia&#322;owa</button>
 </div>
 
-<div id="checklist" class="panel active">
-  <div class="prog-wrap">
-    <div class="prog-header">
-      <span class="prog-title">Post&#281;p realizacji projektu</span>
-      <span class="prog-count" id="prog-count">0 / 0 zada&#324;</span>
+<!-- O PROJEKCIE -->
+<div id="opis" class="panel active">
+  <div class="card">
+    <h3>Kim jest voicebot i jaki jest jego cel</h3>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Voicebot Tutlo to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami spotka&#324; pr&oacute;bnych z potencjalnymi klientami szko&#322;y j&#281;zyka angielskiego online Tutlo. Bot kontaktuje si&#281; z klientami zar&oacute;wno wychodz&#261;co (sam dzwoni przed um&oacute;wionym spotkaniem) jak i przychodz&#261;co (odbiera gdy klient dzwoni).</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">G&#322;&#243;wnym problemem biznesowym kt&oacute;ry rozwi&#261;zuje jest zbyt niski <strong style="color:var(--text)">show-up rate</strong> &mdash; czyli odsetek klient&oacute;w kt&oacute;rzy faktycznie pojawiaj&#261; si&#281; na um&oacute;wionym spotkaniu pr&oacute;bnym. Ka&#380;de nieodebrane spotkanie to stracona szansa sprzeda&#380;owa i zmarnowany czas lektora. Przy skali powy&#380;ej 500 spotka&#324; miesi&#281;cznie, nawet wzrost show-up rate o 10 punkt&oacute;w procentowych ma bezpo&#347;rednie prze&#322;o&#380;enie na przychody.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">Bot jest pierwszym modu&#322;em wi&#281;kszego projektu automatyzacji obs&#322;ugi klienta w Tutlo. Kolejne modu&#322;y b&#281;d&#261; rozszerza&#263; jego kompetencje o inne procesy wewn&#281;trzne organizacji.</p>
+  </div>
+
+  <div class="card">
+    <h3>Trzy g&#322;&#243;wne zadania voicebota</h3>
+    <div class="task-box" style="border-left-color:#185FA5">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">1. Potwierdzenie obecno&#347;ci na spotkaniu</div>
+      <p style="font-size:12px;color:var(--text2);line-height:1.7">Bot dzwoni do klienta na okre&#347;lony czas przed zaplanowanym spotkaniem pr&oacute;bnym i pyta czy ten pojawi si&#281; o um&oacute;wionej porze. Je&#347;li klient potwierdza &mdash; bot rejestruje potwierdzenie w HubSpocie i ko&#324;czy rozmow&#281;. Jest to najcz&#281;stszy scenariusz i ma bezpo&#347;redni wp&#322;yw na show-up rate, poniewa&#380; samo przypomnienie g&#322;osowe znacznie zmniejsza ryzyko zapomnienia o spotkaniu przez klienta.</p>
     </div>
+    <div class="task-box" style="border-left-color:#EF9F27">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">2. Prze&#322;o&#380;enie spotkania na inny termin</div>
+      <p style="font-size:12px;color:var(--text2);line-height:1.7">Je&#347;li klient nie mo&#380;e pojawi&#263; si&#281; w um&oacute;wionym terminie, bot nie ko&#324;czy rozmowy &mdash; aktywnie proponuje alternatywne terminy. W tym celu w czasie rzeczywistym odpytuje wewn&#281;trzny system rezerwacji i pobiera list&#281; dost&#281;pnych slot&oacute;w na najbli&#380;sze 3&ndash;4 dni. Proponuje terminy jeden po drugim, uwzgl&#281;dniaj&#261;c preferencje klienta (konkretna godzina, pora dnia, dzie&#324; tygodnia). Po akceptacji natychmiast rezerwuje wybrany termin i aktualizuje dane w HubSpocie.</p>
+    </div>
+    <div class="task-box" style="border-left-color:#E24B4A;margin-bottom:0">
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">3. Anulowanie spotkania i zwolnienie terminu</div>
+      <p style="font-size:12px;color:var(--text2);line-height:1.7">Gdy klient chce ca&#322;kowicie zrezygnowa&#263; ze spotkania, bot przeprowadza procedur&#281; anulowania. Najpierw upewnia si&#281; &#380;e klient rzeczywi&#347;cie chce odwo&#322;a&#263; (a nie przenie&#347;&#263;) spotkanie, po czym anuluje rezerwacj&#281; w systemie i zwalnia slot &mdash; co umo&#380;liwia przypisanie go innemu klientowi. Zdarzenie jest rejestrowane w HubSpocie ze stosownym statusem.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Jak voicebot prowadzi rozmow&#281;</h3>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Bot m&oacute;wi wy&#322;&#261;cznie po polsku i zawsze u&#380;ywa formy grzeczno&#347;ciowej Pan/Pani, pobieranej dynamicznie z danych klienta w HubSpocie. Je&#347;li klient skoryguje form&#281; zwrotu w trakcie rozmowy, bot natychmiast si&#281; dostosowuje.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Rozmowa jest <strong style="color:var(--text)">w pe&#322;ni konwersacyjna</strong> &mdash; bot nie czyta skryptu, lecz reaguje na to co m&oacute;wi klient. Rozumie preferencje czasowe wyra&#380;one naturalnym j&#281;zykiem: &bdquo;jutro rano&rdquo;, &bdquo;po sz&oacute;stej&rdquo;, &bdquo;b&#281;d&#281; w pracy do siedemnastej&rdquo;, &bdquo;mo&#380;e pojutrze?&rdquo;. Dostosowuje propozycje termin&oacute;w do tych preferencji.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Bot proponuje zawsze <strong style="color:var(--text)">jeden termin naraz</strong> &mdash; nigdy nie czyta listy dost&#281;pnych godzin. Je&#347;li klient odmawia, przechodzi do nast&#281;pnego dost&#281;pnego terminu. Po kilku odmowach pyta klienta o preferencje i dopasowuje si&#281; do nich.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">Gdy &#380;aden termin nie pasuje lub klient pyta o sprawy niezwi&#261;zane z terminem, bot <strong style="color:var(--text)">eskaluje rozmow&#281; do konsultanta</strong> &mdash; &#380;ywej osoby, do kt&oacute;rej transferuje po&#322;&#261;czenie przez Peoplefone.</p>
+  </div>
+
+  <div class="card">
+    <h3>Stos technologiczny voicebota (uproszczony)</h3>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-label">G&#322;os klienta</div><div style="font-size:12px;color:var(--text2)">Peoplefone odbiera po&#322;&#261;czenie i przesy&#322;a audio do ElevenLabs (STT), kt&oacute;ry zamienia mow&#281; na tekst</div></div>
+      <div class="tech-box"><div class="tech-label">M&oacute;zg bota</div><div style="font-size:12px;color:var(--text2)">Gemini analizuje tekst, rozumie intencj&#281; klienta i generuje odpowied&#378; zgodnie z logik&#261; biznesow&#261;</div></div>
+      <div class="tech-box"><div class="tech-label">G&#322;os bota</div><div style="font-size:12px;color:var(--text2)">ElevenLabs (TTS) zamienia tekst odpowiedzi na naturalnie brzmi&#261;c&#261; mow&#281; po polsku i odtwarza j&#261; klientowi</div></div>
+      <div class="tech-box"><div class="tech-label">Integracje</div><div style="font-size:12px;color:var(--text2)">n8n &#322;&#261;czy wszystko: pobiera dane z HubSpot, sprawdza sloty w systemie rezerwacji i zapisuje wyniki</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Czym voicebot si&#281; NIE zajmuje (zakres Modu&#322;u 1)</h3>
+    <p class="no-item">&#10006;&nbsp; Sprzeda&#380;&#261; &mdash; nie przekonuje klienta do zakupu kursu</p>
+    <p class="no-item">&#10006;&nbsp; Obs&#322;ug&#261; posprzeda&#380;ow&#261; &mdash; nie odpowiada na pytania o kurs, ceny, program</p>
+    <p class="no-item">&#10006;&nbsp; Rozmowami w innych j&#281;zykach ni&#380; polski</p>
+    <p class="no-item">&#10006;&nbsp; Tematami niezwi&#261;zanymi ze spotkaniem &mdash; je&#347;li klient zaczyna rozmow&#281; o czym&#347; innym, bot grzecznie wraca do tematu</p>
+    <p class="no-item" style="margin-bottom:0">&#10006;&nbsp; Innymi procesami wewn&#281;trznymi &mdash; to zadanie kolejnych modu&#322;&oacute;w voicebota</p>
+  </div>
+</div>
+
+<!-- CHECKLISTA -->
+<div id="checklist" class="panel">
+  <div class="prog-wrap">
+    <div class="prog-header"><span class="prog-title">Post&#281;p realizacji projektu</span><span class="prog-count" id="prog-count">0 / 0 zada&#324;</span></div>
     <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
     <div class="last-saved" id="last-saved"></div>
   </div>
   <div id="cl-container"></div>
 </div>
 
+<!-- KAMIENIE MILOWE -->
 <div id="milestones" class="panel">
-  <div class="card">
-    <h3>Harmonogram &mdash; 12 tygodni do wdro&#380;enia</h3>
-    <div id="milestones-list"></div>
-  </div>
+  <div class="card"><h3>Harmonogram &mdash; 12 tygodni do wdro&#380;enia</h3><div id="milestones-list"></div></div>
 </div>
 
+<!-- KPI -->
 <div id="kpi" class="panel">
   <div class="card" style="margin-bottom:1rem">
     <h3>KPI Biznesowe</h3>
@@ -208,34 +249,23 @@ header p{font-size:13px;color:var(--text2)}
   </div>
 </div>
 
+<!-- RYZYKA -->
 <div id="risks" class="panel">
-  <div class="card">
-    <h3>Rejestr ryzyk</h3>
-    <div id="risks-list"></div>
-  </div>
+  <div class="card"><h3>Rejestr ryzyk</h3><div id="risks-list"></div></div>
 </div>
 
+<!-- STOS -->
 <div id="stack" class="panel">
-  <div class="card">
-    <h3>Mapa technologii</h3>
-    <div id="stack-list"></div>
-  </div>
+  <div class="card"><h3>Mapa technologii</h3><div id="stack-list"></div></div>
 </div>
 
+<!-- RACI -->
 <div id="raci" class="panel">
   <div class="card">
-    <h3>Macierz RACI &mdash; wsp&oacute;&#322;praca dzia&#322;owa</h3>
+    <h3>Macierz RACI</h3>
     <div style="overflow-x:auto">
       <table class="raci-table">
-        <thead>
-          <tr>
-            <th>Obszar</th>
-            <th>Dzia&#322; Operacyjny</th>
-            <th>Dzia&#322; CRM</th>
-            <th>Dzia&#322; DATA</th>
-            <th>IT / Dev</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Obszar</th><th>Dzia&#322; Operacyjny</th><th>Dzia&#322; CRM</th><th>Dzia&#322; DATA</th><th>IT / Dev</th></tr></thead>
         <tbody id="raci-body"></tbody>
       </table>
     </div>
@@ -259,39 +289,39 @@ var CL=[
     {id:"p4",t:"Zweryfikowac zgody RODO na kontakt automatyczny",o:"Ops + Prawny"},
     {id:"p5",t:"Potwierdzic dostepnosc API Peoplefone (outbound + transfer)",o:"IT/Dev"}
   ]},
-  {g:"M1 — Kick-off + Design (tydz. 1-2)",items:[
+  {g:"M1 - Kick-off + Design (tydz. 1-2)",items:[
     {id:"m1a",t:"Zebranie wymagan ze wszystkich dzialow (CRM, DATA, Ops)",o:"PM"},
     {id:"m1b",t:"Finalizacja architektury i potwierdzenie stacku",o:"IT/Dev"},
     {id:"m1c",t:"Dostepy API: HubSpot, system rezerwacji, Peoplefone, ElevenLabs",o:"IT/Dev"},
     {id:"m1d",t:"Repozytorium GitHub + branch strategy (dev/staging/prod)",o:"IT/Dev"},
     {id:"m1e",t:"Mapping pol HubSpot do voicebota",o:"Dzial CRM"}
   ]},
-  {g:"M2 — Integracje bazowe (tydz. 3-4)",items:[
+  {g:"M2 - Integracje bazowe (tydz. 3-4)",items:[
     {id:"m2a",t:"n8n: workflow pobierajacy available_slots z systemu rezerwacji",o:"IT/Dev"},
     {id:"m2b",t:"n8n: zapis wyniku rozmowy do HubSpot",o:"IT/Dev"},
     {id:"m2c",t:"Trigger HubSpot do n8n (X godzin przed spotkaniem)",o:"CRM + Dev"},
     {id:"m2d",t:"Schemat tabeli BigQuery do zapisu wynikow rozmow",o:"Dzial DATA"}
   ]},
-  {g:"M3 — Voicebot MVP (tydz. 5-6)",items:[
+  {g:"M3 - Voicebot MVP (tydz. 5-6)",items:[
     {id:"m3a",t:"ElevenLabs: konfiguracja glosu PL, test wymowy dat i godzin",o:"IT/Dev"},
     {id:"m3b",t:"Gemini: wgranie prompta, test logiki available_slots",o:"IT/Dev"},
     {id:"m3c",t:"Peoplefone: test polaczenia wychodzacego i przychodzcego",o:"IT/Dev"},
     {id:"m3d",t:"Dzialajacy scenariusz: potwierdzenie obecnosci end-to-end",o:"IT/Dev + Ops"}
   ]},
-  {g:"M4 — Pelny zakres funkcji (tydz. 7-8)",items:[
+  {g:"M4 - Pelny zakres funkcji (tydz. 7-8)",items:[
     {id:"m4a",t:"Obsluga przelozenia terminu z weryfikacja available_slots",o:"IT/Dev"},
     {id:"m4b",t:"Obsluga anulowania + zwolnienie slotu w systemie rezerwacji",o:"IT/Dev"},
     {id:"m4c",t:"Eskalacja do konsultanta (transfer polaczenia Peoplefone)",o:"IT/Dev"},
     {id:"m4d",t:"SMS follow-up po rozmowie (HubSpot workflow)",o:"Dzial CRM"},
     {id:"m4e",t:"Transkrypcje zapisywane i powiazane z kontaktem w HubSpot",o:"IT/Dev"}
   ]},
-  {g:"M5 — Testy UAT (tydz. 9-10)",items:[
+  {g:"M5 - Testy UAT (tydz. 9-10)",items:[
     {id:"m5a",t:"50 scenariuszy testowych: 0 bledow proponowania zlych terminow",o:"Ops + Dev"},
     {id:"m5b",t:"Latency ponizej 1,5s na srodowisku staging",o:"IT/Dev"},
     {id:"m5c",t:"QA wymowy: 100% poprawna wymowa dat i godzin",o:"Dzial Operacyjny"},
     {id:"m5d",t:"Korekty i poprawki po testach",o:"IT/Dev"}
   ]},
-  {g:"M6-M7 — Pilot i pelne wdrozenie (tydz. 11-12)",items:[
+  {g:"M6-M7 - Pilot i pelne wdrozenie (tydz. 11-12)",items:[
     {id:"m6a",t:"Formalny sign-off Dzialu Operacyjnego (akceptacja UAT)",o:"Dzial Operacyjny"},
     {id:"m6b",t:"Pilot na 10-20% ruchu przez minimum 1 tydzien",o:"Ops + Dev"},
     {id:"m6c",t:"Dashboard BigQuery gotowy (7 metryk podstawowych)",o:"Dzial DATA"},
@@ -299,13 +329,13 @@ var CL=[
   ]}
 ];
 var ML=[
-  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2 · Wymagania, architektura, dostepy",c:"b-blue",id:"m1"},
-  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4 · HubSpot, n8n, system rezerwacji",c:"b-purple",id:"m2"},
-  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6 · ElevenLabs + Gemini + Peoplefone",c:"b-teal",id:"m3"},
-  {n:"M4",t:"Pelny zakres funkcji",s:"Tydz. 7-8 · Przelozenie + anulowanie + eskalacja",c:"b-amber",id:"m4"},
-  {n:"M5",t:"Testy UAT",s:"Tydz. 9-10 · QA, korekty, testy obciazeniowe",c:"b-gray",id:"m5"},
-  {n:"M6",t:"Pilot soft launch",s:"Tydz. 11 · 10-20% ruchu, monitoring",c:"b-gray",id:"m6"},
-  {n:"M7",t:"Pelne wdrozenie",s:"Tydz. 12 · 100% ruchu, dashboard analityczny",c:"b-gray",id:"m7"}
+  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2 - Wymagania, architektura, dostepy",c:"b-blue",id:"m1"},
+  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4 - HubSpot, n8n, system rezerwacji",c:"b-purple",id:"m2"},
+  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6 - ElevenLabs + Gemini + Peoplefone",c:"b-teal",id:"m3"},
+  {n:"M4",t:"Pelny zakres funkcji",s:"Tydz. 7-8 - Przelozenie + anulowanie + eskalacja",c:"b-amber",id:"m4"},
+  {n:"M5",t:"Testy UAT",s:"Tydz. 9-10 - QA, korekty, testy obciazeniowe",c:"b-gray",id:"m5"},
+  {n:"M6",t:"Pilot soft launch",s:"Tydz. 11 - 10-20% ruchu, monitoring",c:"b-gray",id:"m6"},
+  {n:"M7",t:"Pelne wdrozenie",s:"Tydz. 12 - 100% ruchu, dashboard analityczny",c:"b-gray",id:"m7"}
 ];
 var ST=["Do zrobienia","W toku","Zrobione","Zablokowane"];
 var SC=["b-gray","b-blue","b-green","b-red"];
@@ -321,9 +351,9 @@ var RK=[
 var SK=[
   {n:"Peoplefone",r:"Polaczenia glosowe outbound + inbound, transfer do konsultanta",l:"Telefonia",c:"b-blue"},
   {n:"ElevenLabs",r:"Synteza mowy PL (TTS) + rozpoznawanie mowy (STT)",l:"Glos / AI",c:"b-teal"},
-  {n:"Gemini",r:"Model jezykowy — logika rozmowy, intencje, available_slots",l:"LLM",c:"b-purple"},
+  {n:"Gemini",r:"Model jezykowy - logika rozmowy, intencje, available_slots",l:"LLM",c:"b-purple"},
   {n:"n8n",r:"Orkiestracja wszystkich integracji i automatyzacji",l:"Automatyzacja",c:"b-amber"},
-  {n:"HubSpot",r:"CRM — dane klienta, triggery, zapis wynikow rozmow",l:"CRM",c:"b-green"},
+  {n:"HubSpot",r:"CRM - dane klienta, triggery, zapis wynikow rozmow",l:"CRM",c:"b-green"},
   {n:"BigQuery",r:"Analityka rozmow, raporty KPI, optymalizacja",l:"Data",c:"b-blue"},
   {n:"GitHub",r:"Wersjonowanie promptow, konfiguracji, skryptow",l:"Dev",c:"b-gray"},
   {n:"Vercel",r:"Hosting webhookow i endpointow pomocniczych",l:"Infra",c:"b-gray"},
@@ -355,7 +385,7 @@ CL.forEach(function(g){
   div.appendChild(hdr);
   g.items.forEach(function(item){
     var row=document.createElement("div");row.className="cl-item"+(S["c"+item.id]?" done":"");
-    row.innerHTML='<input type="checkbox"'+(S["c"+item.id]?" checked":"")+' /><span class="cl-text">'+item.t+'</span><span class="cl-owner">'+item.o+"</span>";
+    row.innerHTML='<input type="checkbox"'+(S["c"+item.id]?" checked":"")+'/><span class="cl-text">'+item.t+'</span><span class="cl-owner">'+item.o+"</span>";
     row.addEventListener("click",function(e){
       var cb=row.querySelector("input");if(e.target!==cb)cb.checked=!cb.checked;
       row.classList.toggle("done",cb.checked);S["c"+item.id]=cb.checked;sv(S);up();
