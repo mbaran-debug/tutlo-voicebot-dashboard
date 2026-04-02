@@ -7,57 +7,55 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#ffffff;--bg2:#f7f7f5;--bg3:#f0efeb;
+  --bg:#fff;--bg2:#f7f7f5;--bg3:#f0efeb;
   --text:#1a1a1a;--text2:#666;--text3:#999;
-  --border:#e0dfd8;
-  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-text:#0C447C;
+  --border:#e0dfd8;--blue:#185FA5;
+  --blue-bg:#E6F1FB;--blue-text:#0C447C;
   --green-bg:#EAF3DE;--green-text:#27500A;
   --amber-bg:#FAEEDA;--amber-text:#633806;
   --red-bg:#FCEBEB;--red-text:#791F1F;
   --purple-bg:#EEEDFE;--purple-text:#3C3489;
   --teal-bg:#E1F5EE;--teal-text:#085041;
   --gray-bg:#F1EFE8;--gray-text:#5F5E5A;
-  --radius:10px;--radius-sm:6px;
+  --r:10px;--rs:6px;
 }
-@media(prefers-color-scheme:dark){
-  :root{
-    --bg:#1c1c1a;--bg2:#242422;--bg3:#2c2c2a;
-    --text:#f0efe8;--text2:#aaa;--text3:#666;
-    --border:#3a3a36;
-    --blue-bg:#0c2d4a;--blue-text:#85B7EB;
-    --green-bg:#1a3008;--green-text:#C0DD97;
-    --amber-bg:#3a2008;--amber-text:#FAC775;
-    --red-bg:#3a1010;--red-text:#F7C1C1;
-    --purple-bg:#1e1a4a;--purple-text:#AFA9EC;
-    --teal-bg:#083020;--teal-text:#9FE1CB;
-    --gray-bg:#2c2c2a;--gray-text:#B4B2A9;
-  }
-}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#1c1c1a;--bg2:#242422;--bg3:#2c2c2a;
+  --text:#f0efe8;--text2:#aaa;--text3:#666;--border:#3a3a36;
+  --blue-bg:#0c2d4a;--blue-text:#85B7EB;
+  --green-bg:#1a3008;--green-text:#C0DD97;
+  --amber-bg:#3a2008;--amber-text:#FAC775;
+  --red-bg:#3a1010;--red-text:#F7C1C1;
+  --purple-bg:#1e1a4a;--purple-text:#AFA9EC;
+  --teal-bg:#083020;--teal-text:#9FE1CB;
+  --gray-bg:#2c2c2a;--gray-text:#B4B2A9;
+}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 .wrap{max-width:960px;margin:0 auto;padding:2rem 1.25rem}
-header{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
+header{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1.75rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
 header h1{font-size:20px;font-weight:600;margin-bottom:4px}
 header p{font-size:13px;color:var(--text2)}
-.badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:var(--radius-sm);display:inline-block}
-.b-green{background:var(--green-bg);color:var(--green-text)}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:var(--rs);display:inline-block}
 .b-blue{background:var(--blue-bg);color:var(--blue-text)}
+.b-green{background:var(--green-bg);color:var(--green-text)}
 .b-amber{background:var(--amber-bg);color:var(--amber-text)}
 .b-red{background:var(--red-bg);color:var(--red-text)}
 .b-purple{background:var(--purple-bg);color:var(--purple-text)}
 .b-teal{background:var(--teal-bg);color:var(--teal-text)}
 .b-gray{background:var(--gray-bg);color:var(--gray-text)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.25rem}
-.stat{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.1rem}
+.stat{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:.9rem 1.1rem}
 .stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
 .stat-val{font-size:22px;font-weight:600}
 .stat-sub{font-size:11px;color:var(--text2);margin-top:2px}
-.tabs{display:flex;gap:2px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:4px;margin-bottom:1.25rem;flex-wrap:wrap}
-.tab{font-size:12px;font-weight:500;padding:7px 14px;border:none;background:none;color:var(--text2);border-radius:var(--radius-sm);cursor:pointer;transition:all .15s}
+.tabs{display:flex;gap:2px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:4px;margin-bottom:1.25rem;flex-wrap:wrap}
+.tab{font-size:12px;font-weight:500;padding:7px 14px;border:none;background:none;color:var(--text2);border-radius:var(--rs);cursor:pointer;transition:all .15s}
 .tab:hover{background:var(--bg2);color:var(--text)}
 .tab.active{background:var(--bg3);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.panel{display:none}.panel.active{display:block}
-.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
+.panel{display:none}
+.panel.active{display:block}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin-bottom:1rem}
 .card h3{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
 .prog-wrap{margin-bottom:1.25rem}
 .prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
@@ -68,7 +66,7 @@ header p{font-size:13px;color:var(--text2)}
 .last-saved{font-size:11px;color:var(--text3);margin-top:6px;text-align:right}
 .cl-group{margin-bottom:1.25rem}
 .cl-group-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;padding:0 0 8px;border-bottom:1px solid var(--border);margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
-.cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 6px;border-radius:var(--radius-sm);cursor:pointer;user-select:none}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 6px;border-radius:var(--rs);cursor:pointer;user-select:none}
 .cl-item:hover{background:var(--bg2)}
 .cl-item input{width:15px;height:15px;flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:var(--blue)}
 .cl-text{font-size:13px;flex:1;line-height:1.5}
@@ -76,11 +74,10 @@ header p{font-size:13px;color:var(--text2)}
 .cl-owner{font-size:11px;color:var(--text3);flex-shrink:0;padding-left:8px}
 .m-row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
 .m-row:last-child{border-bottom:none}
-.m-badge{min-width:36px;text-align:center;flex-shrink:0}
 .m-body{flex:1}
 .m-title{font-size:13px;font-weight:600}
 .m-sub{font-size:12px;color:var(--text2);margin-top:2px}
-.m-status{font-size:11px;padding:3px 9px;border-radius:var(--radius-sm);flex-shrink:0;cursor:pointer}
+.m-status{font-size:11px;padding:3px 9px;border-radius:var(--rs);flex-shrink:0;cursor:pointer}
 .m-status:hover{opacity:.75}
 .risk-row{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
 .risk-row:last-child{border-bottom:none}
@@ -101,16 +98,17 @@ header p{font-size:13px;color:var(--text2)}
 .raci-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
 .raci-table tr:last-child td{border-bottom:none}
 .raci-table td:first-child{font-weight:500}
-.task-box{border-left:3px solid #ccc;padding:12px 16px;margin-bottom:12px;background:var(--bg2);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.tbox{border-left:3px solid #ccc;padding:12px 16px;margin-bottom:12px;background:var(--bg2);border-radius:0 var(--rs) var(--rs) 0}
+.tbox:last-child{margin-bottom:0}
+.tbox-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px}
+.tbox-body{font-size:12px;color:var(--text2);line-height:1.7}
 .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tech-box{background:var(--bg2);border-radius:var(--radius-sm);padding:10px 12px}
-.tech-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
-.no-item{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:6px}
+.tech-box{background:var(--bg2);border-radius:var(--rs);padding:10px 12px}
+.tech-lbl{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;margin-bottom:4px}
+.noitem{font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:6px}
 @media(max-width:600px){
   .stats{grid-template-columns:1fr 1fr}
   .tab{font-size:11px;padding:6px 10px}
-  .raci-table{font-size:11px}
-  .raci-table td,.raci-table th{padding:6px}
   .tech-grid{grid-template-columns:1fr}
 }
 </style>
@@ -150,6 +148,7 @@ header p{font-size:13px;color:var(--text2)}
 
 <!-- O PROJEKCIE -->
 <div id="opis" class="panel active">
+
   <div class="card">
     <h3>Kim jest voicebot i jaki jest jego cel</h3>
     <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Voicebot Tutlo to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami spotka&#324; pr&oacute;bnych z potencjalnymi klientami szko&#322;y j&#281;zyka angielskiego online Tutlo. Bot kontaktuje si&#281; z klientami zar&oacute;wno wychodz&#261;co (sam dzwoni przed um&oacute;wionym spotkaniem) jak i przychodz&#261;co (odbiera gdy klient dzwoni).</p>
@@ -159,46 +158,47 @@ header p{font-size:13px;color:var(--text2)}
 
   <div class="card">
     <h3>Trzy g&#322;&#243;wne zadania voicebota</h3>
-    <div class="task-box" style="border-left-color:#185FA5">
-      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">1. Potwierdzenie obecno&#347;ci na spotkaniu</div>
-      <p style="font-size:12px;color:var(--text2);line-height:1.7">Bot dzwoni do klienta na okre&#347;lony czas przed zaplanowanym spotkaniem pr&oacute;bnym i pyta czy ten pojawi si&#281; o um&oacute;wionej porze. Je&#347;li klient potwierdza &mdash; bot rejestruje potwierdzenie w HubSpocie i ko&#324;czy rozmow&#281;. Jest to najcz&#281;stszy scenariusz i ma bezpo&#347;redni wp&#322;yw na show-up rate, poniewa&#380; samo przypomnienie g&#322;osowe znacznie zmniejsza ryzyko zapomnienia o spotkaniu przez klienta.</p>
+    <div class="tbox" style="border-left-color:#185FA5">
+      <div class="tbox-title">1. Potwierdzenie obecno&#347;ci na spotkaniu</div>
+      <div class="tbox-body">Bot dzwoni do klienta na okre&#347;lony czas przed zaplanowanym spotkaniem pr&oacute;bnym i pyta czy ten pojawi si&#281; o um&oacute;wionej porze. Je&#347;li klient potwierdza &mdash; bot rejestruje potwierdzenie w HubSpocie i ko&#324;czy rozmow&#281;. Jest to najcz&#281;stszy scenariusz i ma bezpo&#347;redni wp&#322;yw na show-up rate, poniewa&#380; samo przypomnienie g&#322;osowe znacznie zmniejsza ryzyko zapomnienia o spotkaniu przez klienta.</div>
     </div>
-    <div class="task-box" style="border-left-color:#EF9F27">
-      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">2. Prze&#322;o&#380;enie spotkania na inny termin</div>
-      <p style="font-size:12px;color:var(--text2);line-height:1.7">Je&#347;li klient nie mo&#380;e pojawi&#263; si&#281; w um&oacute;wionym terminie, bot nie ko&#324;czy rozmowy &mdash; aktywnie proponuje alternatywne terminy. W tym celu w czasie rzeczywistym odpytuje wewn&#281;trzny system rezerwacji i pobiera list&#281; dost&#281;pnych slot&oacute;w na najbli&#380;sze 3&ndash;4 dni. Proponuje terminy jeden po drugim, uwzgl&#281;dniaj&#261;c preferencje klienta (konkretna godzina, pora dnia, dzie&#324; tygodnia). Po akceptacji natychmiast rezerwuje wybrany termin i aktualizuje dane w HubSpocie.</p>
+    <div class="tbox" style="border-left-color:#EF9F27">
+      <div class="tbox-title">2. Prze&#322;o&#380;enie spotkania na inny termin</div>
+      <div class="tbox-body">Je&#347;li klient nie mo&#380;e pojawi&#263; si&#281; w um&oacute;wionym terminie, bot nie ko&#324;czy rozmowy &mdash; aktywnie proponuje alternatywne terminy. W tym celu w czasie rzeczywistym odpytuje wewn&#281;trzny system rezerwacji i pobiera list&#281; dost&#281;pnych slot&oacute;w na najbli&#380;sze 3&ndash;4 dni. Proponuje terminy jeden po drugim, uwzgl&#281;dniaj&#261;c preferencje klienta (konkretna godzina, pora dnia, dzie&#324; tygodnia). Po akceptacji natychmiast rezerwuje wybrany termin i aktualizuje dane w HubSpocie.</div>
     </div>
-    <div class="task-box" style="border-left-color:#E24B4A;margin-bottom:0">
-      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px">3. Anulowanie spotkania i zwolnienie terminu</div>
-      <p style="font-size:12px;color:var(--text2);line-height:1.7">Gdy klient chce ca&#322;kowicie zrezygnowa&#263; ze spotkania, bot przeprowadza procedur&#281; anulowania. Najpierw upewnia si&#281; &#380;e klient rzeczywi&#347;cie chce odwo&#322;a&#263; (a nie przenie&#347;&#263;) spotkanie, po czym anuluje rezerwacj&#281; w systemie i zwalnia slot &mdash; co umo&#380;liwia przypisanie go innemu klientowi. Zdarzenie jest rejestrowane w HubSpocie ze stosownym statusem.</p>
+    <div class="tbox" style="border-left-color:#E24B4A">
+      <div class="tbox-title">3. Anulowanie spotkania i zwolnienie terminu</div>
+      <div class="tbox-body">Gdy klient chce ca&#322;kowicie zrezygnowa&#263; ze spotkania, bot przeprowadza procedur&#281; anulowania. Najpierw upewnia si&#281; &#380;e klient rzeczywi&#347;cie chce odwo&#322;a&#263; (a nie przenie&#347;&#263;) spotkanie, po czym anuluje rezerwacj&#281; w systemie i zwalnia slot &mdash; co umo&#380;liwia przypisanie go innemu klientowi. Zdarzenie jest rejestrowane w HubSpocie ze stosownym statusem.</div>
     </div>
   </div>
 
   <div class="card">
     <h3>Jak voicebot prowadzi rozmow&#281;</h3>
     <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Bot m&oacute;wi wy&#322;&#261;cznie po polsku i zawsze u&#380;ywa formy grzeczno&#347;ciowej Pan/Pani, pobieranej dynamicznie z danych klienta w HubSpocie. Je&#347;li klient skoryguje form&#281; zwrotu w trakcie rozmowy, bot natychmiast si&#281; dostosowuje.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Rozmowa jest <strong style="color:var(--text)">w pe&#322;ni konwersacyjna</strong> &mdash; bot nie czyta skryptu, lecz reaguje na to co m&oacute;wi klient. Rozumie preferencje czasowe wyra&#380;one naturalnym j&#281;zykiem: &bdquo;jutro rano&rdquo;, &bdquo;po sz&oacute;stej&rdquo;, &bdquo;b&#281;d&#281; w pracy do siedemnastej&rdquo;, &bdquo;mo&#380;e pojutrze?&rdquo;. Dostosowuje propozycje termin&oacute;w do tych preferencji.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Bot proponuje zawsze <strong style="color:var(--text)">jeden termin naraz</strong> &mdash; nigdy nie czyta listy dost&#281;pnych godzin. Je&#347;li klient odmawia, przechodzi do nast&#281;pnego dost&#281;pnego terminu. Po kilku odmowach pyta klienta o preferencje i dopasowuje si&#281; do nich.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Rozmowa jest <strong style="color:var(--text)">w pe&#322;ni konwersacyjna</strong> &mdash; bot nie czyta skryptu, lecz reaguje na to co m&oacute;wi klient. Rozumie preferencje czasowe wyra&#380;one naturalnym j&#281;zykiem: &bdquo;jutro rano&rdquo;, &bdquo;po sz&oacute;stej&rdquo;, &bdquo;b&#281;d&#281; w pracy do siedemnastej&rdquo;. Dostosowuje propozycje termin&oacute;w do tych preferencji.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:10px">Bot proponuje zawsze <strong style="color:var(--text)">jeden termin naraz</strong> &mdash; nigdy nie czyta listy dost&#281;pnych godzin. Je&#347;li klient odmawia, przechodzi do nast&#281;pnego dost&#281;pnego terminu. Po kilku odmowach pyta o preferencje i dopasowuje si&#281; do nich.</p>
     <p style="font-size:13px;color:var(--text2);line-height:1.8">Gdy &#380;aden termin nie pasuje lub klient pyta o sprawy niezwi&#261;zane z terminem, bot <strong style="color:var(--text)">eskaluje rozmow&#281; do konsultanta</strong> &mdash; &#380;ywej osoby, do kt&oacute;rej transferuje po&#322;&#261;czenie przez Peoplefone.</p>
   </div>
 
   <div class="card">
     <h3>Stos technologiczny voicebota (uproszczony)</h3>
     <div class="tech-grid">
-      <div class="tech-box"><div class="tech-label">G&#322;os klienta</div><div style="font-size:12px;color:var(--text2)">Peoplefone odbiera po&#322;&#261;czenie i przesy&#322;a audio do ElevenLabs (STT), kt&oacute;ry zamienia mow&#281; na tekst</div></div>
-      <div class="tech-box"><div class="tech-label">M&oacute;zg bota</div><div style="font-size:12px;color:var(--text2)">Gemini analizuje tekst, rozumie intencj&#281; klienta i generuje odpowied&#378; zgodnie z logik&#261; biznesow&#261;</div></div>
-      <div class="tech-box"><div class="tech-label">G&#322;os bota</div><div style="font-size:12px;color:var(--text2)">ElevenLabs (TTS) zamienia tekst odpowiedzi na naturalnie brzmi&#261;c&#261; mow&#281; po polsku i odtwarza j&#261; klientowi</div></div>
-      <div class="tech-box"><div class="tech-label">Integracje</div><div style="font-size:12px;color:var(--text2)">n8n &#322;&#261;czy wszystko: pobiera dane z HubSpot, sprawdza sloty w systemie rezerwacji i zapisuje wyniki</div></div>
+      <div class="tech-box"><div class="tech-lbl">G&#322;os klienta</div><div style="font-size:12px;color:var(--text2)">Peoplefone odbiera po&#322;&#261;czenie i przesy&#322;a audio do ElevenLabs (STT), kt&oacute;ry zamienia mow&#281; na tekst</div></div>
+      <div class="tech-box"><div class="tech-lbl">M&oacute;zg bota</div><div style="font-size:12px;color:var(--text2)">Gemini analizuje tekst, rozumie intencj&#281; klienta i generuje odpowied&#378; zgodnie z logik&#261; biznesow&#261;</div></div>
+      <div class="tech-box"><div class="tech-lbl">G&#322;os bota</div><div style="font-size:12px;color:var(--text2)">ElevenLabs (TTS) zamienia tekst odpowiedzi na naturalnie brzmi&#261;c&#261; mow&#281; po polsku i odtwarza j&#261; klientowi</div></div>
+      <div class="tech-box"><div class="tech-lbl">Integracje</div><div style="font-size:12px;color:var(--text2)">n8n &#322;&#261;czy wszystko: pobiera dane z HubSpot, sprawdza sloty w systemie rezerwacji i zapisuje wyniki</div></div>
     </div>
   </div>
 
   <div class="card">
     <h3>Czym voicebot si&#281; NIE zajmuje (zakres Modu&#322;u 1)</h3>
-    <p class="no-item">&#10006;&nbsp; Sprzeda&#380;&#261; &mdash; nie przekonuje klienta do zakupu kursu</p>
-    <p class="no-item">&#10006;&nbsp; Obs&#322;ug&#261; posprzeda&#380;ow&#261; &mdash; nie odpowiada na pytania o kurs, ceny, program</p>
-    <p class="no-item">&#10006;&nbsp; Rozmowami w innych j&#281;zykach ni&#380; polski</p>
-    <p class="no-item">&#10006;&nbsp; Tematami niezwi&#261;zanymi ze spotkaniem &mdash; je&#347;li klient zaczyna rozmow&#281; o czym&#347; innym, bot grzecznie wraca do tematu</p>
-    <p class="no-item" style="margin-bottom:0">&#10006;&nbsp; Innymi procesami wewn&#281;trznymi &mdash; to zadanie kolejnych modu&#322;&oacute;w voicebota</p>
+    <p class="noitem">&#10006; Sprzeda&#380;&#261; &mdash; nie przekonuje klienta do zakupu kursu</p>
+    <p class="noitem">&#10006; Obs&#322;ug&#261; posprzeda&#380;ow&#261; &mdash; nie odpowiada na pytania o kurs, ceny, program</p>
+    <p class="noitem">&#10006; Rozmowami w innych j&#281;zykach ni&#380; polski</p>
+    <p class="noitem">&#10006; Tematami niezwi&#261;zanymi ze spotkaniem &mdash; bot grzecznie wraca do tematu</p>
+    <p class="noitem" style="margin-bottom:0">&#10006; Innymi procesami wewn&#281;trznymi &mdash; to zadanie kolejnych modu&#322;&oacute;w voicebota</p>
   </div>
+
 </div>
 
 <!-- CHECKLISTA -->
@@ -290,41 +290,41 @@ var CL=[
     {id:"p5",t:"Potwierdzic dostepnosc API Peoplefone (outbound + transfer)",o:"IT/Dev"}
   ]},
   {g:"M1 - Kick-off + Design (tydz. 1-2)",items:[
-    {id:"m1a",t:"Zebranie wymagan ze wszystkich dzialow (CRM, DATA, Ops)",o:"PM"},
+    {id:"m1a",t:"Zebranie wymagan ze wszystkich dzialow",o:"PM"},
     {id:"m1b",t:"Finalizacja architektury i potwierdzenie stacku",o:"IT/Dev"},
-    {id:"m1c",t:"Dostepy API: HubSpot, system rezerwacji, Peoplefone, ElevenLabs",o:"IT/Dev"},
-    {id:"m1d",t:"Repozytorium GitHub + branch strategy (dev/staging/prod)",o:"IT/Dev"},
+    {id:"m1c",t:"Dostepy API: HubSpot, rezerwacje, Peoplefone, ElevenLabs",o:"IT/Dev"},
+    {id:"m1d",t:"Repozytorium GitHub + branch strategy",o:"IT/Dev"},
     {id:"m1e",t:"Mapping pol HubSpot do voicebota",o:"Dzial CRM"}
   ]},
   {g:"M2 - Integracje bazowe (tydz. 3-4)",items:[
-    {id:"m2a",t:"n8n: workflow pobierajacy available_slots z systemu rezerwacji",o:"IT/Dev"},
+    {id:"m2a",t:"n8n: workflow pobierajacy available_slots",o:"IT/Dev"},
     {id:"m2b",t:"n8n: zapis wyniku rozmowy do HubSpot",o:"IT/Dev"},
     {id:"m2c",t:"Trigger HubSpot do n8n (X godzin przed spotkaniem)",o:"CRM + Dev"},
-    {id:"m2d",t:"Schemat tabeli BigQuery do zapisu wynikow rozmow",o:"Dzial DATA"}
+    {id:"m2d",t:"Schemat tabeli BigQuery",o:"Dzial DATA"}
   ]},
   {g:"M3 - Voicebot MVP (tydz. 5-6)",items:[
-    {id:"m3a",t:"ElevenLabs: konfiguracja glosu PL, test wymowy dat i godzin",o:"IT/Dev"},
+    {id:"m3a",t:"ElevenLabs: konfiguracja glosu PL, test TTS",o:"IT/Dev"},
     {id:"m3b",t:"Gemini: wgranie prompta, test logiki available_slots",o:"IT/Dev"},
     {id:"m3c",t:"Peoplefone: test polaczenia wychodzacego i przychodzcego",o:"IT/Dev"},
-    {id:"m3d",t:"Dzialajacy scenariusz: potwierdzenie obecnosci end-to-end",o:"IT/Dev + Ops"}
+    {id:"m3d",t:"Dzialajacy scenariusz potwierdzenia end-to-end",o:"IT/Dev + Ops"}
   ]},
   {g:"M4 - Pelny zakres funkcji (tydz. 7-8)",items:[
     {id:"m4a",t:"Obsluga przelozenia terminu z weryfikacja available_slots",o:"IT/Dev"},
-    {id:"m4b",t:"Obsluga anulowania + zwolnienie slotu w systemie rezerwacji",o:"IT/Dev"},
-    {id:"m4c",t:"Eskalacja do konsultanta (transfer polaczenia Peoplefone)",o:"IT/Dev"},
+    {id:"m4b",t:"Obsluga anulowania + zwolnienie slotu",o:"IT/Dev"},
+    {id:"m4c",t:"Eskalacja do konsultanta (transfer Peoplefone)",o:"IT/Dev"},
     {id:"m4d",t:"SMS follow-up po rozmowie (HubSpot workflow)",o:"Dzial CRM"},
-    {id:"m4e",t:"Transkrypcje zapisywane i powiazane z kontaktem w HubSpot",o:"IT/Dev"}
+    {id:"m4e",t:"Transkrypcje powiazane z kontaktem w HubSpot",o:"IT/Dev"}
   ]},
   {g:"M5 - Testy UAT (tydz. 9-10)",items:[
-    {id:"m5a",t:"50 scenariuszy testowych: 0 bledow proponowania zlych terminow",o:"Ops + Dev"},
+    {id:"m5a",t:"50 scenariuszy testowych: 0 bledow zlych terminow",o:"Ops + Dev"},
     {id:"m5b",t:"Latency ponizej 1,5s na srodowisku staging",o:"IT/Dev"},
     {id:"m5c",t:"QA wymowy: 100% poprawna wymowa dat i godzin",o:"Dzial Operacyjny"},
     {id:"m5d",t:"Korekty i poprawki po testach",o:"IT/Dev"}
   ]},
   {g:"M6-M7 - Pilot i pelne wdrozenie (tydz. 11-12)",items:[
-    {id:"m6a",t:"Formalny sign-off Dzialu Operacyjnego (akceptacja UAT)",o:"Dzial Operacyjny"},
+    {id:"m6a",t:"Formalny sign-off Dzialu Operacyjnego",o:"Dzial Operacyjny"},
     {id:"m6b",t:"Pilot na 10-20% ruchu przez minimum 1 tydzien",o:"Ops + Dev"},
-    {id:"m6c",t:"Dashboard BigQuery gotowy (7 metryk podstawowych)",o:"Dzial DATA"},
+    {id:"m6c",t:"Dashboard BigQuery gotowy",o:"Dzial DATA"},
     {id:"m6d",t:"Pelne wdrozenie na 100% ruchu",o:"IT/Dev + Ops"}
   ]}
 ];
@@ -410,7 +410,7 @@ function bm(){
   ML.forEach(function(m){
     var si=S["ms"+m.id]||0;
     var row=document.createElement("div");row.className="m-row";
-    row.innerHTML='<span class="badge '+m.c+' m-badge">'+m.n+'</span><div class="m-body"><div class="m-title">'+m.t+'</div><div class="m-sub">'+m.s+'</div></div><span class="m-status badge '+SC[si]+'">'+ST[si]+"</span>";
+    row.innerHTML='<span class="badge '+m.c+'" style="min-width:36px;text-align:center;flex-shrink:0">'+m.n+'</span><div class="m-body"><div class="m-title">'+m.t+'</div><div class="m-sub">'+m.s+'</div></div><span class="m-status badge '+SC[si]+'">'+ST[si]+"</span>";
     row.querySelector(".m-status").addEventListener("click",function(){S["ms"+m.id]=((S["ms"+m.id]||0)+1)%ST.length;sv(S);bm();});
     ml.appendChild(row);
   });
@@ -442,7 +442,8 @@ document.querySelectorAll(".tab").forEach(function(t){
   t.addEventListener("click",function(){
     document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active")});
     document.querySelectorAll(".panel").forEach(function(x){x.classList.remove("active")});
-    t.classList.add("active");document.getElementById(t.dataset.tab).classList.add("active");
+    t.classList.add("active");
+    document.getElementById(t.dataset.tab).classList.add("active");
   });
 });
 </script>
