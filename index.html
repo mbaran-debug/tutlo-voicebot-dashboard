@@ -14,9 +14,11 @@
   --border:#E8E7E0;--border2:#D0CFC8;
   --blue:#1A6BC4;--blue-bg:#EAF2FC;--blue-text:#0F4A8A;
   --green:#2D7D3A;--green-bg:#E8F5EA;--green-text:#1A5C25;
+  --green2:#1E7A3A;--green2-light:#E6F7EC;
   --amber:#B85C00;--amber-bg:#FFF0E0;--amber-text:#8A3D00;
   --red:#C42020;--red-bg:#FDEAEA;--red-text:#8A0F0F;
   --purple:#5A3DB8;--purple-bg:#F0ECFC;--purple-text:#3A1F8A;
+  --purple2:#6B3FA0;--purple2-light:#F3EEFA;
   --teal:#0D7A6E;--teal-bg:#E0F5F2;--teal-text:#085048;
   --gray-bg:#F0EFE8;--gray-text:#555;
   --r:12px;--rs:8px;
@@ -41,6 +43,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .hbadge{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;display:inline-block}
 .hb-yellow{background:rgba(245,200,0,.15);color:var(--yellow);border:1px solid rgba(245,200,0,.3)}
 .hb-white{background:rgba(255,255,255,.08);color:#ddd;border:1px solid rgba(255,255,255,.12)}
+.hb-purple{background:rgba(107,63,160,.2);color:#C9A8FF;border:1px solid rgba(107,63,160,.35)}
+.hb-green{background:rgba(30,122,58,.2);color:#7FD9A0;border:1px solid rgba(30,122,58,.35)}
 .hero-right{text-align:right}
 .hero-kpi-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .hero-kpi-val{font-size:36px;font-weight:800;color:var(--yellow);line-height:1;letter-spacing:-1px}
@@ -52,20 +56,38 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .stat-sub{font-size:11px;color:var(--text3);margin-top:3px}
 .stat-accent{border-top:3px solid var(--yellow)}
 .tabs-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:5px;margin-bottom:1.25rem;display:flex;gap:2px;flex-wrap:wrap;box-shadow:var(--shadow)}
-.tab{font-size:12px;font-weight:600;padding:8px 16px;border:none;background:none;color:var(--text3);border-radius:var(--rs);cursor:pointer;transition:all .18s}
+.tab{font-size:12px;font-weight:600;padding:8px 14px;border:none;background:none;color:var(--text3);border-radius:var(--rs);cursor:pointer;transition:all .18s}
 .tab:hover{background:var(--bg);color:var(--text2)}
-.tab.active{background:var(--yellow);color:var(--black);box-shadow:0 1px 4px rgba(245,200,0,.4)}
+.tab.active{color:var(--black);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.tab.active.t-yellow{background:var(--yellow)}
+.tab.active.t-purple{background:#C9A8FF;color:#1A0040}
+.tab.active.t-green{background:#7FD9A0;color:#0A3018}
 .panel{display:none}
 .panel.active{display:block}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:var(--shadow)}
 .card-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
 .card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* CARD ACCENT COLORS */
+.card.c-purple{border-top:3px solid var(--purple2)}
+.card.c-green{border-top:3px solid var(--green2)}
+.card-title.purple{color:var(--purple2)}
+.card-title.green{color:var(--green2)}
+
+/* HERO VARIANTS */
+.hero.h-purple{background:linear-gradient(135deg,#2D1B4E 0%,#1A1A1A 100%)}
+.hero.h-purple::before{background:#C9A8FF}
+.hero.h-green{background:linear-gradient(135deg,#0A3018 0%,#1A1A1A 100%)}
+.hero.h-green::before{background:#7FD9A0}
+
 .prog-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1.25rem;box-shadow:var(--shadow)}
 .prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .prog-title{font-size:14px;font-weight:700}
 .prog-count{font-size:12px;color:var(--text3);font-weight:600}
 .prog-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden}
 .prog-fill{height:8px;border-radius:4px;background:var(--yellow);transition:width .4s}
+.prog-fill.purple{background:var(--purple2)}
+.prog-fill.green{background:var(--green2)}
 .last-saved{font-size:11px;color:var(--text3);margin-top:8px;text-align:right}
 .cl-group-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;margin-bottom:10px;box-shadow:var(--shadow)}
 .cl-group-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;padding:6px 4px 10px;border-bottom:2px solid var(--border);margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
@@ -75,10 +97,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .cl-text{font-size:13px;flex:1;line-height:1.5;color:var(--text);cursor:pointer}
 .cl-item.done .cl-text{color:var(--text3);text-decoration:line-through}
 .cl-owner{font-size:11px;color:var(--text3);flex-shrink:0;background:var(--bg3);padding:2px 8px;border-radius:20px;font-weight:500}
-.cl-item.done .cl-owner{opacity:.5}
 .cl-note-btn{font-size:11px;cursor:pointer;padding:2px 7px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text3);flex-shrink:0;transition:all .15s;line-height:1.4}
-.cl-note-btn:hover{background:var(--yellow-light);border-color:var(--yellow-dark);color:#7A6000}
-.cl-note-btn.has-note{background:var(--yellow-light);border-color:var(--yellow-dark);color:#7A6000}
+.cl-note-btn:hover,.cl-note-btn.has-note{background:var(--yellow-light);border-color:var(--yellow-dark);color:#7A6000}
 .cl-note-wrap{display:none;padding:4px 6px 8px 32px}
 .cl-note-wrap.open{display:block}
 .cl-note-wrap textarea{width:100%;font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:7px 10px;resize:none;font-family:inherit;line-height:1.5;outline:none;transition:border .15s}
@@ -119,9 +139,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .b-teal{background:var(--teal-bg);color:var(--teal-text)}
 .b-gray{background:var(--gray-bg);color:var(--gray-text)}
 .b-yellow{background:var(--yellow-light);color:#7A6000}
+.b-purple2{background:#F3EEFA;color:#4A1F8A}
+.b-green2{background:#E6F7EC;color:#0D5C2A}
 .tbox{border-left:4px solid #ddd;padding:14px 18px;margin-bottom:12px;background:var(--bg3);border-radius:0 var(--rs) var(--rs) 0}
 .tbox:last-child{margin-bottom:0}
-.tbox-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.tbox-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
 .tbox-body{font-size:13px;color:var(--text2);line-height:1.7}
 .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tech-box{background:var(--bg3);border-radius:var(--rs);padding:12px 14px;border:1px solid var(--border)}
@@ -129,33 +151,62 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .noitem{font-size:13px;color:var(--text2);line-height:1.9;display:flex;align-items:flex-start;gap:8px;margin-bottom:2px}
 .noitem::before{content:'✕';font-size:11px;font-weight:700;color:var(--red-text);background:var(--red-bg);padding:1px 5px;border-radius:4px;flex-shrink:0;margin-top:3px}
 
-/* PASZPORT */
-.pp-section{margin-bottom:1rem}
+/* KARTA OBSZARU — shared form styles */
+.ka-hero{border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ka-hero.purple{background:linear-gradient(135deg,#2D1B4E,#3D2060)}
+.ka-hero.green{background:linear-gradient(135deg,#0A3018,#1A4D2A)}
+.ka-hero-title{font-size:16px;font-weight:700;color:var(--white)}
+.ka-hero-sub{font-size:12px;margin-top:2px}
+.ka-hero.purple .ka-hero-sub{color:#C9A8FF}
+.ka-hero.green .ka-hero-sub{color:#7FD9A0}
 .pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pp-field{display:flex;flex-direction:column;gap:5px}
 .pp-field.full{grid-column:1/-1}
-.pp-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
-.pp-hint{font-size:11px;color:var(--text3);margin-top:2px;font-style:italic}
+.pp-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.pp-label.purple{color:var(--purple2)}
+.pp-label.green{color:var(--green2)}
+.pp-label.default{color:var(--text3)}
+.pp-hint{font-size:11px;color:var(--text3);font-style:italic}
 .pp-field input,.pp-field textarea,.pp-field select{font-family:inherit;font-size:13px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:9px 12px;outline:none;transition:border .15s;width:100%}
-.pp-field input:focus,.pp-field textarea:focus,.pp-field select:focus{border-color:var(--yellow);background:var(--white)}
+.pp-field input:focus,.pp-field textarea:focus,.pp-field select:focus{background:var(--white)}
+.pp-field.purple input:focus,.pp-field.purple textarea:focus,.pp-field.purple select:focus{border-color:var(--purple2)}
+.pp-field.green input:focus,.pp-field.green textarea:focus,.pp-field.green select:focus{border-color:var(--green2)}
 .pp-field textarea{resize:vertical;min-height:72px;line-height:1.6}
-.pp-save-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:4px}
-.pp-save-btn{font-size:12px;font-weight:700;padding:8px 20px;border-radius:var(--rs);border:none;background:var(--yellow);color:var(--black);cursor:pointer;transition:opacity .15s}
-.pp-save-btn:hover{opacity:.85}
-.pp-saved-msg{font-size:12px;color:var(--green-text);font-weight:600;display:none}
+.pp-yn{display:flex;gap:8px;flex-wrap:wrap}
+.pp-yn label{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;padding:6px 12px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s}
+.pp-yn.purple label:has(input:checked){background:#F3EEFA;border-color:var(--purple2);font-weight:600;color:var(--purple2)}
+.pp-yn.green label:has(input:checked){background:#E6F7EC;border-color:var(--green2);font-weight:600;color:var(--green2)}
 .pp-week-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;align-items:start}
 .pp-week-label{font-size:12px;font-weight:700;color:var(--text2);padding-top:10px}
-.pp-yn{display:flex;gap:8px}
-.pp-yn label{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;padding:6px 12px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s}
-.pp-yn input[type=radio]{accent-color:var(--black)}
-.pp-yn label:has(input:checked){background:var(--yellow-light);border-color:var(--yellow-dark);font-weight:600}
+.pp-save-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:4px}
+.pp-save-btn{font-size:12px;font-weight:700;padding:8px 20px;border-radius:var(--rs);border:none;cursor:pointer;transition:opacity .15s}
+.pp-save-btn:hover{opacity:.85}
+.pp-save-btn.purple{background:var(--purple2);color:var(--white)}
+.pp-save-btn.green{background:var(--green2);color:var(--white)}
+.pp-save-btn.yellow{background:var(--yellow);color:var(--black)}
+.pp-saved-msg{font-size:12px;font-weight:600;display:none}
+.pp-saved-msg.purple{color:var(--purple2)}
+.pp-saved-msg.green{color:var(--green2)}
+.pp-saved-msg.yellow{color:var(--green)}
+
+/* ODKRYWANIE POTRZEB */
+.odkr-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin-bottom:10px}
+.odkr-q{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px}
+.odkr-hint{font-size:12px;color:var(--text3);margin-bottom:8px;font-style:italic}
+.checkboxes{display:flex;flex-direction:column;gap:6px}
+.cb-opt{display:flex;align-items:flex-start;gap:8px;font-size:13px;cursor:pointer;padding:6px 8px;border-radius:var(--rs);border:1px solid transparent;transition:all .15s}
+.cb-opt:hover{background:var(--bg2);border-color:var(--border)}
+.cb-opt input{width:15px;height:15px;flex-shrink:0;margin-top:2px;cursor:pointer}
+.cb-opt.purple input{accent-color:var(--purple2)}
+.cb-opt.purple:has(input:checked){background:#F3EEFA;border-color:var(--purple2)}
+.cb-opt span{line-height:1.5}
 
 .footer{text-align:center;padding:2rem 0 1rem;font-size:11px;color:var(--text3)}
 @media(max-width:640px){
   .stats{grid-template-columns:1fr 1fr}
-  .tab{font-size:11px;padding:7px 10px}
+  .tab{font-size:11px;padding:6px 8px}
   .tech-grid,.stack-grid,.pp-grid,.pp-week-grid{grid-template-columns:1fr}
-  .hero{padding:1.5rem}
+  .hero,.ka-hero{padding:1.25rem}
   .hero-right{text-align:left}
   .topbar{padding:0 1rem}
 }
@@ -192,7 +243,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
       <span class="hbadge hb-yellow">Inicjacja</span>
       <span class="hbadge hb-white">500+ spotka&#324; / mies.</span>
       <span class="hbadge hb-white">8&ndash;12 tyg. do MVP</span>
-      <span class="hbadge hb-white">Peoplefone &middot; ElevenLabs &middot; Gemini</span>
+      <span class="hbadge hb-purple">Backoffice</span>
+      <span class="hbadge hb-green">Rekrutacja</span>
     </div>
   </div>
   <div class="hero-right">
@@ -230,20 +282,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
   </div>
 </div>
 
+<!-- TABS -->
 <div class="tabs-wrap">
-  <button class="tab active" data-tab="paszport">&#127932; Paszport</button>
-  <button class="tab" data-tab="opis">O projekcie</button>
-  <button class="tab" data-tab="checklist">Checklista</button>
-  <button class="tab" data-tab="milestones">Kamienie milowe</button>
-  <button class="tab" data-tab="kpi">Kryteria sukcesu</button>
-  <button class="tab" data-tab="risks">Ryzyka</button>
-  <button class="tab" data-tab="stack">Technologie</button>
-  <button class="tab" data-tab="raci">Wsp&oacute;&#322;praca</button>
+  <button class="tab t-yellow" data-tab="paszport">&#127932; Paszport</button>
+  <button class="tab t-yellow" data-tab="opis">O projekcie</button>
+  <button class="tab t-yellow" data-tab="checklist">Checklista</button>
+  <button class="tab t-yellow" data-tab="milestones">Kamienie milowe</button>
+  <button class="tab t-yellow" data-tab="kpi">KPI</button>
+  <button class="tab t-yellow" data-tab="risks">Ryzyka</button>
+  <button class="tab t-yellow" data-tab="stack">Technologie</button>
+  <button class="tab t-yellow" data-tab="raci">Wsp&oacute;&#322;praca</button>
+  <button class="tab t-purple" data-tab="backoffice">&#128188; Backoffice</button>
+  <button class="tab t-green" data-tab="rekrutacja">&#128101; Rekrutacja</button>
 </div>
 
-<!-- PASZPORT PROJEKTU -->
-<div id="paszport" class="panel active">
-
+<!-- PASZPORT -->
+<div id="paszport" class="panel">
   <div style="background:var(--black);border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
     <div>
       <div style="font-size:16px;font-weight:700;color:var(--white)">Paszport Projektu</div>
@@ -251,238 +305,97 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
     </div>
     <span class="hbadge hb-yellow">AI Champion Q2 2026</span>
   </div>
-
-  <!-- 1. INFORMACJE PODSTAWOWE -->
-  <div class="card pp-section">
+  <div class="card">
     <div class="card-title">1. Informacje podstawowe</div>
     <div class="pp-grid">
-      <div class="pp-field full">
-        <span class="pp-label">Nazwa projektu</span>
-        <input type="text" id="pp_nazwa" placeholder="np. AI Voicebot — Potwierdzenia Spotka&#324;">
+      <div class="pp-field full"><span class="pp-label default">Nazwa projektu</span><input type="text" id="pp_nazwa" placeholder="np. AI Voicebot — Potwierdzenia Spotka&#324;"></div>
+      <div class="pp-field full"><span class="pp-label default">Strumie&#324; portfela</span>
+        <select id="pp_strumien"><option value="">-- Wybierz --</option><option>Growth</option><option>Retention &amp; Monetization</option><option>Ops Efficiency</option><option>Product &amp; Platform</option></select>
       </div>
-      <div class="pp-field full">
-        <span class="pp-label">Strumie&#324; portfela</span>
-        <select id="pp_strumien">
-          <option value="">-- Wybierz strumie&#324; --</option>
-          <option>Growth</option>
-          <option>Retention &amp; Monetization</option>
-          <option>Ops Efficiency</option>
-          <option>Product &amp; Platform</option>
-        </select>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">AI Champion</span>
-        <input type="text" id="pp_champion" placeholder="Imi&#281; i nazwisko">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Owner biznesowy</span>
-        <input type="text" id="pp_owner_biz" placeholder="Ekspert znaj&#261;cy proces">
-      </div>
-      <div class="pp-field full">
-        <span class="pp-label">Sponsor / Owner strategiczny</span>
-        <input type="text" id="pp_sponsor" placeholder="Osoba z zarz&#261;du / Head">
-      </div>
+      <div class="pp-field"><span class="pp-label default">AI Champion</span><input type="text" id="pp_champion" placeholder="Imi&#281; i nazwisko"></div>
+      <div class="pp-field"><span class="pp-label default">Owner biznesowy</span><input type="text" id="pp_owner_biz" placeholder="Ekspert znaj&#261;cy proces"></div>
+      <div class="pp-field full"><span class="pp-label default">Sponsor / Owner strategiczny</span><input type="text" id="pp_sponsor" placeholder="Osoba z zarz&#261;du / Head"></div>
     </div>
   </div>
-
-  <!-- 2. PROBLEM I CEL -->
-  <div class="card pp-section">
+  <div class="card">
     <div class="card-title">2. Problem i cel</div>
     <div class="pp-grid">
-      <div class="pp-field full">
-        <span class="pp-label">Problem, kt&oacute;ry adresujemy</span>
-        <span class="pp-hint">Opisz problem biznesowy. Dlaczego to wa&#380;ne?</span>
-        <textarea id="pp_problem" placeholder="np. Zbyt niski show-up rate na spotkaniach pr&oacute;bnych — klienci nie pojawiaj&#261; si&#281; na um&oacute;wionych terminach, co generuje straty sprzeda&#380;owe i marnuje czas lektor&oacute;w."></textarea>
-      </div>
-      <div class="pp-field full">
-        <span class="pp-label">Oczekiwany rezultat</span>
-        <span class="pp-hint">Co konkretnie powstanie? Aplikacja, agent, dashboard, system?</span>
-        <textarea id="pp_rezultat" placeholder="np. W pe&#322;ni dzia&#322;aj&#261;cy voicebot g&#322;osowy (outbound + inbound) integruj&#261;cy si&#281; z HubSpot i systemem rezerwacji."></textarea>
-      </div>
-      <div class="pp-field full">
-        <span class="pp-label">Cel biznesowy</span>
-        <span class="pp-hint">Np. wzrost konwersji, skr&#243;cenie czasu, redukcja b&#322;&#281;d&oacute;w</span>
-        <textarea id="pp_cel_biz" placeholder="np. Wzrost show-up rate o min. 10 pp w ci&#261;gu 60 dni od wdro&#380;enia. Odzysk min. 40% slot&oacute;w po anulowaniach."></textarea>
-      </div>
-      <div class="pp-field full">
-        <span class="pp-label">Kto jest u&#380;ytkownikiem?</span>
-        <span class="pp-hint">Kto b&#281;dzie korzysta&#322; z rozwi&#261;zania?</span>
-        <input type="text" id="pp_user" placeholder="np. Klienci Tutlo (potencjalni kursanci) oraz dzia&#322; operacyjny (monitoring i eskalacje)">
-      </div>
+      <div class="pp-field full"><span class="pp-label default">Problem, kt&oacute;ry adresujemy</span><span class="pp-hint">Opisz problem biznesowy. Dlaczego to wa&#380;ne?</span><textarea id="pp_problem" placeholder="np. Zbyt niski show-up rate..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label default">Oczekiwany rezultat</span><textarea id="pp_rezultat" placeholder="np. W pe&#322;ni dzia&#322;aj&#261;cy voicebot g&#322;osowy..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label default">Cel biznesowy</span><textarea id="pp_cel_biz" placeholder="np. Wzrost show-up rate o min. 10 pp..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label default">Kto jest u&#380;ytkownikiem?</span><input type="text" id="pp_user" placeholder="np. Klienci Tutlo oraz dzia&#322; operacyjny"></div>
     </div>
   </div>
-
-  <!-- 3. METRYKI SUKCESU -->
-  <div class="card pp-section">
+  <div class="card">
     <div class="card-title">3. Metryki sukcesu</div>
     <div class="pp-grid">
-      <div class="pp-field full">
-        <span class="pp-label">Metryka g&#322;&#243;wna</span>
-        <input type="text" id="pp_metryka1" placeholder="np. Wzrost show-up rate o +10 pp w ci&#261;gu 60 dni">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Metryka dodatkowa 1</span>
-        <input type="text" id="pp_metryka2" placeholder="np. Containment rate &gt; 80%">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Metryka dodatkowa 2</span>
-        <input type="text" id="pp_metryka3" placeholder="np. Latency bota &lt; 1,5 sek.">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Baseline (stan obecny)</span>
-        <span class="pp-hint">Aktualne warto&#347;ci — sk&#261;d startujemy?</span>
-        <textarea id="pp_baseline" placeholder="np. Show-up rate: X% (do zmierzenia przed startem)&#10;Czas potwierdzenia: manualny, &gt;24h"></textarea>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Cel na koniec Q2</span>
-        <span class="pp-hint">Docelowe warto&#347;ci metryk</span>
-        <textarea id="pp_cel_q2" placeholder="np. Show-up rate: baseline + 10 pp&#10;Containment rate: &gt;80%&#10;Odzysk slot&oacute;w: &gt;40%"></textarea>
-      </div>
+      <div class="pp-field full"><span class="pp-label default">Metryka g&#322;&#243;wna</span><input type="text" id="pp_metryka1" placeholder="np. Wzrost show-up rate o +10 pp w ci&#261;gu 60 dni"></div>
+      <div class="pp-field"><span class="pp-label default">Metryka dodatkowa 1</span><input type="text" id="pp_metryka2" placeholder="np. Containment rate &gt; 80%"></div>
+      <div class="pp-field"><span class="pp-label default">Metryka dodatkowa 2</span><input type="text" id="pp_metryka3" placeholder="np. Latency bota &lt; 1,5 sek."></div>
+      <div class="pp-field"><span class="pp-label default">Baseline (stan obecny)</span><textarea id="pp_baseline" placeholder="Aktualne warto&#347;ci metryk"></textarea></div>
+      <div class="pp-field"><span class="pp-label default">Cel na koniec Q2</span><textarea id="pp_cel_q2" placeholder="Docelowe warto&#347;ci metryk"></textarea></div>
     </div>
   </div>
-
-  <!-- 4. ZAKRES I PODEJŚCIE -->
-  <div class="card pp-section">
+  <div class="card">
     <div class="card-title">4. Zakres i podej&#347;cie</div>
     <div class="pp-grid">
-      <div class="pp-field full">
-        <span class="pp-label">Podej&#347;cie techniczne</span>
-        <span class="pp-hint">Jakie narz&#281;dzia/platformy wykorzystasz?</span>
-        <textarea id="pp_tech" placeholder="np. ElevenLabs (STT/TTS), Gemini (LLM), n8n (orkiestracja), Peoplefone (telefonia), HubSpot (CRM), BigQuery (analityka)"></textarea>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Wymaga Platformy?</span>
-        <div class="pp-yn">
-          <label><input type="radio" name="pp_platf" value="TAK" id="pp_platf_t"> TAK</label>
-          <label><input type="radio" name="pp_platf" value="NIE" id="pp_platf_n"> NIE</label>
-        </div>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Je&#347;li TAK — opis integracji platformy</span>
-        <input type="text" id="pp_platf_opis" placeholder="Opisz jak&#261; integracj&#281; platformy wymaga projekt">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Wymaga integracji?</span>
-        <div class="pp-yn">
-          <label><input type="radio" name="pp_integr" value="TAK" id="pp_integr_t"> TAK</label>
-          <label><input type="radio" name="pp_integr" value="NIE" id="pp_integr_n"> NIE</label>
-        </div>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Je&#347;li TAK — z czym?</span>
-        <input type="text" id="pp_integr_opis" placeholder="np. HubSpot, BigQuery, system rezerwacji">
-      </div>
+      <div class="pp-field full"><span class="pp-label default">Podej&#347;cie techniczne</span><textarea id="pp_tech" placeholder="ElevenLabs, Gemini, n8n, Peoplefone, HubSpot, BigQuery"></textarea></div>
+      <div class="pp-field"><span class="pp-label default">Wymaga Platformy?</span><div class="pp-yn"><label><input type="radio" name="pp_platf" value="TAK"> TAK</label><label><input type="radio" name="pp_platf" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — opis</span><input type="text" id="pp_platf_opis" placeholder="Opisz integracj&#281;"></div>
+      <div class="pp-field"><span class="pp-label default">Wymaga integracji?</span><div class="pp-yn"><label><input type="radio" name="pp_integr" value="TAK"> TAK</label><label><input type="radio" name="pp_integr" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — z czym?</span><input type="text" id="pp_integr_opis" placeholder="np. HubSpot, BigQuery"></div>
     </div>
   </div>
-
-  <!-- 5. ZESPÓŁ -->
-  <div class="card pp-section">
-    <div class="card-title">5. Zesp&oacute;&#322; i zasoby</div>
+  <div class="card">
+    <div class="card-title">5. Zesp&oacute;&#322;</div>
     <div class="pp-grid">
-      <div class="pp-field">
-        <span class="pp-label">Osoba 1 — Grupa robocza</span>
-        <input type="text" id="pp_team1" placeholder="Imi&#281;, nazwisko, rola">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Osoba 2 — Grupa robocza</span>
-        <input type="text" id="pp_team2" placeholder="Imi&#281;, nazwisko, rola">
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Osoba 3 — Grupa robocza</span>
-        <input type="text" id="pp_team3" placeholder="Imi&#281;, nazwisko, rola">
-      </div>
+      <div class="pp-field"><span class="pp-label default">Osoba 1</span><input type="text" id="pp_team1" placeholder="Imi&#281;, nazwisko, rola"></div>
+      <div class="pp-field"><span class="pp-label default">Osoba 2</span><input type="text" id="pp_team2" placeholder="Imi&#281;, nazwisko, rola"></div>
+      <div class="pp-field"><span class="pp-label default">Osoba 3</span><input type="text" id="pp_team3" placeholder="Imi&#281;, nazwisko, rola"></div>
     </div>
   </div>
-
-  <!-- 6. RYZYKA -->
-  <div class="card pp-section">
-    <div class="card-title">6. Zale&#380;no&#347;ci, blokery i ryzyka</div>
+  <div class="card">
+    <div class="card-title">6. Ryzyka</div>
     <div class="pp-grid">
-      <div class="pp-field">
-        <span class="pp-label">Dane wra&#380;liwe?</span>
-        <div class="pp-yn">
-          <label><input type="radio" name="pp_rodo" value="TAK" id="pp_rodo_t"> TAK</label>
-          <label><input type="radio" name="pp_rodo" value="NIE" id="pp_rodo_n"> NIE</label>
-        </div>
-      </div>
-      <div class="pp-field">
-        <span class="pp-label">Je&#347;li TAK — jakie dane i jak zabezpieczone?</span>
-        <input type="text" id="pp_rodo_opis" placeholder="np. Nagrania g&#322;osowe klient&oacute;w — szyfrowanie, retencja 30 dni, zgody RODO">
-      </div>
-      <div class="pp-field full">
-        <span class="pp-label">Inne blokery i zale&#380;no&#347;ci</span>
-        <textarea id="pp_blokery" placeholder="np. Brak potwierdzonego systemu rezerwacji, timing triggera do ustalenia z CRM"></textarea>
-      </div>
+      <div class="pp-field"><span class="pp-label default">Dane wra&#380;liwe?</span><div class="pp-yn"><label><input type="radio" name="pp_rodo" value="TAK"> TAK</label><label><input type="radio" name="pp_rodo" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — jak zabezpieczone?</span><input type="text" id="pp_rodo_opis" placeholder="np. Nagrania g&#322;osowe — szyfrowanie, retencja 30 dni"></div>
+      <div class="pp-field full"><span class="pp-label default">Inne blokery i zale&#380;no&#347;ci</span><textarea id="pp_blokery" placeholder="np. Brak potwierdzonego systemu rezerwacji"></textarea></div>
     </div>
   </div>
-
-  <!-- 7. HARMONOGRAM -->
-  <div class="card pp-section">
+  <div class="card">
     <div class="card-title">7. Harmonogram</div>
     <div class="pp-week-grid">
-      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div>
-      <div class="pp-field"><textarea id="pp_w1" rows="2" placeholder="Eksploracja, setup, pierwsze prompty"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div>
-      <div class="pp-field"><textarea id="pp_w2" rows="2" placeholder="Pierwszy prototyp / iteracja"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div>
-      <div class="pp-field"><textarea id="pp_w3" rows="2" placeholder="Iteracja z grup&#261; robocz&#261;"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div>
-      <div class="pp-field"><textarea id="pp_w4" rows="2" placeholder="POC gotowy do przegl&#261;du"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 5<br><span style="font-weight:400;color:var(--text3)">4–8.05</span></div>
-      <div class="pp-field"><textarea id="pp_w5" rows="2" placeholder="Prezentacja progresu"></textarea></div>
-      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div>
-      <div class="pp-field"><textarea id="pp_prod" rows="2" placeholder="Osadzenie w &#347;rodowisku produkcyjnym"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field"><textarea id="pp_w1" rows="2" placeholder="Eksploracja, setup, pierwsze prompty"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field"><textarea id="pp_w2" rows="2" placeholder="Pierwszy prototyp"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field"><textarea id="pp_w3" rows="2" placeholder="Iteracja z grup&#261; robocz&#261;"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field"><textarea id="pp_w4" rows="2" placeholder="POC gotowy do przegl&#261;du"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 5<br><span style="font-weight:400;color:var(--text3)">4–8.05</span></div><div class="pp-field"><textarea id="pp_w5" rows="2" placeholder="Prezentacja progresu"></textarea></div>
+      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field"><textarea id="pp_prod" rows="2" placeholder="Osadzenie w &#347;rodowisku produkcyjnym"></textarea></div>
     </div>
   </div>
-
   <div class="pp-save-bar">
-    <span class="pp-saved-msg" id="pp-saved-msg">&#10003; Zapisano paszport</span>
-    <button class="pp-save-btn" onclick="savePP()">Zapisz paszport</button>
+    <span class="pp-saved-msg yellow" id="pp-saved-msg">&#10003; Zapisano paszport</span>
+    <button class="pp-save-btn yellow" onclick="savePP('pp','yellow')">Zapisz paszport</button>
   </div>
-
 </div>
 
 <!-- O PROJEKCIE -->
 <div id="opis" class="panel">
-  <div class="card">
-    <div class="card-title">Cel i kontekst biznesowy</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px">Voicebot Tutlo to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami <strong style="color:var(--text)">spotka&#324; pr&oacute;bnych</strong> z potencjalnymi klientami szko&#322;y j&#281;zyka angielskiego online Tutlo.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px">G&#322;&#243;wnym problemem jest zbyt niski <strong style="color:var(--text)">show-up rate</strong> &mdash; odsetek klient&oacute;w kt&oacute;rzy faktycznie pojawiaj&#261; si&#281; na spotkaniu. Przy skali 500+ spotka&#324; miesi&#281;cznie wzrost o 10 pp ma bezpo&#347;rednie prze&#322;o&#380;enie na przychody.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8">Bot jest <strong style="color:var(--text)">pierwszym modu&#322;em</strong> wi&#281;kszego projektu automatyzacji obs&#322;ugi klienta w Tutlo.</p>
+  <div class="card"><div class="card-title">Cel i kontekst biznesowy</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px">Voicebot Tutlo to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami <strong style="color:var(--text)">spotka&#324; pr&oacute;bnych</strong>. Bot kontaktuje si&#281; z klientami wychodz&#261;co i przychodz&#261;co.</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">G&#322;&#243;wnym problemem jest zbyt niski <strong style="color:var(--text)">show-up rate</strong>. Przy skali 500+ spotka&#324; miesi&#281;cznie wzrost o 10 pp ma bezpo&#347;rednie prze&#322;o&#380;enie na przychody.</p>
   </div>
-  <div class="card">
-    <div class="card-title">Trzy g&#322;&#243;wne zadania voicebota</div>
-    <div class="tbox" style="border-left-color:#1A6BC4">
-      <div class="tbox-title"><span style="background:#EAF2FC;color:#0F4A8A;padding:2px 8px;border-radius:20px;font-size:11px">01</span> Potwierdzenie obecno&#347;ci</div>
-      <div class="tbox-body">Bot dzwoni przed spotkaniem i pyta czy klient pojawi si&#281; o um&oacute;wionej porze. Potwierdzenie rejestrowane w HubSpocie.</div>
-    </div>
-    <div class="tbox" style="border-left-color:#F5C800">
-      <div class="tbox-title"><span style="background:#FFF8D6;color:#7A6000;padding:2px 8px;border-radius:20px;font-size:11px">02</span> Prze&#322;o&#380;enie spotkania</div>
-      <div class="tbox-body">Bot proponuje alternatywne terminy z systemu rezerwacji, jeden po drugim. Po akceptacji rezerwuje i aktualizuje HubSpot.</div>
-    </div>
-    <div class="tbox" style="border-left-color:#C42020">
-      <div class="tbox-title"><span style="background:#FDEAEA;color:#8A0F0F;padding:2px 8px;border-radius:20px;font-size:11px">03</span> Anulowanie spotkania</div>
-      <div class="tbox-body">Bot anuluje rezerwacj&#281; i zwalnia slot dla innego klienta. Zdarzenie rejestrowane w HubSpocie.</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title">Jak voicebot prowadzi rozmow&#281;</div>
-    <div class="tech-grid">
-      <div class="tech-box"><div class="tech-lbl">J&#281;zyk i forma</div><div style="font-size:13px;color:var(--text2);line-height:1.7">Wy&#322;&#261;cznie po polsku. Forma Pan/Pani pobierana z HubSpot dynamicznie.</div></div>
-      <div class="tech-box"><div class="tech-lbl">Jeden termin naraz</div><div style="font-size:13px;color:var(--text2);line-height:1.7">Bot nigdy nie czyta listy godzin &mdash; proponuje jeden termin i czeka na decyzj&#281;.</div></div>
-      <div class="tech-box"><div class="tech-lbl">Naturalny j&#281;zyk</div><div style="font-size:13px;color:var(--text2);line-height:1.7">"Jutro rano", "po sz&oacute;stej", "b&#281;d&#281; w pracy do 17" &mdash; bot rozumie i dopasowuje.</div></div>
-      <div class="tech-box"><div class="tech-lbl">Eskalacja</div><div style="font-size:13px;color:var(--text2);line-height:1.7">Gdy &#380;aden termin nie pasuje &mdash; transfer do konsultanta przez Peoplefone.</div></div>
-    </div>
+  <div class="card"><div class="card-title">Trzy g&#322;&#243;wne zadania voicebota</div>
+    <div class="tbox" style="border-left-color:#1A6BC4"><div class="tbox-title">01 — Potwierdzenie obecno&#347;ci</div><div class="tbox-body">Bot dzwoni przed spotkaniem, pyta czy klient si&#281; pojawi. Potwierdzenie rejestrowane w HubSpocie.</div></div>
+    <div class="tbox" style="border-left-color:#F5C800"><div class="tbox-title">02 — Prze&#322;o&#380;enie spotkania</div><div class="tbox-body">Bot proponuje alternatywne terminy z systemu rezerwacji, jeden po drugim. Po akceptacji rezerwuje i aktualizuje HubSpot.</div></div>
+    <div class="tbox" style="border-left-color:#C42020"><div class="tbox-title">03 — Anulowanie spotkania</div><div class="tbox-body">Bot anuluje rezerwacj&#281; i zwalnia slot dla innego klienta. Zdarzenie rejestrowane w HubSpocie.</div></div>
   </div>
 </div>
 
 <!-- CHECKLISTA -->
 <div id="checklist" class="panel">
   <div class="prog-wrap">
-    <div class="prog-header">
-      <span class="prog-title">Post&#281;p realizacji projektu</span>
-      <span class="prog-count" id="prog-count">0 / 0 zada&#324;</span>
-    </div>
+    <div class="prog-header"><span class="prog-title">Post&#281;p realizacji projektu</span><span class="prog-count" id="prog-count">0 / 0 zada&#324;</span></div>
     <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
     <div class="last-saved" id="last-saved"></div>
   </div>
@@ -491,38 +404,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 
 <!-- KAMIENIE MILOWE -->
 <div id="milestones" class="panel">
-  <div class="card"><div class="card-title">Harmonogram &mdash; 12 tygodni do wdro&#380;enia</div><div id="milestones-list"></div></div>
+  <div class="card"><div class="card-title">Harmonogram</div><div id="milestones-list"></div></div>
 </div>
 
 <!-- KPI -->
 <div id="kpi" class="panel">
-  <div class="card" style="margin-bottom:1rem">
-    <div class="card-title">KPI Biznesowe</div>
+  <div class="card" style="margin-bottom:1rem"><div class="card-title">KPI Biznesowe</div>
     <div class="kpi-row"><span class="kpi-name">Show-up rate</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">+10 pp / 60 dni</span></div>
-    <div class="kpi-row"><span class="kpi-name">Odzysk slot&oacute;w</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&gt;40% &rarr; 60%</span></div>
-    <div class="kpi-row"><span class="kpi-name">Czas obsadzenia slotu po anulowaniu</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&lt;2h</span></div>
+    <div class="kpi-row"><span class="kpi-name">Odzysk slot&oacute;w</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&gt;40%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Czas obsadzenia slotu</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&lt;2h</span></div>
   </div>
-  <div class="card" style="margin-bottom:1rem">
-    <div class="card-title">KPI Operacyjne</div>
+  <div class="card" style="margin-bottom:1rem"><div class="card-title">KPI Operacyjne</div>
     <div class="kpi-row"><span class="kpi-name">Contact Rate</span><span class="badge b-blue" style="margin-right:8px">Ops</span><span class="kpi-target">&gt;65%</span></div>
     <div class="kpi-row"><span class="kpi-name">Containment Rate</span><span class="badge b-blue" style="margin-right:8px">Ops</span><span class="kpi-target">&gt;80%</span></div>
     <div class="kpi-row"><span class="kpi-name">Confirmation Rate</span><span class="badge b-blue" style="margin-right:8px">Ops</span><span class="kpi-target">&gt;70%</span></div>
     <div class="kpi-row"><span class="kpi-name">Escalation Rate</span><span class="badge b-blue" style="margin-right:8px">Ops</span><span class="kpi-target">&lt;15%</span></div>
     <div class="kpi-row"><span class="kpi-name">Drop Rate</span><span class="badge b-blue" style="margin-right:8px">Ops</span><span class="kpi-target">&lt;10%</span></div>
   </div>
-  <div class="card" style="margin-bottom:1rem">
-    <div class="card-title">KPI Techniczne</div>
+  <div class="card" style="margin-bottom:1rem"><div class="card-title">KPI Techniczne</div>
     <div class="kpi-row"><span class="kpi-name">Poprawno&#347;&#263; zapisu w HubSpot</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&gt;99%</span></div>
     <div class="kpi-row"><span class="kpi-name">Latency bota</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&lt;1,5 sek.</span></div>
-    <div class="kpi-row"><span class="kpi-name">B&#322;&#281;dy STT intencji</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&lt;5%</span></div>
+    <div class="kpi-row"><span class="kpi-name">B&#322;&#281;dy STT</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&lt;5%</span></div>
     <div class="kpi-row"><span class="kpi-name">B&#322;&#281;dne terminy</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">0%</span></div>
-    <div class="kpi-row"><span class="kpi-name">Uptime systemu</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&gt;99,5%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Uptime</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&gt;99,5%</span></div>
   </div>
-  <div class="card">
-    <div class="card-title">KPI CX</div>
-    <div class="kpi-row"><span class="kpi-name">Naturalno&#347;&#263; rozmowy (QA 1&ndash;5)</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&ge; 4,0</span></div>
-    <div class="kpi-row"><span class="kpi-name">Poprawno&#347;&#263; wymowy dat i godzin</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;98%</span></div>
-    <div class="kpi-row"><span class="kpi-name">Trafno&#347;&#263; rozpoznania intencji</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;95%</span></div>
+  <div class="card"><div class="card-title">KPI CX</div>
+    <div class="kpi-row"><span class="kpi-name">Naturalno&#347;&#263; rozmowy</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&ge;4,0</span></div>
+    <div class="kpi-row"><span class="kpi-name">Wymowa dat i godzin</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;98%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Trafno&#347;&#263; intencji</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;95%</span></div>
     <div class="kpi-row"><span class="kpi-name">Skargi klient&oacute;w</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&lt;2%</span></div>
   </div>
 </div>
@@ -549,11 +458,265 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
     </div>
     <p style="font-size:11px;color:var(--text3);margin-top:12px">R = Responsible &middot; A = Accountable &middot; C = Consulted &middot; I = Informed</p>
   </div>
-  <div class="card">
-    <div class="card-title">Kluczowe punkty wsp&oacute;&#322;pracy</div>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.7"><strong style="color:var(--text)">Dzia&#322; CRM:</strong> Mapping p&oacute;l, triggery, workflow po anulowaniu.</p>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.7"><strong style="color:var(--text)">Dzia&#322; DATA:</strong> Schemat BigQuery, dashboard skuteczno&#347;ci, transkrypcje.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.7"><strong style="color:var(--text)">Dzia&#322; Operacyjny:</strong> Scenariusze, eskalacje, okna czasowe, akceptacja UAT.</p>
+</div>
+
+<!-- ===== BACKOFFICE ===== -->
+<div id="backoffice" class="panel">
+  <div class="ka-hero purple">
+    <div>
+      <div class="ka-hero-title">&#128188; Karta Obszaru &mdash; Backoffice</div>
+      <div class="ka-hero-sub">Odkryj jak Voicebot mo&#380;e wesprzec Tw&oacute;j zesp&oacute;&#322; &middot; Wype&#322;nij poni&#380;szy arkusz</div>
+    </div>
+    <span class="hbadge hb-purple">AI Champion Q2 2026</span>
+  </div>
+
+  <!-- ODKRYWANIE POTRZEB -->
+  <div class="card c-purple">
+    <div class="card-title purple">1. Odkrycie potrzeb &mdash; co robi Backoffice?</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">Zaznacz wszystkie obszary w kt&oacute;rych Backoffice jest zaanga&#380;owany. To pomo&#380;e okre&#347;li&#263; gdzie Voicebot mo&#380;e wnie&#347;&#263; najwi&#281;ksz&#261; warto&#347;&#263;.</p>
+    <div class="checkboxes" id="bo-areas">
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a1"><span>Zarz&#261;dzanie kalendarzem i rezerwacjami slot&oacute;w lekcji</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a2"><span>Aktualizacja danych klient&oacute;w w CRM (HubSpot)</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a3"><span>Obs&#322;uga anulowa&#324; i przek&#322;ada&#324; spotka&#324;</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a4"><span>Raportowanie i kontrola jako&#347;ci danych</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a5"><span>Komunikacja wewn&#281;trzna i powiadomienia dla zespo&#322;u</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a6"><span>Obs&#322;uga reklamacji i eskalacji od klient&oacute;w</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a7"><span>Zarz&#261;dzanie dokumentacj&#261; i procedurami</span></label>
+      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a8"><span>Inne (opisz poni&#380;ej)</span></label>
+    </div>
+    <div style="margin-top:10px">
+      <div class="pp-field purple"><textarea id="bo_inne" rows="2" placeholder="Opisz inne obszary pracy Backoffice..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">2. Problem i cel</div>
+    <div class="pp-grid">
+      <div class="pp-field full purple">
+        <span class="pp-label purple">Jaki problem chcesz rozwi&#261;za&#263; Voicebotem?</span>
+        <span class="pp-hint">Np. za du&#380;o r&#281;cznej pracy przy aktualizacji kalendarzy, b&#322;&#281;dy w danych, op&oacute;&#378;nienia</span>
+        <textarea id="bo_problem" placeholder="Opisz g&#322;&#243;wny problem operacyjny..."></textarea>
+      </div>
+      <div class="pp-field full purple">
+        <span class="pp-label purple">Co konkretnie ma robi&#263; Voicebot dla Backoffice?</span>
+        <span class="pp-hint">Np. automatycznie zwalnia&#263; sloty po anulowaniu, wysy&#322;a&#263; powiadomienia do konsultant&oacute;w</span>
+        <textarea id="bo_cel" placeholder="Opisz oczekiwane dzia&#322;ania bota..."></textarea>
+      </div>
+      <div class="pp-field full purple">
+        <span class="pp-label purple">Kto w Backoffice b&#281;dzie u&#380;ytkownikiem tego rozwi&#261;zania?</span>
+        <input type="text" id="bo_user" placeholder="np. Koordynatorzy, specjali&#347;ci ds. harmonogram&oacute;w">
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">3. Kryteria sukcesu</div>
+    <div class="pp-grid">
+      <div class="pp-field purple">
+        <span class="pp-label purple">Metryka g&#322;&#243;wna</span>
+        <input type="text" id="bo_metryka1" placeholder="np. Redukcja r&#281;cznych aktualizacji o X%">
+      </div>
+      <div class="pp-field purple">
+        <span class="pp-label purple">Metryka dodatkowa</span>
+        <input type="text" id="bo_metryka2" placeholder="np. Czas zwolnienia slotu &lt; 5 min">
+      </div>
+      <div class="pp-field purple">
+        <span class="pp-label purple">Baseline (stan obecny)</span>
+        <textarea id="bo_baseline" rows="2" placeholder="Ile czasu zajmuje to r&#281;cznie? Ile b&#322;&#281;d&oacute;w?"></textarea>
+      </div>
+      <div class="pp-field purple">
+        <span class="pp-label purple">Cel na koniec Q2</span>
+        <textarea id="bo_cel_q2" rows="2" placeholder="Co chcemy osi&#261;gn&#261;&#263;?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">4. Technologie i integracje</div>
+    <div class="pp-grid">
+      <div class="pp-field full purple">
+        <span class="pp-label purple">Z jakimi systemami pracuje Backoffice na co dzie&#324;?</span>
+        <div class="checkboxes" style="margin-top:6px" id="bo-tools">
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t1"><span>HubSpot CRM</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t2"><span>System rezerwacji / kalendarz (wewn&#281;trzny)</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t3"><span>Google Calendar / Outlook</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t4"><span>Arkusze Google / Excel</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t5"><span>Slack / Teams (komunikacja)</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t6"><span>BigQuery / raporty</span></label>
+          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t7"><span>Inne narz&#281;dzie</span></label>
+        </div>
+      </div>
+      <div class="pp-field full purple">
+        <span class="pp-label purple">Jakie dane s&#261; krytyczne dla Backoffice?</span>
+        <span class="pp-hint">Np. termin spotkania, status klienta, nazwisko konsultanta</span>
+        <textarea id="bo_dane" placeholder="Wymie&#324; kluczowe dane..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">5. Zesp&oacute;&#322;</div>
+    <div class="pp-grid">
+      <div class="pp-field purple"><span class="pp-label purple">Owner obszaru w Backoffice</span><input type="text" id="bo_owner" placeholder="Imi&#281; i nazwisko"></div>
+      <div class="pp-field purple"><span class="pp-label purple">Osoby do testowania</span><input type="text" id="bo_testers" placeholder="Imi&#281;, nazwisko (2-3 osoby)"></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">6. Ryzyka i blokery</div>
+    <div class="pp-grid">
+      <div class="pp-field purple">
+        <span class="pp-label purple">Dane wra&#380;liwe w procesie?</span>
+        <div class="pp-yn purple">
+          <label><input type="radio" name="bo_rodo" value="TAK"> TAK</label>
+          <label><input type="radio" name="bo_rodo" value="NIE"> NIE</label>
+        </div>
+      </div>
+      <div class="pp-field purple"><span class="pp-label purple">Je&#347;li TAK — jakie i jak zabezpieczone?</span><input type="text" id="bo_rodo_opis" placeholder="np. dane klient&oacute;w, zgody"></div>
+      <div class="pp-field full purple"><span class="pp-label purple">Blokery i zale&#380;no&#347;ci</span><textarea id="bo_blokery" placeholder="Co mo&#380;e zablokowa&#263; wdro&#380;enie po stronie Backoffice?"></textarea></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">7. Harmonogram Backoffice</div>
+    <div class="pp-week-grid">
+      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field purple"><textarea id="bo_w1" rows="2" placeholder="Mapowanie proces&oacute;w, identyfikacja obszar&oacute;w do automatyzacji"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field purple"><textarea id="bo_w2" rows="2" placeholder="Pierwsze testy integracji z systemem rezerwacji"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field purple"><textarea id="bo_w3" rows="2" placeholder="Testy z zespo&#322;em Backoffice"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field purple"><textarea id="bo_w4" rows="2" placeholder="Akceptacja i sign-off Backoffice"></textarea></div>
+      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field purple"><textarea id="bo_prod" rows="2" placeholder="Wdro&#380;enie na produkcj&#281;"></textarea></div>
+    </div>
+  </div>
+
+  <div class="pp-save-bar">
+    <span class="pp-saved-msg purple" id="bo-saved-msg">&#10003; Zapisano kart&#281; Backoffice</span>
+    <button class="pp-save-btn purple" onclick="savePP('bo','purple')">Zapisz kart&#281; Backoffice</button>
+  </div>
+</div>
+
+<!-- ===== REKRUTACJA ===== -->
+<div id="rekrutacja" class="panel">
+  <div class="ka-hero green">
+    <div>
+      <div class="ka-hero-title">&#128101; Karta Obszaru &mdash; Rekrutacja</div>
+      <div class="ka-hero-sub">Voicebot do komunikacji z kandydatami &middot; Wype&#322;nij poni&#380;szy arkusz</div>
+    </div>
+    <span class="hbadge hb-green">AI Champion Q2 2026</span>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">1. Cel i kontekst biznesowy</div>
+    <div class="pp-grid">
+      <div class="pp-field full green">
+        <span class="pp-label green">Problem kt&oacute;ry Voicebot ma rozwi&#261;za&#263; w Rekrutacji</span>
+        <span class="pp-hint">Np. kandydaci nie pojawiaj&#261; si&#281; na rozmowach, du&#380;o czasu na potwierdzanie termin&oacute;w telefonicznie</span>
+        <textarea id="rek_problem" placeholder="Opisz problem..."></textarea>
+      </div>
+      <div class="pp-field full green">
+        <span class="pp-label green">Oczekiwany rezultat</span>
+        <textarea id="rek_rezultat" placeholder="np. Bot automatycznie potwierdza terminy rozm&oacute;w kwalifikacyjnych, sk&#322;ada kandydatom propozycj&#281; prze&#322;o&#380;enia gdy nie mog&#261; przyj&#347;&#263;"></textarea>
+      </div>
+      <div class="pp-field full green">
+        <span class="pp-label green">Kto jest u&#380;ytkownikiem?</span>
+        <div class="checkboxes" style="margin-top:6px">
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u1" style="accent-color:var(--green2)"><span>Kandydaci zewn&#281;trzni (potencjalni pracownicy)</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u2" style="accent-color:var(--green2)"><span>Rekruterzy (monitoring, eskalacje)</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u3" style="accent-color:var(--green2)"><span>Hiring managerowie (informacje o statusie)</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u4" style="accent-color:var(--green2)"><span>Lektorzy / interviewerzy Tutlo</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">2. G&#322;&#243;wne zadania Voicebota w Rekrutacji</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">Zaznacz kt&oacute;re scenariusze chcesz obs&#322;u&#380;y&#263;:</p>
+    <div class="checkboxes" id="rek-tasks">
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t1" style="accent-color:var(--green2)"><span><strong>Potwierdzenie rozmowy kwalifikacyjnej</strong> &mdash; bot dzwoni do kandydata i pyta czy pojawi si&#281; na rozmowie</span></label>
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t2" style="accent-color:var(--green2)"><span><strong>Prze&#322;o&#380;enie rozmowy</strong> &mdash; kandydat nie mo&#380;e, bot proponuje alternatywne terminy z kalendarza rekrutera</span></label>
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t3" style="accent-color:var(--green2)"><span><strong>Anulowanie i zapis rezygnacji</strong> &mdash; kandydat rezygnuje, bot zwalnia slot i informuje rekrutera</span></label>
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t4" style="accent-color:var(--green2)"><span><strong>Przypomnienie przed rozmow&#261;</strong> &mdash; SMS lub call 24h i 2h przed terminem</span></label>
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t5" style="accent-color:var(--green2)"><span><strong>Zebranie podstawowych informacji od kandydata</strong> &mdash; np. potwierdzenie j&#281;zyka, dost&#281;pno&#347;ci, CV</span></label>
+      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t6" style="accent-color:var(--green2)"><span><strong>Eskalacja do rekrutera</strong> &mdash; gdy kandydat ma pytania kt&oacute;rych bot nie obs&#322;uguje</span></label>
+    </div>
+    <div style="margin-top:10px">
+      <div class="pp-field green"><span class="pp-label green">Inne scenariusze</span><textarea id="rek_inne" rows="2" placeholder="Opisz dodatkowe scenariusze..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">3. Kryteria sukcesu</div>
+    <div class="pp-grid">
+      <div class="pp-field green"><span class="pp-label green">Metryka g&#322;&#243;wna</span><input type="text" id="rek_metryka1" placeholder="np. Wzrost show-up rate kandydat&oacute;w o X pp"></div>
+      <div class="pp-field green"><span class="pp-label green">Metryka dodatkowa</span><input type="text" id="rek_metryka2" placeholder="np. % rozmow potwierdzonych automatycznie"></div>
+      <div class="pp-field green"><span class="pp-label green">Baseline (stan obecny)</span><textarea id="rek_baseline" rows="2" placeholder="Ile % kandydat&oacute;w pojawia si&#281; na rozmowach? Ile czasu zajmuje potwierdzanie?"></textarea></div>
+      <div class="pp-field green"><span class="pp-label green">Cel na koniec Q2</span><textarea id="rek_cel_q2" rows="2" placeholder="Docelowe warto&#347;ci..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">4. Technologie i integracje</div>
+    <div class="pp-grid">
+      <div class="pp-field full green">
+        <span class="pp-label green">Systemy u&#380;ywane w Rekrutacji</span>
+        <div class="checkboxes" style="margin-top:6px">
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s1" style="accent-color:var(--green2)"><span>ATS (system rekrutacyjny) &mdash; podaj nazw&#281;</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s2" style="accent-color:var(--green2)"><span>HubSpot CRM</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s3" style="accent-color:var(--green2)"><span>Google Calendar / Outlook</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s4" style="accent-color:var(--green2)"><span>Slack / Teams</span></label>
+          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s5" style="accent-color:var(--green2)"><span>Inne narz&#281;dzie rekrutacyjne</span></label>
+        </div>
+      </div>
+      <div class="pp-field full green">
+        <span class="pp-label green">Nazwa ATS / systemu rekrutacyjnego (je&#347;li jest)</span>
+        <input type="text" id="rek_ats" placeholder="np. Greenhouse, Workable, Lever, w&#322;asny system">
+      </div>
+      <div class="pp-field full green">
+        <span class="pp-label green">Podej&#347;cie techniczne</span>
+        <span class="pp-hint">Jakie narz&#281;dzia maj&#261; by&#263; u&#380;yte? (wype&#322;ni IT/Dev, ale Rekrutacja mo&#380;e wskaza&#263; preferencje)</span>
+        <textarea id="rek_tech" placeholder="np. ElevenLabs (g&#322;os PL), Gemini (logika), n8n (integracja z ATS i kalendarzem rekrutera)"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">5. Zesp&oacute;&#322;</div>
+    <div class="pp-grid">
+      <div class="pp-field green"><span class="pp-label green">AI Champion / Owner w Rekrutacji</span><input type="text" id="rek_owner" placeholder="Imi&#281; i nazwisko"></div>
+      <div class="pp-field green"><span class="pp-label green">Osoby do testowania</span><input type="text" id="rek_testers" placeholder="Rekruterzy testuj&#261;cy bota (2-3 osoby)"></div>
+      <div class="pp-field full green"><span class="pp-label green">Wsp&oacute;&#322;praca z innymi dzia&#322;ami</span><input type="text" id="rek_wspolpraca" placeholder="np. IT/Dev (konfiguracja), Backoffice (system kalendarzy), HR (procesy)"></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">6. Ryzyka i blokery</div>
+    <div class="pp-grid">
+      <div class="pp-field green">
+        <span class="pp-label green">Dane wra&#380;liwe kandydat&oacute;w?</span>
+        <div class="pp-yn green">
+          <label><input type="radio" name="rek_rodo" value="TAK"> TAK</label>
+          <label><input type="radio" name="rek_rodo" value="NIE"> NIE</label>
+        </div>
+      </div>
+      <div class="pp-field green"><span class="pp-label green">Je&#347;li TAK — jak zabezpieczone?</span><input type="text" id="rek_rodo_opis" placeholder="np. Nagrania rozmów — zgoda RODO, retencja 30 dni"></div>
+      <div class="pp-field full green"><span class="pp-label green">Blokery i zale&#380;no&#347;ci</span><textarea id="rek_blokery" placeholder="Np. brak API w obecnym ATS, brak zgody kandydat&oacute;w na kontakt automatyczny..."></textarea></div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">7. Harmonogram Rekrutacja</div>
+    <div class="pp-week-grid">
+      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field green"><textarea id="rek_w1" rows="2" placeholder="Mapowanie procesu rekrutacyjnego, identyfikacja scenariuszy"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field green"><textarea id="rek_w2" rows="2" placeholder="Pierwsze testy bota z kandydatami testowymi"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field green"><textarea id="rek_w3" rows="2" placeholder="Iteracja z rekruterami, korekty scenariuszy"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field green"><textarea id="rek_w4" rows="2" placeholder="Sign-off Rekrutacji, gotowo&#347;&#263; do pilotu"></textarea></div>
+      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field green"><textarea id="rek_prod" rows="2" placeholder="Wdro&#380;enie na produkcj&#281; w procesie rekrutacyjnym"></textarea></div>
+    </div>
+  </div>
+
+  <div class="pp-save-bar">
+    <span class="pp-saved-msg green" id="rek-saved-msg">&#10003; Zapisano kart&#281; Rekrutacji</span>
+    <button class="pp-save-btn green" onclick="savePP('rek','green')">Zapisz kart&#281; Rekrutacji</button>
   </div>
 </div>
 
@@ -565,7 +728,7 @@ var CL=[
   {g:"Dzialania pilne (przed startem)",items:[
     {id:"p1",t:"Zmierzyc aktualny show-up rate (baseline)",o:"Dzial DATA"},
     {id:"p2",t:"Potwierdzic system rezerwacji slotow lekcji",o:"Dzial Operacyjny"},
-    {id:"p3",t:"Ustalic timing polaczen (ile godzin przed spotkaniem)",o:"Ops + CRM"},
+    {id:"p3",t:"Ustalic timing polaczen",o:"Ops + CRM"},
     {id:"p4",t:"Zweryfikowac zgody RODO na kontakt automatyczny",o:"Ops + Prawny"},
     {id:"p5",t:"Potwierdzic dostepnosc API Peoplefone",o:"IT/Dev"}
   ]},
@@ -579,76 +742,76 @@ var CL=[
   {g:"M2 - Integracje bazowe (tydz. 3-4)",items:[
     {id:"m2a",t:"n8n: workflow pobierajacy available_slots",o:"IT/Dev"},
     {id:"m2b",t:"n8n: zapis wyniku rozmowy do HubSpot",o:"IT/Dev"},
-    {id:"m2c",t:"Trigger HubSpot do n8n (X godzin przed spotkaniem)",o:"CRM + Dev"},
+    {id:"m2c",t:"Trigger HubSpot do n8n",o:"CRM + Dev"},
     {id:"m2d",t:"Schemat tabeli BigQuery",o:"Dzial DATA"}
   ]},
   {g:"M3 - Voicebot MVP (tydz. 5-6)",items:[
     {id:"m3a",t:"ElevenLabs: konfiguracja glosu PL, test TTS",o:"IT/Dev"},
-    {id:"m3b",t:"Gemini: wgranie prompta, test logiki available_slots",o:"IT/Dev"},
-    {id:"m3c",t:"Peoplefone: test polaczenia wychodzacego i przychodzcego",o:"IT/Dev"},
-    {id:"m3d",t:"Dzialajacy scenariusz potwierdzenia end-to-end",o:"IT/Dev + Ops"}
+    {id:"m3b",t:"Gemini: wgranie prompta, test logiki",o:"IT/Dev"},
+    {id:"m3c",t:"Peoplefone: test polaczen",o:"IT/Dev"},
+    {id:"m3d",t:"Scenariusz potwierdzenia end-to-end",o:"IT/Dev + Ops"}
   ]},
   {g:"M4 - Pelny zakres funkcji (tydz. 7-8)",items:[
-    {id:"m4a",t:"Obsluga przelozenia terminu z weryfikacja available_slots",o:"IT/Dev"},
+    {id:"m4a",t:"Obsluga przelozenia terminu",o:"IT/Dev"},
     {id:"m4b",t:"Obsluga anulowania + zwolnienie slotu",o:"IT/Dev"},
-    {id:"m4c",t:"Eskalacja do konsultanta (transfer Peoplefone)",o:"IT/Dev"},
-    {id:"m4d",t:"SMS follow-up po rozmowie (HubSpot workflow)",o:"Dzial CRM"},
-    {id:"m4e",t:"Transkrypcje powiazane z kontaktem w HubSpot",o:"IT/Dev"}
+    {id:"m4c",t:"Eskalacja do konsultanta",o:"IT/Dev"},
+    {id:"m4d",t:"SMS follow-up po rozmowie",o:"Dzial CRM"},
+    {id:"m4e",t:"Transkrypcje w HubSpot",o:"IT/Dev"}
   ]},
   {g:"M5 - Testy UAT (tydz. 9-10)",items:[
     {id:"m5a",t:"50 scenariuszy: 0 bledow zlych terminow",o:"Ops + Dev"},
-    {id:"m5b",t:"Latency ponizej 1,5s na staging",o:"IT/Dev"},
-    {id:"m5c",t:"QA wymowy: 100% poprawna wymowa dat i godzin",o:"Dzial Operacyjny"},
-    {id:"m5d",t:"Korekty i poprawki po testach",o:"IT/Dev"}
+    {id:"m5b",t:"Latency ponizej 1,5s",o:"IT/Dev"},
+    {id:"m5c",t:"QA wymowy dat i godzin",o:"Dzial Operacyjny"},
+    {id:"m5d",t:"Korekty po testach",o:"IT/Dev"}
   ]},
-  {g:"M6-M7 - Pilot i pelne wdrozenie (tydz. 11-12)",items:[
-    {id:"m6a",t:"Formalny sign-off Dzialu Operacyjnego",o:"Dzial Operacyjny"},
-    {id:"m6b",t:"Pilot na 10-20% ruchu przez 1 tydzien",o:"Ops + Dev"},
+  {g:"M6-M7 - Pilot i wdrozenie (tydz. 11-12)",items:[
+    {id:"m6a",t:"Sign-off Dzialu Operacyjnego",o:"Dzial Operacyjny"},
+    {id:"m6b",t:"Pilot 10-20% ruchu",o:"Ops + Dev"},
     {id:"m6c",t:"Dashboard BigQuery gotowy",o:"Dzial DATA"},
-    {id:"m6d",t:"Pelne wdrozenie na 100% ruchu",o:"IT/Dev + Ops"}
+    {id:"m6d",t:"Pelne wdrozenie",o:"IT/Dev + Ops"}
   ]}
 ];
 var ML=[
-  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2 · Wymagania, architektura, dostepy",c:"b-blue",id:"m1"},
-  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4 · HubSpot, n8n, system rezerwacji",c:"b-purple",id:"m2"},
-  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6 · ElevenLabs + Gemini + Peoplefone",c:"b-teal",id:"m3"},
-  {n:"M4",t:"Pelny zakres funkcji",s:"Tydz. 7-8 · Przelozenie + anulowanie + eskalacja",c:"b-amber",id:"m4"},
-  {n:"M5",t:"Testy UAT",s:"Tydz. 9-10 · QA, korekty, testy obciazeniowe",c:"b-gray",id:"m5"},
-  {n:"M6",t:"Pilot soft launch",s:"Tydz. 11 · 10-20% ruchu, monitoring",c:"b-gray",id:"m6"},
-  {n:"M7",t:"Pelne wdrozenie",s:"Tydz. 12 · 100% ruchu, dashboard analityczny",c:"b-gray",id:"m7"}
+  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2",c:"b-blue",id:"m1"},
+  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4",c:"b-purple",id:"m2"},
+  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6",c:"b-teal",id:"m3"},
+  {n:"M4",t:"Pelny zakres",s:"Tydz. 7-8",c:"b-amber",id:"m4"},
+  {n:"M5",t:"Testy UAT",s:"Tydz. 9-10",c:"b-gray",id:"m5"},
+  {n:"M6",t:"Pilot",s:"Tydz. 11",c:"b-gray",id:"m6"},
+  {n:"M7",t:"Pelne wdrozenie",s:"Tydz. 12",c:"b-gray",id:"m7"}
 ];
 var ST=["Do zrobienia","W toku","Zrobione","Zablokowane"];
 var SB=["#F0EFE8","#EAF2FC","#E8F5EA","#FDEAEA"];
 var STC=["#555","#0F4A8A","#1A5C25","#8A0F0F"];
 var RK=[
-  {l:"r",t:"System rezerwacji (R1 - Krytyczny)",d:"Nie potwierdzono narzedzia zarzadzajacego slotami lekcji.",o:"Dzial Operacyjny"},
-  {l:"r",t:"Timing triggera (R3 - Krytyczny)",d:"Nie ustalono kiedy bot ma dzwonic.",o:"Dzial Operacyjny + CRM"},
-  {l:"r",t:"RODO (R4 - Krytyczny)",d:"Nagrywanie rozmow wymaga zgod klientow na kontakt automatyczny.",o:"Dzial Operacyjny + Prawny"},
-  {l:"y",t:"Jakosc STT (R2 - Sredni)",d:"Warto walidowac ElevenLabs vs Whisper w testach A/B.",o:"IT/Dev"},
-  {l:"y",t:"Transfer polaczenia (R5 - Sredni)",d:"Czy Peoplefone obsluguje transfer do konsultanta?",o:"IT/Dev"},
-  {l:"y",t:"Nieodebrane polaczenia (R6 - Sredni)",d:"Brak strategii: ponowna proba, SMS fallback.",o:"Dzial Operacyjny"},
-  {l:"y",t:"Koszt ElevenLabs (R7 - Sredni)",d:"Przy 500+ rozmowach/mies. koszt per minuta moze byc znaczacy.",o:"DATA + Finanse"}
+  {l:"r",t:"System rezerwacji (R1)",d:"Nie potwierdzono systemu rezerwacji slotow.",o:"Dzial Operacyjny"},
+  {l:"r",t:"Timing triggera (R3)",d:"Nie ustalono kiedy bot ma dzwonic.",o:"Ops + CRM"},
+  {l:"r",t:"RODO (R4)",d:"Nagrywanie rozmow wymaga zgod.",o:"Ops + Prawny"},
+  {l:"y",t:"Jakosc STT (R2)",d:"Walidacja ElevenLabs vs Whisper.",o:"IT/Dev"},
+  {l:"y",t:"Transfer polaczenia (R5)",d:"Czy Peoplefone obsluguje transfer?",o:"IT/Dev"},
+  {l:"y",t:"Nieodebrane polaczenia (R6)",d:"Brak strategii fallback.",o:"Dzial Operacyjny"},
+  {l:"y",t:"Koszt ElevenLabs (R7)",d:"Oszacowac TCO przy 500+ rozmowach.",o:"DATA + Finanse"}
 ];
 var SK=[
-  {n:"Peoplefone",r:"Polaczenia glosowe outbound + inbound, transfer do konsultanta",l:"Telefonia",c:"b-blue"},
-  {n:"ElevenLabs",r:"Synteza mowy PL (TTS) + rozpoznawanie mowy (STT)",l:"Glos / AI",c:"b-teal"},
-  {n:"Gemini",r:"Model jezykowy — logika rozmowy, intencje, available_slots",l:"LLM",c:"b-purple"},
-  {n:"n8n",r:"Orkiestracja wszystkich integracji i automatyzacji",l:"Automatyzacja",c:"b-amber"},
-  {n:"HubSpot",r:"CRM — dane klienta, triggery, zapis wynikow rozmow",l:"CRM",c:"b-green"},
-  {n:"BigQuery",r:"Analityka rozmow, raporty KPI, optymalizacja",l:"Data",c:"b-blue"},
-  {n:"GitHub",r:"Wersjonowanie promptow, konfiguracji, skryptow",l:"Dev",c:"b-gray"},
-  {n:"Vercel",r:"Hosting webhookow i endpointow",l:"Infra",c:"b-gray"},
-  {n:"Transkrypcje",r:"Zapis przebiegu rozmow do QA i treningu",l:"QA",c:"b-gray"},
-  {n:"GDrive",r:"Dokumentacja projektu i materialy szkoleniowe",l:"Docs",c:"b-gray"}
+  {n:"Peoplefone",r:"Polaczenia glosowe outbound + inbound",l:"Telefonia",c:"b-blue"},
+  {n:"ElevenLabs",r:"STT + TTS po polsku",l:"Glos / AI",c:"b-teal"},
+  {n:"Gemini",r:"Logika rozmowy i intencje",l:"LLM",c:"b-purple"},
+  {n:"n8n",r:"Orkiestracja integracji",l:"Automatyzacja",c:"b-amber"},
+  {n:"HubSpot",r:"CRM — dane, triggery, wyniki",l:"CRM",c:"b-green"},
+  {n:"BigQuery",r:"Analityka i raporty KPI",l:"Data",c:"b-blue"},
+  {n:"GitHub",r:"Wersjonowanie kodu i promptow",l:"Dev",c:"b-gray"},
+  {n:"Vercel",r:"Hosting webhookow",l:"Infra",c:"b-gray"},
+  {n:"Transkrypcje",r:"Zapis rozmow do QA",l:"QA",c:"b-gray"},
+  {n:"GDrive",r:"Dokumentacja projektu",l:"Docs",c:"b-gray"}
 ];
 var RC=[
-  {a:"Definicja scenariuszy rozmow",op:"R/A",cr:"C",da:"I",dv:"I"},
+  {a:"Definicja scenariuszy",op:"R/A",cr:"C",da:"I",dv:"I"},
   {a:"Konfiguracja HubSpot",op:"I",cr:"R/A",da:"I",dv:"C"},
-  {a:"Integracja systemu rezerwacji z n8n",op:"C",cr:"C",da:"I",dv:"R/A"},
-  {a:"Schemat BigQuery i dashboardy",op:"I",cr:"C",da:"R/A",dv:"C"},
+  {a:"Integracja systemu rezerwacji",op:"C",cr:"C",da:"I",dv:"R/A"},
+  {a:"Schemat BigQuery",op:"I",cr:"C",da:"R/A",dv:"C"},
   {a:"Konfiguracja ElevenLabs + Peoplefone",op:"C",cr:"I",da:"I",dv:"R/A"},
-  {a:"Testy jakosci rozmow (QA)",op:"R/A",cr:"C",da:"I",dv:"I"},
-  {a:"Raportowanie i analityka",op:"I",cr:"C",da:"R/A",dv:"I"}
+  {a:"Testy QA",op:"R/A",cr:"C",da:"I",dv:"I"},
+  {a:"Raportowanie",op:"I",cr:"C",da:"R/A",dv:"I"}
 ];
 var RCC={"R":"b-red","R/A":"b-red","A":"b-amber","C":"b-blue","I":"b-gray"};
 var DC={"r":"#C42020","y":"#B85C00"};
@@ -657,31 +820,38 @@ function ld(){try{return JSON.parse(localStorage.getItem("tvb")||"{}")}catch(e){
 function sv(s){localStorage.setItem("tvb",JSON.stringify(s));var el=document.getElementById("last-saved");if(el)el.textContent="Zapisano: "+new Date().toLocaleTimeString("pl-PL")}
 var S=ld();
 
-// PASZPORT — load saved values
-var PP_FIELDS=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod"];
-PP_FIELDS.forEach(function(id){
+// LOAD ALL TEXT FIELDS
+var ALL_FIELDS=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod",
+"bo_inne","bo_problem","bo_cel","bo_user","bo_metryka1","bo_metryka2","bo_baseline","bo_cel_q2","bo_dane","bo_owner","bo_testers","bo_rodo_opis","bo_blokery","bo_w1","bo_w2","bo_w3","bo_w4","bo_prod",
+"rek_problem","rek_rezultat","rek_inne","rek_metryka1","rek_metryka2","rek_baseline","rek_cel_q2","rek_ats","rek_tech","rek_owner","rek_testers","rek_wspolpraca","rek_rodo_opis","rek_blokery","rek_w1","rek_w2","rek_w3","rek_w4","rek_prod"];
+ALL_FIELDS.forEach(function(id){
   var el=document.getElementById(id);
-  if(el&&S[id]!==undefined)el.value=S[id];
-  if(el)el.addEventListener("input",function(){S[id]=el.value;localStorage.setItem("tvb",JSON.stringify(S))});
+  if(!el)return;
+  if(S[id]!==undefined)el.value=S[id];
+  el.addEventListener("input",function(){S[id]=el.value;localStorage.setItem("tvb",JSON.stringify(S))});
 });
-// radio buttons
-["pp_platf","pp_integr","pp_rodo"].forEach(function(name){
-  var saved=S[name];
-  if(saved){var el=document.querySelector('input[name="'+name+'"][value="'+saved+'"]');if(el)el.checked=true}
+
+// RADIOS
+["pp_platf","pp_integr","pp_rodo","bo_rodo","rek_rodo"].forEach(function(name){
+  if(S[name]){var r=document.querySelector('input[name="'+name+'"][value="'+S[name]+'"]');if(r)r.checked=true}
   document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){
     r.addEventListener("change",function(){S[name]=r.value;localStorage.setItem("tvb",JSON.stringify(S))});
   });
 });
 
-function savePP(){
-  PP_FIELDS.forEach(function(id){var el=document.getElementById(id);if(el)S[id]=el.value});
-  ["pp_platf","pp_integr","pp_rodo"].forEach(function(name){
-    var r=document.querySelector('input[name="'+name+'"]:checked');if(r)S[name]=r.value;
-  });
+// CHECKBOXES
+document.querySelectorAll('.cb-opt input[type=checkbox]').forEach(function(cb){
+  var k=cb.dataset.key;
+  if(k&&S[k])cb.checked=true;
+  cb.addEventListener("change",function(){S[k]=cb.checked;localStorage.setItem("tvb",JSON.stringify(S))});
+});
+
+function savePP(prefix,color){
+  ALL_FIELDS.filter(function(id){return id.startsWith(prefix)}).forEach(function(id){var el=document.getElementById(id);if(el)S[id]=el.value});
   localStorage.setItem("tvb",JSON.stringify(S));
-  var msg=document.getElementById("pp-saved-msg");
-  msg.style.display="inline";
-  setTimeout(function(){msg.style.display="none"},3000);
+  var msgId=prefix==="pp"?"pp-saved-msg":prefix==="bo"?"bo-saved-msg":"rek-saved-msg";
+  var msg=document.getElementById(msgId);
+  if(msg){msg.style.display="inline";setTimeout(function(){msg.style.display="none"},3000)}
 }
 
 // CHECKLIST
@@ -700,7 +870,7 @@ CL.forEach(function(g){
     var owner=document.createElement("span");owner.className="cl-owner";owner.textContent=item.o;
     row.appendChild(cb);row.appendChild(txt);row.appendChild(noteBtn);row.appendChild(owner);
     var noteWrap=document.createElement("div");noteWrap.className="cl-note-wrap"+(S["n"+item.id]?" open":"");
-    var ta=document.createElement("textarea");ta.rows=2;ta.placeholder="Wpisz komentarz lub notatke...";ta.value=S["n"+item.id]||"";
+    var ta=document.createElement("textarea");ta.rows=2;ta.placeholder="Wpisz komentarz...";ta.value=S["n"+item.id]||"";
     noteWrap.appendChild(ta);
     cb.addEventListener("change",function(){row.classList.toggle("done",cb.checked);S["c"+item.id]=cb.checked;sv(S);up()});
     txt.addEventListener("click",function(){cb.checked=!cb.checked;row.classList.toggle("done",cb.checked);S["c"+item.id]=cb.checked;sv(S);up()});
@@ -754,6 +924,8 @@ RC.forEach(function(r){
   rb.appendChild(tr);
 });
 
+// TABS — first tab of each color group gets its color on click
+var TAB_COLORS={"paszport":"t-yellow","opis":"t-yellow","checklist":"t-yellow","milestones":"t-yellow","kpi":"t-yellow","risks":"t-yellow","stack":"t-yellow","raci":"t-yellow","backoffice":"t-purple","rekrutacja":"t-green"};
 document.querySelectorAll(".tab").forEach(function(t){
   t.addEventListener("click",function(){
     document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active")});
@@ -762,6 +934,10 @@ document.querySelectorAll(".tab").forEach(function(t){
     document.getElementById(t.dataset.tab).classList.add("active");
   });
 });
+
+// activate first tab
+document.querySelector('.tab[data-tab="paszport"]').classList.add("active");
+document.getElementById("paszport").classList.add("active");
 </script>
 </body>
 </html>
