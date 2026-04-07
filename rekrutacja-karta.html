@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tutlo Voicebot — Karta Obszaru Rekrutacja</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1E7A3A;--green-light:#E6F7EC;--green-dark:#0D5C2A;
+  --yellow:#F5C800;--black:#1A1A1A;--white:#fff;
+  --bg:#F6FCF8;--bg2:#fff;--bg3:#E6F7EC;
+  --text:#1A1A1A;--text2:#555;--text3:#999;
+  --border:#C8E8D0;--border2:#A8D8B8;
+  --r:12px;--rs:8px;
+  --shadow:0 1px 3px rgba(30,122,58,.08);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+.topbar{background:var(--black);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:32px;height:32px;background:var(--yellow);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-text{color:#fff;font-size:15px;font-weight:700}
+.logo-text span{color:var(--yellow)}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.25rem}
+.hero{background:linear-gradient(135deg,#0A3018,#1A4D2A);border-radius:var(--r);padding:2rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:#7FD9A0;opacity:.08;border-radius:50%}
+.hero h1{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
+.hero p{font-size:13px;color:#7FD9A0;margin-bottom:12px;line-height:1.6}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap}
+.hbadge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(127,217,160,.15);color:#7FD9A0;border:1px solid rgba(127,217,160,.3)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.fl{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em}
+.hint{font-size:11px;color:var(--text3);font-style:italic;margin-top:1px}
+input[type=text],textarea,select{font-family:inherit;font-size:13px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:9px 12px;outline:none;transition:border .15s;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--green);background:#fff}
+textarea{resize:vertical;min-height:72px;line-height:1.6}
+.yn{display:flex;gap:8px;flex-wrap:wrap}
+.yn label{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:7px 14px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s;background:var(--bg3)}
+.yn label:has(input:checked){background:var(--green-light);border-color:var(--green);font-weight:600;color:var(--green)}
+.checkboxes{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.cb-opt{display:flex;align-items:flex-start;gap:8px;font-size:13px;cursor:pointer;padding:8px 10px;border-radius:var(--rs);border:1px solid transparent;transition:all .15s;background:var(--bg3)}
+.cb-opt:hover{border-color:var(--border2)}
+.cb-opt:has(input:checked){background:var(--green-light);border-color:var(--green)}
+.cb-opt input{width:15px;height:15px;flex-shrink:0;margin-top:2px;accent-color:var(--green);cursor:pointer}
+.cb-opt span{line-height:1.5}
+.scenario-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:8px;transition:all .15s}
+.scenario-box:has(input:checked){background:var(--green-light);border-color:var(--green)}
+.scenario-header{display:flex;align-items:flex-start;gap:10px;cursor:pointer}
+.scenario-header input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--green);cursor:pointer}
+.scenario-title{font-size:13px;font-weight:700;color:var(--text)}
+.scenario-desc{font-size:12px;color:var(--text3);margin-top:2px;line-height:1.5}
+.scenario-detail{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.scenario-box:has(input:checked) .scenario-detail{display:block}
+.week-grid{display:grid;grid-template-columns:130px 1fr;gap:8px 16px;align-items:start}
+.week-lbl{font-size:12px;font-weight:700;color:var(--text2);padding-top:10px}
+.week-lbl small{display:block;font-weight:400;color:var(--text3)}
+.progress-bar{background:var(--bg3);border-radius:4px;height:6px;margin-bottom:1.5rem;overflow:hidden}
+.progress-fill{height:6px;background:var(--green);border-radius:4px;transition:width .3s}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px}
+.export-section{background:linear-gradient(135deg,#0A3018,#1A4D2A);border-radius:var(--r);padding:1.5rem 2rem;margin-top:1.5rem;text-align:center}
+.export-section h3{color:#fff;font-size:15px;font-weight:700;margin-bottom:6px}
+.export-section p{color:#7FD9A0;font-size:12px;margin-bottom:16px;line-height:1.6}
+.btn-export{background:var(--yellow);color:var(--black);font-size:13px;font-weight:700;padding:11px 28px;border-radius:var(--rs);border:none;cursor:pointer;transition:opacity .15s}
+.btn-export:hover{opacity:.9}
+.btn-copy{background:rgba(255,255,255,.1);color:#7FD9A0;font-size:12px;font-weight:600;padding:8px 18px;border-radius:var(--rs);border:1px solid rgba(127,217,160,.3);cursor:pointer;margin-left:10px;transition:all .15s}
+.btn-copy:hover{background:rgba(255,255,255,.2)}
+.required{color:#C42020;margin-left:2px}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}.week-grid{grid-template-columns:1fr}.wrap{padding:1rem}.topbar{padding:0 1rem}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
+        <circle cx="12" cy="14" r="7" fill="#1A1A1A"/>
+        <circle cx="24" cy="14" r="7" fill="#1A1A1A"/>
+        <path d="M5 20 Q18 30 31 20" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="10" cy="13" r="2" fill="#F5C800"/>
+        <circle cx="22" cy="13" r="2" fill="#F5C800"/>
+      </svg>
+    </div>
+    <span class="logo-text"><span>Tutlo</span> Voicebot</span>
+  </div>
+  <span style="font-size:11px;color:#888">AI Champion Q2 2026</span>
+</div>
+
+<div class="wrap">
+
+<div class="hero">
+  <h1>&#128101; Karta Obszaru &mdash; Rekrutacja</h1>
+  <p>Wype&#322;nij ten formularz i ode&#347;lij go mailem do w&#322;a&#347;ciciela projektu.<br>
+  Voicebot mo&#380;e obs&#322;u&#380;y&#263; ca&#322;&#261; komunikacj&#281; z kandydatami przed rozmow&#261; kwalifikacyjn&#261;.</p>
+  <div class="hero-badges">
+    <span class="hbadge">Program AI Champion</span>
+    <span class="hbadge">Q2 2026</span>
+    <span class="hbadge">Deadline: 10 kwietnia 2026</span>
+  </div>
+</div>
+
+<div class="progress-label"><span>Post&#281;p wype&#322;niania</span><span id="prog-txt">0%</span></div>
+<div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+
+<!-- 1 -->
+<div class="card">
+  <div class="card-title">1. Informacje o zespole</div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Imi&#281; i nazwisko <span class="required">*</span></label>
+      <input type="text" id="rek_imie" placeholder="Twoje imi&#281; i nazwisko">
+    </div>
+    <div class="field">
+      <label class="fl">Rola w zespole</label>
+      <input type="text" id="rek_rola" placeholder="np. Rekruter, HR Manager">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">AI Champion / Owner w Rekrutacji</label>
+      <input type="text" id="rek_owner" placeholder="Imi&#281; i nazwisko">
+    </div>
+    <div class="field">
+      <label class="fl">Rekruterzy do testowania (2–3)</label>
+      <input type="text" id="rek_testers" placeholder="np. Anna Kowalska, Piotr Nowak">
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <div class="card-title">2. Problem i cel</div>
+  <div class="field">
+    <label class="fl">G&#322;&#243;wny problem w procesie rekrutacyjnym <span class="required">*</span></label>
+    <span class="hint">Np. kandydaci nie pojawiaj&#261; si&#281; na rozmowach, du&#380;o czasu na potwierdzanie telefon&oacute;w, trudno&#347;&#263; z prze&#322;o&#380;eniami</span>
+    <textarea id="rek_problem" placeholder="Opisz problem..."></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Oczekiwany rezultat</label>
+    <textarea id="rek_rezultat" placeholder="np. Bot automatycznie potwierdza terminy rozm&oacute;w, sk&#322;ada propozycj&#281; prze&#322;o&#380;enia gdy kandydat nie mo&#380;e przyj&#347;&#263;"></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Ile rozm&oacute;w rekrutacyjnych odbywa si&#281; miesi&#281;cznie?</label>
+    <select id="rek_skala">
+      <option value="">-- Wybierz przybli&#380;on&#261; skal&#281; --</option>
+      <option>Do 20 rozm&oacute;w</option>
+      <option>20–50 rozm&oacute;w</option>
+      <option>50–100 rozm&oacute;w</option>
+      <option>Powy&#380;ej 100 rozm&oacute;w</option>
+    </select>
+  </div>
+</div>
+
+<!-- 3 — SCENARIUSZE -->
+<div class="card">
+  <div class="card-title">3. Scenariusze do obs&#322;ugi (zaznacz i opisz szczeg&oacute;&#322;y)</div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:12px">Zaznacz kt&oacute;re scenariusze chcesz obs&#322;u&#380;y&#263;. Po zaznaczeniu pojawi si&#281; pole na dodatkowe info.</p>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t1">
+      <div><div class="scenario-title">Potwierdzenie rozmowy kwalifikacyjnej</div><div class="scenario-desc">Bot dzwoni do kandydata i pyta czy pojawi si&#281; na rozmowie o um&oacute;wionej porze</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Ile godzin przed rozmow&#261; bot ma dzwoni&#263;?</label>
+      <input type="text" id="rek_t1_detail" placeholder="np. 24h przed i 2h przed">
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t2">
+      <div><div class="scenario-title">Prze&#322;o&#380;enie rozmowy na inny termin</div><div class="scenario-desc">Kandydat nie mo&#380;e, bot proponuje alternatywne terminy z kalendarza rekrutera</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Sk&#261;d bot ma pobiera&#263; dost&#281;pne terminy?</label>
+      <input type="text" id="rek_t2_detail" placeholder="np. Google Calendar rekrutera, ATS, w&#322;asny system">
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t3">
+      <div><div class="scenario-title">Anulowanie i zapis rezygnacji</div><div class="scenario-desc">Kandydat rezygnuje, bot zwalnia slot i powiadamia rekrutera</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Jak ma by&#263; powiadamiany rekruter? (e-mail, Slack, inne?)</label>
+      <input type="text" id="rek_t3_detail" placeholder="np. e-mail na skrzynk&#281; rekrutera, wiadomo&#347;&#263; Slack">
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t4">
+      <div><div class="scenario-title">Przypomnienie przed rozmow&#261;</div><div class="scenario-desc">SMS lub call 24h i/lub 2h przed terminem rozmowy</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Preferowany kana&#322; przypomnienia?</label>
+      <div class="checkboxes" style="flex-direction:row;flex-wrap:wrap;gap:8px;margin-top:4px">
+        <label class="cb-opt" style="flex:none"><input type="checkbox" id="rek_t4_call"><span>Telefon (g&#322;os)</span></label>
+        <label class="cb-opt" style="flex:none"><input type="checkbox" id="rek_t4_sms"><span>SMS</span></label>
+        <label class="cb-opt" style="flex:none"><input type="checkbox" id="rek_t4_email"><span>E-mail</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t5">
+      <div><div class="scenario-title">Zebranie podstawowych informacji od kandydata</div><div class="scenario-desc">Bot pyta o potwierdzenie j&#281;zyka, dost&#281;pno&#347;ci, do&#347;wiadczenia przed rozmow&#261;</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Jakie informacje bot ma zebra&#263;?</label>
+      <textarea id="rek_t5_detail" rows="2" placeholder="np. Potwierdzenie znajomo&#347;ci j&#281;zyka angielskiego, dost&#281;pno&#347;ci w okre&#347;lonych godzinach"></textarea>
+    </div>
+  </div>
+
+  <div class="scenario-box">
+    <div class="scenario-header">
+      <input type="checkbox" id="rek_t6">
+      <div><div class="scenario-title">Eskalacja do rekrutera</div><div class="scenario-desc">Gdy kandydat ma pytania wykraczaj&#261;ce poza mo&#380;liwo&#347;ci bota</div></div>
+    </div>
+    <div class="scenario-detail">
+      <label class="fl" style="color:var(--green)">Po ilu nieudanych pr&oacute;bach bota powinna nast&#261;pi&#263; eskalacja?</label>
+      <input type="text" id="rek_t6_detail" placeholder="np. Po 2 odmowach terminu lub gdy kandydat pyta o warunki pracy">
+    </div>
+  </div>
+
+  <div class="field" style="margin-top:10px">
+    <label class="fl">Inne scenariusze (opcjonalnie)</label>
+    <textarea id="rek_inne" placeholder="Opisz dodatkowe scenariusze..."></textarea>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <div class="card-title">4. Kryteria sukcesu</div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Metryka g&#322;&#243;wna <span class="required">*</span></label>
+      <span class="hint">Jak zmierzysz &#380;e Voicebot pom&oacute;g&#322;?</span>
+      <input type="text" id="rek_metryka1" placeholder="np. Wzrost show-up rate kandydat&oacute;w o X pp">
+    </div>
+    <div class="field">
+      <label class="fl">Metryka dodatkowa</label>
+      <input type="text" id="rek_metryka2" placeholder="np. % rozm&oacute;w potwierdzonych automatycznie">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Baseline (stan obecny)</label>
+      <span class="hint">Ile % kandydat&oacute;w pojawia si&#281; teraz? Ile czasu zajmuje potwierdzanie?</span>
+      <textarea id="rek_baseline" rows="3" placeholder="Opisz jak wygl&#261;da proces teraz..."></textarea>
+    </div>
+    <div class="field">
+      <label class="fl">Cel na koniec Q2</label>
+      <textarea id="rek_cel_q2" rows="3" placeholder="Docelowe warto&#347;ci..."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <div class="card-title">5. Systemy i integracje</div>
+  <div class="field">
+    <label class="fl">Systemy u&#380;ywane w Rekrutacji (zaznacz wszystkie)</label>
+    <div class="checkboxes" style="margin-top:6px">
+      <label class="cb-opt"><input type="checkbox" id="rek_s1"><span>ATS (system rekrutacyjny) &mdash; podaj nazw&#281; poni&#380;ej</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_s2"><span>HubSpot CRM</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_s3"><span>Google Calendar / Outlook</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_s4"><span>Slack / Teams</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_s5"><span>Inne narz&#281;dzie rekrutacyjne</span></label>
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Nazwa ATS / systemu rekrutacyjnego</label>
+      <input type="text" id="rek_ats" placeholder="np. Greenhouse, Workable, Lever, w&#322;asny system, brak ATS">
+    </div>
+    <div class="field">
+      <label class="fl">Wsp&oacute;&#322;praca z innymi dzia&#322;ami</label>
+      <input type="text" id="rek_wspolpraca" placeholder="np. IT/Dev, Backoffice, HR">
+    </div>
+  </div>
+  <div class="field">
+    <label class="fl">Podej&#347;cie techniczne (preferencje)</label>
+    <span class="hint">Jakie narz&#281;dzia mog&#261; by&#263; u&#380;yte? IT pomo&#380;e &mdash; Rekrutacja mo&#380;e wskaza&#263; preferencje</span>
+    <textarea id="rek_tech" placeholder="np. G&#322;os naturalny po polsku, integracja z Google Calendar rekrutera, powiadomienia Slack"></textarea>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <div class="card-title">6. Kandydaci i RODO</div>
+  <div class="field">
+    <label class="fl">Kto jest u&#380;ytkownikiem ko&#324;cowym?</label>
+    <div class="checkboxes">
+      <label class="cb-opt"><input type="checkbox" id="rek_u1"><span>Kandydaci zewn&#281;trzni (potencjalni pracownicy)</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_u2"><span>Rekruterzy (monitoring, eskalacje)</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_u3"><span>Hiring managerowie</span></label>
+      <label class="cb-opt"><input type="checkbox" id="rek_u4"><span>Lektorzy / interviewerzy Tutlo</span></label>
+    </div>
+  </div>
+  <div class="field">
+    <label class="fl">Czy kandydaci wyrazili zgod&#281; na kontakt automatyczny (RODO)?</label>
+    <div class="yn">
+      <label><input type="radio" name="rek_rodo" value="TAK — mamy zgody"> TAK &mdash; mamy zgody</label>
+      <label><input type="radio" name="rek_rodo" value="NIE — trzeba uzyska&#263;"> NIE &mdash; trzeba uzyska&#263;</label>
+      <label><input type="radio" name="rek_rodo" value="Nie wiem"> Nie wiem</label>
+    </div>
+  </div>
+  <div class="field">
+    <label class="fl">Dodatkowe informacje o danych kandydat&oacute;w</label>
+    <input type="text" id="rek_rodo_opis" placeholder="np. Nagrania rozmow botowych — zgoda w procesie rekrutacji, retencja 30 dni">
+  </div>
+  <div class="field">
+    <label class="fl">Blokery i zale&#380;no&#347;ci</label>
+    <span class="hint">Np. brak API w ATS, brak zgody kandydat&oacute;w, ograniczenia procesu</span>
+    <textarea id="rek_blokery" placeholder="Opisz potencjalne blokery..."></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Dodatkowe pytania / uwagi</label>
+    <textarea id="rek_uwagi" placeholder="Wszystko co chcesz przekaza&#263; w&#322;a&#347;cicielowi projektu..."></textarea>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <div class="card-title">7. Harmonogram Rekrutacja</div>
+  <div class="week-grid">
+    <div class="week-lbl">Tydzie&#324; 1<small>7–10.04</small></div>
+    <div class="field"><textarea id="rek_w1" rows="2" placeholder="np. Mapowanie procesu, identyfikacja scenariuszy"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 2<small>13–17.04</small></div>
+    <div class="field"><textarea id="rek_w2" rows="2" placeholder="np. Pierwsze testy bota z kandydatami testowymi"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 3<small>20–24.04</small></div>
+    <div class="field"><textarea id="rek_w3" rows="2" placeholder="np. Iteracja z rekruterami, korekty scenariuszy"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 4<small>27–30.04</small></div>
+    <div class="field"><textarea id="rek_w4" rows="2" placeholder="np. Sign-off Rekrutacji, got. do pilotu"></textarea></div>
+    <div class="week-lbl">Produkcja<small>11–29.05</small></div>
+    <div class="field"><textarea id="rek_prod" rows="2" placeholder="np. Wdro&#380;enie w procesie rekrutacyjnym"></textarea></div>
+  </div>
+</div>
+
+<!-- EXPORT -->
+<div class="export-section">
+  <h3>&#10003; Gotowe? Wy&#347;lij wype&#322;niony formularz</h3>
+  <p>Kliknij przycisk poni&#380;ej — pobierzesz plik <strong style="color:#fff">.txt</strong> z Twoimi odpowiedziami.<br>
+  Ode&#347;lij ten plik mailem do w&#322;a&#347;ciciela projektu Voicebot.</p>
+  <button class="btn-export" onclick="exportData()">&#8659; Pobierz wype&#322;niony formularz</button>
+  <button class="btn-copy" onclick="copyData()">&#128203; Kopiuj do schowka</button>
+  <div id="export-msg" style="font-size:12px;color:#7FD9A0;margin-top:10px;min-height:16px"></div>
+</div>
+
+<div style="text-align:center;padding:1.5rem 0;font-size:11px;color:var(--text3)">
+  Tutlo Voicebot &mdash; Karta Obszaru Rekrutacja &middot; AI Champion Q2 2026
+</div>
+
+</div>
+
+<script>
+var fields=["rek_imie","rek_rola","rek_owner","rek_testers","rek_problem","rek_rezultat","rek_skala","rek_inne","rek_t1_detail","rek_t2_detail","rek_t3_detail","rek_t5_detail","rek_t6_detail","rek_metryka1","rek_metryka2","rek_baseline","rek_cel_q2","rek_ats","rek_wspolpraca","rek_tech","rek_rodo_opis","rek_blokery","rek_uwagi","rek_w1","rek_w2","rek_w3","rek_w4","rek_prod"];
+var checks=["rek_t1","rek_t2","rek_t3","rek_t4","rek_t5","rek_t6","rek_t4_call","rek_t4_sms","rek_t4_email","rek_s1","rek_s2","rek_s3","rek_s4","rek_s5","rek_u1","rek_u2","rek_u3","rek_u4"];
+
+fields.forEach(function(id){
+  var el=document.getElementById(id);if(!el)return;
+  var s=localStorage.getItem("rek_"+id);if(s)el.value=s;
+  el.addEventListener("input",function(){localStorage.setItem("rek_"+id,el.value);updateProgress()});
+});
+checks.forEach(function(id){
+  var el=document.getElementById(id);if(!el)return;
+  if(localStorage.getItem("rek_chk_"+id)==="1")el.checked=true;
+  el.addEventListener("change",function(){localStorage.setItem("rek_chk_"+id,el.checked?"1":"0");updateProgress()});
+});
+document.querySelectorAll('input[name="rek_rodo"]').forEach(function(r){
+  if(localStorage.getItem("rek_rodo")===r.value)r.checked=true;
+  r.addEventListener("change",function(){localStorage.setItem("rek_rodo",r.value);updateProgress()});
+});
+
+function updateProgress(){
+  var filled=0,total=8;
+  if(document.getElementById("rek_imie").value.trim())filled++;
+  if(document.getElementById("rek_problem").value.trim())filled++;
+  if(document.getElementById("rek_rezultat").value.trim())filled++;
+  if(document.getElementById("rek_metryka1").value.trim())filled++;
+  if(document.getElementById("rek_baseline").value.trim())filled++;
+  if(document.getElementById("rek_owner").value.trim())filled++;
+  if(document.querySelector('input[name="rek_rodo"]:checked'))filled++;
+  var anyScenario=["rek_t1","rek_t2","rek_t3","rek_t4","rek_t5","rek_t6"].some(function(id){var el=document.getElementById(id);return el&&el.checked});
+  if(anyScenario)filled++;
+  var pct=Math.round(filled/total*100);
+  document.getElementById("prog-fill").style.width=pct+"%";
+  document.getElementById("prog-txt").textContent=pct+"%";
+}
+updateProgress();
+
+function getVal(id){var el=document.getElementById(id);return el?el.value||"—":"—"}
+function isChecked(id){var el=document.getElementById(id);return el&&el.checked}
+
+function getData(){
+  var lines=[];
+  lines.push("==============================================");
+  lines.push("TUTLO VOICEBOT — KARTA OBSZARU: REKRUTACJA");
+  lines.push("AI Champion Q2 2026");
+  lines.push("Data wypelnienia: "+new Date().toLocaleDateString("pl-PL"));
+  lines.push("==============================================\n");
+  lines.push("--- 1. INFORMACJE O ZESPOLE ---");
+  lines.push("Imie i nazwisko: "+getVal("rek_imie"));
+  lines.push("Rola: "+getVal("rek_rola"));
+  lines.push("Owner: "+getVal("rek_owner"));
+  lines.push("Testerzy: "+getVal("rek_testers")+"\n");
+  lines.push("--- 2. PROBLEM I CEL ---");
+  lines.push("Problem: "+getVal("rek_problem"));
+  lines.push("Rezultat: "+getVal("rek_rezultat"));
+  lines.push("Skala (rozm/mies): "+getVal("rek_skala")+"\n");
+  lines.push("--- 3. SCENARIUSZE ---");
+  if(isChecked("rek_t1"))lines.push("[X] Potwierdzenie rozmowy | Timing: "+getVal("rek_t1_detail"));
+  if(isChecked("rek_t2"))lines.push("[X] Przelozenie rozmowy | Zrodlo terminow: "+getVal("rek_t2_detail"));
+  if(isChecked("rek_t3"))lines.push("[X] Anulowanie | Powiadomienie: "+getVal("rek_t3_detail"));
+  if(isChecked("rek_t4")){
+    var channels=[];
+    if(isChecked("rek_t4_call"))channels.push("Telefon");
+    if(isChecked("rek_t4_sms"))channels.push("SMS");
+    if(isChecked("rek_t4_email"))channels.push("Email");
+    lines.push("[X] Przypomnienie | Kanaly: "+(channels.join(", ")||"—"));
+  }
+  if(isChecked("rek_t5"))lines.push("[X] Zbieranie info od kandydata | Info: "+getVal("rek_t5_detail"));
+  if(isChecked("rek_t6"))lines.push("[X] Eskalacja | Warunki: "+getVal("rek_t6_detail"));
+  lines.push("Inne: "+getVal("rek_inne")+"\n");
+  lines.push("--- 4. KRYTERIA SUKCESU ---");
+  lines.push("Metryka glowna: "+getVal("rek_metryka1"));
+  lines.push("Metryka dodatkowa: "+getVal("rek_metryka2"));
+  lines.push("Baseline: "+getVal("rek_baseline"));
+  lines.push("Cel Q2: "+getVal("rek_cel_q2")+"\n");
+  lines.push("--- 5. SYSTEMY ---");
+  var systems=[];
+  if(isChecked("rek_s1"))systems.push("ATS: "+getVal("rek_ats"));
+  if(isChecked("rek_s2"))systems.push("HubSpot CRM");
+  if(isChecked("rek_s3"))systems.push("Google Calendar/Outlook");
+  if(isChecked("rek_s4"))systems.push("Slack/Teams");
+  if(isChecked("rek_s5"))systems.push("Inne");
+  lines.push("Systemy: "+(systems.join(", ")||"—"));
+  lines.push("Wspolpraca: "+getVal("rek_wspolpraca"));
+  lines.push("Tech: "+getVal("rek_tech")+"\n");
+  lines.push("--- 6. KANDYDACI I RODO ---");
+  var users=[];
+  if(isChecked("rek_u1"))users.push("Kandydaci zewnetrzni");
+  if(isChecked("rek_u2"))users.push("Rekruterzy");
+  if(isChecked("rek_u3"))users.push("Hiring managerowie");
+  if(isChecked("rek_u4"))users.push("Lektorzy/interviewerzy");
+  lines.push("Uzytkownicy: "+(users.join(", ")||"—"));
+  var rodo=document.querySelector('input[name="rek_rodo"]:checked');
+  lines.push("Zgoda RODO: "+(rodo?rodo.value:"—"));
+  lines.push("Dane kandydatow: "+getVal("rek_rodo_opis"));
+  lines.push("Blokery: "+getVal("rek_blokery"));
+  lines.push("Uwagi: "+getVal("rek_uwagi")+"\n");
+  lines.push("--- 7. HARMONOGRAM ---");
+  lines.push("Tydzien 1 (7-10.04): "+getVal("rek_w1"));
+  lines.push("Tydzien 2 (13-17.04): "+getVal("rek_w2"));
+  lines.push("Tydzien 3 (20-24.04): "+getVal("rek_w3"));
+  lines.push("Tydzien 4 (27-30.04): "+getVal("rek_w4"));
+  lines.push("Produkcja (11-29.05): "+getVal("rek_prod"));
+  lines.push("\n==============================================");
+  return lines.join("\n");
+}
+
+function exportData(){
+  var blob=new Blob([getData()],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="tutlo-voicebot-rekrutacja-"+new Date().toISOString().slice(0,10)+".txt";
+  a.click();
+  document.getElementById("export-msg").textContent="✓ Plik pobrany! Odeslij go mailem do wlasciciela projektu.";
+}
+function copyData(){
+  navigator.clipboard.writeText(getData()).then(function(){
+    document.getElementById("export-msg").textContent="✓ Skopiowano do schowka!";
+    setTimeout(function(){document.getElementById("export-msg").textContent=""},3000);
+  });
+}
+</script>
+</body>
+</html>
