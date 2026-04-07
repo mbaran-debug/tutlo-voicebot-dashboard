@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tutlo Voicebot — Karta Obszaru Backoffice</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --purple:#6B3FA0;--purple-light:#F3EEFA;--purple-dark:#4A1F8A;
+  --yellow:#F5C800;--black:#1A1A1A;--white:#fff;
+  --bg:#F8F7FC;--bg2:#fff;--bg3:#F3EEFA;
+  --text:#1A1A1A;--text2:#555;--text3:#999;
+  --border:#E0D8F0;--border2:#C8B8E8;
+  --r:12px;--rs:8px;
+  --shadow:0 1px 3px rgba(107,63,160,.08);
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+.topbar{background:var(--black);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:32px;height:32px;background:var(--yellow);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-text{color:#fff;font-size:15px;font-weight:700}
+.logo-text span{color:var(--yellow)}
+.wrap{max-width:760px;margin:0 auto;padding:2rem 1.25rem}
+.hero{background:linear-gradient(135deg,#2D1B4E,#3D2060);border-radius:var(--r);padding:2rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30px;right:-30px;width:160px;height:160px;background:#C9A8FF;opacity:.08;border-radius:50%}
+.hero h1{font-size:20px;font-weight:700;color:#fff;margin-bottom:6px}
+.hero p{font-size:13px;color:#C9A8FF;margin-bottom:12px;line-height:1.6}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap}
+.hbadge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(201,168,255,.15);color:#C9A8FF;border:1px solid rgba(201,168,255,.3)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1rem;box-shadow:var(--shadow)}
+.card-title{font-size:11px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.fl{font-size:11px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.06em}
+.hint{font-size:11px;color:var(--text3);font-style:italic;margin-top:1px}
+input[type=text],textarea,select{font-family:inherit;font-size:13px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:9px 12px;outline:none;transition:border .15s;width:100%}
+input:focus,textarea:focus,select:focus{border-color:var(--purple);background:#fff}
+textarea{resize:vertical;min-height:72px;line-height:1.6}
+.yn{display:flex;gap:8px}
+.yn label{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:7px 14px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s;background:var(--bg3)}
+.yn label:has(input:checked){background:var(--purple-light);border-color:var(--purple);font-weight:600;color:var(--purple)}
+.checkboxes{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.cb-opt{display:flex;align-items:flex-start;gap:8px;font-size:13px;cursor:pointer;padding:8px 10px;border-radius:var(--rs);border:1px solid transparent;transition:all .15s;background:var(--bg3)}
+.cb-opt:hover{border-color:var(--border2)}
+.cb-opt:has(input:checked){background:var(--purple-light);border-color:var(--purple)}
+.cb-opt input{width:15px;height:15px;flex-shrink:0;margin-top:2px;accent-color:var(--purple);cursor:pointer}
+.cb-opt span{line-height:1.5}
+.week-grid{display:grid;grid-template-columns:130px 1fr;gap:8px 16px;align-items:start}
+.week-lbl{font-size:12px;font-weight:700;color:var(--text2);padding-top:10px}
+.week-lbl small{display:block;font-weight:400;color:var(--text3)}
+.progress-bar{background:var(--bg3);border-radius:4px;height:6px;margin-bottom:1.5rem;overflow:hidden}
+.progress-fill{height:6px;background:var(--purple);border-radius:4px;transition:width .3s}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px}
+.export-section{background:linear-gradient(135deg,#2D1B4E,#3D2060);border-radius:var(--r);padding:1.5rem 2rem;margin-top:1.5rem;text-align:center}
+.export-section h3{color:#fff;font-size:15px;font-weight:700;margin-bottom:6px}
+.export-section p{color:#C9A8FF;font-size:12px;margin-bottom:16px;line-height:1.6}
+.btn-export{background:var(--yellow);color:var(--black);font-size:13px;font-weight:700;padding:11px 28px;border-radius:var(--rs);border:none;cursor:pointer;transition:opacity .15s;display:inline-block}
+.btn-export:hover{opacity:.9}
+.btn-copy{background:rgba(255,255,255,.1);color:#C9A8FF;font-size:12px;font-weight:600;padding:8px 18px;border-radius:var(--rs);border:1px solid rgba(201,168,255,.3);cursor:pointer;margin-left:10px;transition:all .15s}
+.btn-copy:hover{background:rgba(255,255,255,.2)}
+.saved-indicator{font-size:11px;color:var(--purple);text-align:right;margin-top:6px;min-height:16px}
+.required{color:#C42020;margin-left:2px}
+@media(max-width:600px){.field-row{grid-template-columns:1fr}.week-grid{grid-template-columns:1fr}.wrap{padding:1rem}.topbar{padding:0 1rem}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logo-icon">
+      <svg width="20" height="20" viewBox="0 0 36 36" fill="none">
+        <circle cx="12" cy="14" r="7" fill="#1A1A1A"/>
+        <circle cx="24" cy="14" r="7" fill="#1A1A1A"/>
+        <path d="M5 20 Q18 30 31 20" stroke="#1A1A1A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="10" cy="13" r="2" fill="#F5C800"/>
+        <circle cx="22" cy="13" r="2" fill="#F5C800"/>
+      </svg>
+    </div>
+    <span class="logo-text"><span>Tutlo</span> Voicebot</span>
+  </div>
+  <span style="font-size:11px;color:#888">AI Champion Q2 2026</span>
+</div>
+
+<div class="wrap">
+
+<div class="hero">
+  <h1>&#128188; Karta Obszaru &mdash; Backoffice</h1>
+  <p>Wype&#322;nij ten formularz i ode&#347;lij go mailem do w&#322;a&#347;ciciela projektu.<br>
+  Twoje odpowiedzi pomog&#261; okre&#347;li&#263; jak Voicebot mo&#380;e wesprze&#263; Backoffice.</p>
+  <div class="hero-badges">
+    <span class="hbadge">Program AI Champion</span>
+    <span class="hbadge">Q2 2026</span>
+    <span class="hbadge">Deadline: 10 kwietnia 2026</span>
+  </div>
+</div>
+
+<div class="progress-label"><span>Post&#281;p wype&#322;niania</span><span id="prog-txt">0%</span></div>
+<div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+
+<!-- 1 -->
+<div class="card">
+  <div class="card-title">1. Informacje o zespole</div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Imi&#281; i nazwisko <span class="required">*</span></label>
+      <input type="text" id="bo_imie" placeholder="Twoje imi&#281; i nazwisko">
+    </div>
+    <div class="field">
+      <label class="fl">Rola w zespole</label>
+      <input type="text" id="bo_rola" placeholder="np. Koordynator, Specjalista">
+    </div>
+  </div>
+  <div class="field">
+    <label class="fl">Owner obszaru w Backoffice</label>
+    <input type="text" id="bo_owner" placeholder="Imi&#281; i nazwisko osoby odpowiedzialnej za ten obszar">
+  </div>
+  <div class="field">
+    <label class="fl">Osoby do testowania (2–3 osoby)</label>
+    <input type="text" id="bo_testers" placeholder="np. Anna Kowalska, Piotr Nowak">
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="card">
+  <div class="card-title">2. Co robi Backoffice? (zaznacz wszystko co dotyczy)</div>
+  <div class="checkboxes">
+    <label class="cb-opt"><input type="checkbox" id="bo_a1"><span>Zarz&#261;dzanie kalendarzem i rezerwacjami slot&oacute;w lekcji</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a2"><span>Aktualizacja danych klient&oacute;w w CRM (HubSpot)</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a3"><span>Obs&#322;uga anulowa&#324; i przek&#322;ada&#324; spotka&#324;</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a4"><span>Raportowanie i kontrola jako&#347;ci danych</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a5"><span>Komunikacja wewn&#281;trzna i powiadomienia dla zespo&#322;u</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a6"><span>Obs&#322;uga reklamacji i eskalacji od klient&oacute;w</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_a7"><span>Zarz&#261;dzanie dokumentacj&#261; i procedurami</span></label>
+  </div>
+  <div class="field" style="margin-top:10px">
+    <label class="fl">Inne obszary pracy (opcjonalnie)</label>
+    <textarea id="bo_inne" placeholder="Opisz inne obszary..."></textarea>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="card">
+  <div class="card-title">3. Problem i cel</div>
+  <div class="field">
+    <label class="fl">Jaki problem chcesz rozwi&#261;za&#263; Voicebotem? <span class="required">*</span></label>
+    <span class="hint">Np. za du&#380;o r&#281;cznej pracy przy aktualizacji kalendarzy, b&#322;&#281;dy w danych, op&oacute;&#378;nienia w zwalnianiu slot&oacute;w</span>
+    <textarea id="bo_problem" placeholder="Opisz g&#322;&#243;wny problem operacyjny..."></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Co konkretnie ma robi&#263; Voicebot dla Backoffice?</label>
+    <span class="hint">Np. automatycznie zwalnia&#263; sloty po anulowaniu, wysy&#322;a&#263; powiadomienia do konsultant&oacute;w, aktualizowa&#263; dane w CRM</span>
+    <textarea id="bo_cel" placeholder="Opisz oczekiwane dzia&#322;ania bota..."></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Kto w Backoffice b&#281;dzie korzysta&#322; z tego rozwi&#261;zania?</label>
+    <input type="text" id="bo_user" placeholder="np. Koordynatorzy, specjali&#347;ci ds. harmonogram&oacute;w">
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="card">
+  <div class="card-title">4. Kryteria sukcesu</div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Metryka g&#322;&#243;wna sukcesu</label>
+      <span class="hint">Jak zmierzysz &#380;e Voicebot pom&oacute;g&#322;?</span>
+      <input type="text" id="bo_metryka1" placeholder="np. Redukcja r&#281;cznych aktualizacji o 70%">
+    </div>
+    <div class="field">
+      <label class="fl">Metryka dodatkowa</label>
+      <input type="text" id="bo_metryka2" placeholder="np. Czas zwolnienia slotu &lt; 5 min">
+    </div>
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label class="fl">Stan obecny (baseline)</label>
+      <span class="hint">Ile czasu zajmuje to r&#281;cznie? Ile b&#322;&#281;d&oacute;w?</span>
+      <textarea id="bo_baseline" rows="3" placeholder="Opisz jak wygl&#261;da proces teraz..."></textarea>
+    </div>
+    <div class="field">
+      <label class="fl">Cel na koniec Q2</label>
+      <textarea id="bo_cel_q2" rows="3" placeholder="Co chcemy osi&#261;gn&#261;&#263;?"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="card">
+  <div class="card-title">5. Narz&#281;dzia i systemy (zaznacz z czego korzystacie)</div>
+  <div class="checkboxes">
+    <label class="cb-opt"><input type="checkbox" id="bo_t1"><span>HubSpot CRM</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t2"><span>Wewn&#281;trzny system rezerwacji / kalendarzy</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t3"><span>Google Calendar / Outlook</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t4"><span>Arkusze Google / Excel</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t5"><span>Slack / Teams</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t6"><span>BigQuery / raporty</span></label>
+    <label class="cb-opt"><input type="checkbox" id="bo_t7"><span>Inne narz&#281;dzie</span></label>
+  </div>
+  <div class="field" style="margin-top:10px">
+    <label class="fl">Jakie dane s&#261; krytyczne dla Backoffice?</label>
+    <span class="hint">Np. termin spotkania, status klienta, nazwisko konsultanta, numer telefonu</span>
+    <textarea id="bo_dane" placeholder="Wymie&#324; kluczowe dane z kt&oacute;rymi pracujecie..."></textarea>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="card">
+  <div class="card-title">6. Ryzyka i blokery</div>
+  <div class="field">
+    <label class="fl">Czy w procesie wyst&#281;puj&#261; dane wra&#380;liwe?</label>
+    <div class="yn">
+      <label><input type="radio" name="bo_rodo" value="TAK"> TAK</label>
+      <label><input type="radio" name="bo_rodo" value="NIE"> NIE</label>
+      <label><input type="radio" name="bo_rodo" value="Nie wiem"> Nie wiem</label>
+    </div>
+  </div>
+  <div class="field">
+    <label class="fl">Je&#347;li TAK — jakie dane i jak zamierzacie je zabezpieczy&#263;?</label>
+    <input type="text" id="bo_rodo_opis" placeholder="np. dane osobowe klient&oacute;w — szyfrowanie, ograniczony dost&#281;p">
+  </div>
+  <div class="field">
+    <label class="fl">Co mo&#380;e zablokowa&#263; wdro&#380;enie po stronie Backoffice?</label>
+    <span class="hint">Np. brak dost&#281;pu API do systemu, brak czasu na testy, niejasne procedury</span>
+    <textarea id="bo_blokery" placeholder="Opisz potencjalne blokery..."></textarea>
+  </div>
+  <div class="field">
+    <label class="fl">Dodatkowe pytania / uwagi do projektu</label>
+    <textarea id="bo_uwagi" placeholder="Wszystko co chcesz przekaza&#263; w&#322;a&#347;cicielowi projektu..."></textarea>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="card">
+  <div class="card-title">7. Harmonogram Backoffice</div>
+  <p style="font-size:12px;color:var(--text3);margin-bottom:12px">Wype&#322;nij co planujesz robi&#263; w ka&#380;dym tygodniu ze swojej strony.</p>
+  <div class="week-grid">
+    <div class="week-lbl">Tydzie&#324; 1<small>7–10.04</small></div>
+    <div class="field"><textarea id="bo_w1" rows="2" placeholder="np. Mapowanie proces&oacute;w, spotkanie kick-off"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 2<small>13–17.04</small></div>
+    <div class="field"><textarea id="bo_w2" rows="2" placeholder="np. Pierwsze testy integracji z systemem rezerwacji"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 3<small>20–24.04</small></div>
+    <div class="field"><textarea id="bo_w3" rows="2" placeholder="np. Testy z zespo&#322;em Backoffice, feedback"></textarea></div>
+    <div class="week-lbl">Tydzie&#324; 4<small>27–30.04</small></div>
+    <div class="field"><textarea id="bo_w4" rows="2" placeholder="np. Akceptacja i sign-off Backoffice"></textarea></div>
+    <div class="week-lbl">Produkcja<small>11–29.05</small></div>
+    <div class="field"><textarea id="bo_prod" rows="2" placeholder="np. Wdro&#380;enie na produkcj&#281;, monitoring"></textarea></div>
+  </div>
+</div>
+
+<!-- EXPORT -->
+<div class="export-section">
+  <h3>&#10003; Gotowe? Wy&#347;lij wype&#322;niony formularz</h3>
+  <p>Kliknij przycisk poni&#380;ej — pobierzesz plik <strong style="color:#fff">.txt</strong> z Twoimi odpowiedziami.<br>
+  Ode&#347;lij ten plik mailem do w&#322;a&#347;ciciela projektu Voicebot.</p>
+  <button class="btn-export" onclick="exportData()">&#8659; Pobierz wype&#322;niony formularz</button>
+  <button class="btn-copy" onclick="copyData()">&#128203; Kopiuj do schowka</button>
+  <div id="export-msg" style="font-size:12px;color:#7FD9A0;margin-top:10px;min-height:16px"></div>
+</div>
+
+<div style="text-align:center;padding:1.5rem 0;font-size:11px;color:var(--text3)">
+  Tutlo Voicebot &mdash; Karta Obszaru Backoffice &middot; AI Champion Q2 2026
+</div>
+
+</div>
+
+<script>
+var fields=["bo_imie","bo_rola","bo_owner","bo_testers","bo_inne","bo_problem","bo_cel","bo_user","bo_metryka1","bo_metryka2","bo_baseline","bo_cel_q2","bo_dane","bo_rodo_opis","bo_blokery","bo_uwagi","bo_w1","bo_w2","bo_w3","bo_w4","bo_prod"];
+var checks=["bo_a1","bo_a2","bo_a3","bo_a4","bo_a5","bo_a6","bo_a7","bo_t1","bo_t2","bo_t3","bo_t4","bo_t5","bo_t6","bo_t7"];
+var checkLabels={
+  bo_a1:"Zarzadzanie kalendarzem i rezerwacjami slotow",
+  bo_a2:"Aktualizacja danych klientow w CRM (HubSpot)",
+  bo_a3:"Obsluga anulowan i przekladan spotkan",
+  bo_a4:"Raportowanie i kontrola jakosci danych",
+  bo_a5:"Komunikacja wewnetrzna i powiadomienia",
+  bo_a6:"Obsluga reklamacji i eskalacji",
+  bo_a7:"Zarzadzanie dokumentacja i procedurami",
+  bo_t1:"HubSpot CRM",bo_t2:"Wewnetrzny system rezerwacji",
+  bo_t3:"Google Calendar / Outlook",bo_t4:"Arkusze Google / Excel",
+  bo_t5:"Slack / Teams",bo_t6:"BigQuery / raporty",bo_t7:"Inne narzedzie"
+};
+
+// autosave
+fields.forEach(function(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  var saved=localStorage.getItem("bo_"+id);
+  if(saved)el.value=saved;
+  el.addEventListener("input",function(){localStorage.setItem("bo_"+id,el.value);updateProgress()});
+});
+checks.forEach(function(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  if(localStorage.getItem("bo_chk_"+id)==="1")el.checked=true;
+  el.addEventListener("change",function(){localStorage.setItem("bo_chk_"+id,el.checked?"1":"0");updateProgress()});
+});
+document.querySelectorAll('input[name="bo_rodo"]').forEach(function(r){
+  if(localStorage.getItem("bo_rodo")===r.value)r.checked=true;
+  r.addEventListener("change",function(){localStorage.setItem("bo_rodo",r.value);updateProgress()});
+});
+
+function updateProgress(){
+  var required=["bo_imie","bo_problem"];
+  var filled=0,total=8;
+  if(document.getElementById("bo_imie").value.trim())filled++;
+  if(document.getElementById("bo_problem").value.trim())filled++;
+  if(document.getElementById("bo_cel").value.trim())filled++;
+  if(document.getElementById("bo_metryka1").value.trim())filled++;
+  if(document.getElementById("bo_baseline").value.trim())filled++;
+  if(document.getElementById("bo_owner").value.trim())filled++;
+  if(document.querySelector('input[name="bo_rodo"]:checked'))filled++;
+  var anyCheck=checks.some(function(id){return document.getElementById(id)&&document.getElementById(id).checked});
+  if(anyCheck)filled++;
+  var pct=Math.round(filled/total*100);
+  document.getElementById("prog-fill").style.width=pct+"%";
+  document.getElementById("prog-txt").textContent=pct+"%";
+}
+updateProgress();
+
+function getData(){
+  var lines=[];
+  lines.push("==============================================");
+  lines.push("TUTLO VOICEBOT — KARTA OBSZARU: BACKOFFICE");
+  lines.push("AI Champion Q2 2026");
+  lines.push("Data wypelnienia: "+new Date().toLocaleDateString("pl-PL"));
+  lines.push("==============================================");
+  lines.push("");
+  lines.push("--- 1. INFORMACJE O ZESPOLE ---");
+  lines.push("Imie i nazwisko: "+(document.getElementById("bo_imie").value||"—"));
+  lines.push("Rola: "+(document.getElementById("bo_rola").value||"—"));
+  lines.push("Owner obszaru: "+(document.getElementById("bo_owner").value||"—"));
+  lines.push("Osoby do testowania: "+(document.getElementById("bo_testers").value||"—"));
+  lines.push("");
+  lines.push("--- 2. OBSZARY PRACY BACKOFFICE ---");
+  checks.slice(0,7).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.checked)lines.push("[X] "+checkLabels[id]);
+  });
+  lines.push("Inne: "+(document.getElementById("bo_inne").value||"—"));
+  lines.push("");
+  lines.push("--- 3. PROBLEM I CEL ---");
+  lines.push("Problem: "+(document.getElementById("bo_problem").value||"—"));
+  lines.push("Oczekiwane dzialania bota: "+(document.getElementById("bo_cel").value||"—"));
+  lines.push("Uzytkownik: "+(document.getElementById("bo_user").value||"—"));
+  lines.push("");
+  lines.push("--- 4. KRYTERIA SUKCESU ---");
+  lines.push("Metryka glowna: "+(document.getElementById("bo_metryka1").value||"—"));
+  lines.push("Metryka dodatkowa: "+(document.getElementById("bo_metryka2").value||"—"));
+  lines.push("Baseline: "+(document.getElementById("bo_baseline").value||"—"));
+  lines.push("Cel Q2: "+(document.getElementById("bo_cel_q2").value||"—"));
+  lines.push("");
+  lines.push("--- 5. NARZEDZIA I SYSTEMY ---");
+  checks.slice(7).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&el.checked)lines.push("[X] "+checkLabels[id]);
+  });
+  lines.push("Krytyczne dane: "+(document.getElementById("bo_dane").value||"—"));
+  lines.push("");
+  lines.push("--- 6. RYZYKA I BLOKERY ---");
+  var rodo=document.querySelector('input[name="bo_rodo"]:checked');
+  lines.push("Dane wrazliwe: "+(rodo?rodo.value:"—"));
+  lines.push("Zabezpieczenie: "+(document.getElementById("bo_rodo_opis").value||"—"));
+  lines.push("Blokery: "+(document.getElementById("bo_blokery").value||"—"));
+  lines.push("Uwagi: "+(document.getElementById("bo_uwagi").value||"—"));
+  lines.push("");
+  lines.push("--- 7. HARMONOGRAM ---");
+  lines.push("Tydzien 1 (7-10.04): "+(document.getElementById("bo_w1").value||"—"));
+  lines.push("Tydzien 2 (13-17.04): "+(document.getElementById("bo_w2").value||"—"));
+  lines.push("Tydzien 3 (20-24.04): "+(document.getElementById("bo_w3").value||"—"));
+  lines.push("Tydzien 4 (27-30.04): "+(document.getElementById("bo_w4").value||"—"));
+  lines.push("Produkcja (11-29.05): "+(document.getElementById("bo_prod").value||"—"));
+  lines.push("");
+  lines.push("==============================================");
+  return lines.join("\n");
+}
+
+function exportData(){
+  var content=getData();
+  var blob=new Blob([content],{type:"text/plain;charset=utf-8"});
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="tutlo-voicebot-backoffice-"+new Date().toISOString().slice(0,10)+".txt";
+  a.click();
+  document.getElementById("export-msg").textContent="✓ Plik pobrany! Odeslij go mailem do wlasciciela projektu.";
+}
+
+function copyData(){
+  navigator.clipboard.writeText(getData()).then(function(){
+    document.getElementById("export-msg").textContent="✓ Skopiowano do schowka!";
+    setTimeout(function(){document.getElementById("export-msg").textContent=""},3000);
+  });
+}
+</script>
+</body>
+</html>
