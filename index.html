@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Voicebot Tutlo — Karta Projektu</title>
+<title>Voicebot Tutlo — Program AI Champion Q2 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --yellow:#F5C800;--yellow-dark:#D4A800;--yellow-light:#FFF8D6;
-  --black:#1A1A1A;--white:#FFFFFF;
-  --bg:#F8F8F6;--bg2:#FFFFFF;--bg3:#F0EFE8;
+  --black:#1A1A1A;--white:#fff;
+  --bg:#F8F8F6;--bg2:#fff;--bg3:#F0EFE8;
   --text:#1A1A1A;--text2:#555;--text3:#999;
   --border:#E8E7E0;--border2:#D0CFC8;
   --blue:#1A6BC4;--blue-bg:#EAF2FC;--blue-text:#0F4A8A;
@@ -22,79 +22,119 @@
   --teal:#0D7A6E;--teal-bg:#E0F5F2;--teal-text:#085048;
   --gray-bg:#F0EFE8;--gray-text:#555;
   --r:12px;--rs:8px;
-  --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow:0 1px 3px rgba(0,0,0,.06);
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+
+/* TOPBAR */
 .topbar{background:var(--black);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
 .topbar-logo{display:flex;align-items:center;gap:10px}
 .logo-icon{width:36px;height:36px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-text{color:var(--white);font-size:16px;font-weight:700;letter-spacing:-.3px}
+.logo-text{color:#fff;font-size:16px;font-weight:700}
 .logo-text span{color:var(--yellow)}
-.topbar-meta{display:flex;align-items:center;gap:12px}
+.topbar-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .topbar-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(245,200,0,.15);color:var(--yellow);border:1px solid rgba(245,200,0,.3)}
 .topbar-date{font-size:12px;color:#888}
-.wrap{max-width:1020px;margin:0 auto;padding:1.75rem 1.25rem}
+
+.wrap{max-width:1040px;margin:0 auto;padding:1.75rem 1.25rem}
+
+/* HERO */
 .hero{background:var(--black);border-radius:var(--r);padding:2rem 2.25rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:var(--yellow);opacity:.06;border-radius:50%}
-.hero-left h1{font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:-.3px}
+.hero-left h1{font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.3px}
 .hero-left p{font-size:13px;color:#aaa;margin-bottom:12px}
 .hero-badges{display:flex;gap:8px;flex-wrap:wrap}
 .hbadge{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;display:inline-block}
 .hb-yellow{background:rgba(245,200,0,.15);color:var(--yellow);border:1px solid rgba(245,200,0,.3)}
 .hb-white{background:rgba(255,255,255,.08);color:#ddd;border:1px solid rgba(255,255,255,.12)}
-.hb-purple{background:rgba(107,63,160,.2);color:#C9A8FF;border:1px solid rgba(107,63,160,.35)}
 .hb-green{background:rgba(30,122,58,.2);color:#7FD9A0;border:1px solid rgba(30,122,58,.35)}
+.hb-purple{background:rgba(107,63,160,.2);color:#C9A8FF;border:1px solid rgba(107,63,160,.35)}
 .hero-right{text-align:right}
 .hero-kpi-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .hero-kpi-val{font-size:36px;font-weight:800;color:var(--yellow);line-height:1;letter-spacing:-1px}
 .hero-kpi-sub{font-size:12px;color:#888;margin-top:4px}
+
+/* STATS */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
 .stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;box-shadow:var(--shadow)}
 .stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;font-weight:600}
-.stat-val{font-size:24px;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.stat-val{font-size:24px;font-weight:700;letter-spacing:-.5px}
 .stat-sub{font-size:11px;color:var(--text3);margin-top:3px}
 .stat-accent{border-top:3px solid var(--yellow)}
-.tabs-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:5px;margin-bottom:1.25rem;display:flex;gap:2px;flex-wrap:wrap;box-shadow:var(--shadow)}
+
+/* TABS */
+.tabs-section{margin-bottom:1.25rem}
+.tabs-label{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;padding-left:4px}
+.tabs-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:5px;display:flex;gap:2px;flex-wrap:wrap;box-shadow:var(--shadow)}
 .tab{font-size:12px;font-weight:600;padding:8px 14px;border:none;background:none;color:var(--text3);border-radius:var(--rs);cursor:pointer;transition:all .18s}
 .tab:hover{background:var(--bg);color:var(--text2)}
 .tab.active{color:var(--black);box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .tab.active.t-yellow{background:var(--yellow)}
-.tab.active.t-purple{background:#C9A8FF;color:#1A0040}
 .tab.active.t-green{background:#7FD9A0;color:#0A3018}
-.panel{display:none}
-.panel.active{display:block}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:var(--shadow)}
-.card-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
-.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.tab.active.t-purple{background:#C9A8FF;color:#1A0040}
+.tab.active.t-blue{background:var(--blue-bg);color:var(--blue-text)}
+.panel{display:none}.panel.active{display:block}
 
-/* CARD ACCENT COLORS */
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:var(--shadow)}
 .card.c-purple{border-top:3px solid var(--purple2)}
 .card.c-green{border-top:3px solid var(--green2)}
+.card.c-yellow{border-top:3px solid var(--yellow-dark)}
+.card-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:1.1rem;display:flex;align-items:center;gap:8px}
+.card-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .card-title.purple{color:var(--purple2)}
 .card-title.green{color:var(--green2)}
+.card-title.yellow{color:var(--yellow-dark)}
 
-/* HERO VARIANTS */
-.hero.h-purple{background:linear-gradient(135deg,#2D1B4E 0%,#1A1A1A 100%)}
-.hero.h-purple::before{background:#C9A8FF}
-.hero.h-green{background:linear-gradient(135deg,#0A3018 0%,#1A1A1A 100%)}
-.hero.h-green::before{background:#7FD9A0}
+/* PROGRAM OVERVIEW */
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:1.25rem}
+.module-card{border-radius:var(--r);padding:1.5rem;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.module-card.m1{background:var(--black);border:1px solid #333}
+.module-card.m2{background:linear-gradient(135deg,#0A3018,#1A4D2A);border:1px solid #1A4D2A}
+.module-card.m3{background:linear-gradient(135deg,#2D1B4E,#3D2060);border:1px solid #3D2060}
+.module-card::before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;opacity:.08}
+.module-card.m1::before{background:var(--yellow)}
+.module-card.m2::before{background:#7FD9A0}
+.module-card.m3::before{background:#C9A8FF}
+.module-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.module-card.m1 .module-num{color:var(--yellow)}
+.module-card.m2 .module-num{color:#7FD9A0}
+.module-card.m3 .module-num{color:#C9A8FF}
+.module-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px}
+.module-sub{font-size:12px;margin-bottom:16px;line-height:1.5}
+.module-card.m1 .module-sub{color:#aaa}
+.module-card.m2 .module-sub{color:#7FD9A0}
+.module-card.m3 .module-sub{color:#C9A8FF}
+.module-owner{font-size:11px;margin-bottom:12px}
+.module-card.m1 .module-owner{color:#666}
+.module-card.m2 .module-owner{color:#5BAA7A}
+.module-card.m3 .module-owner{color:#9A78C8}
+.module-kpis{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.module-kpi{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.module-kpi-name{color:#aaa}
+.module-kpi-val{font-weight:700}
+.module-card.m1 .module-kpi-val{color:var(--yellow)}
+.module-card.m2 .module-kpi-val{color:#7FD9A0}
+.module-card.m3 .module-kpi-val{color:#C9A8FF}
+.module-status{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;display:inline-block}
+.status-active{background:rgba(245,200,0,.15);color:var(--yellow);border:1px solid rgba(245,200,0,.3)}
+.status-planned{background:rgba(127,217,160,.15);color:#7FD9A0;border:1px solid rgba(127,217,160,.3)}
+.status-data{background:rgba(201,168,255,.15);color:#C9A8FF;border:1px solid rgba(201,168,255,.3)}
 
+/* CHECKLIST */
 .prog-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1.25rem;box-shadow:var(--shadow)}
 .prog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .prog-title{font-size:14px;font-weight:700}
 .prog-count{font-size:12px;color:var(--text3);font-weight:600}
 .prog-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden}
 .prog-fill{height:8px;border-radius:4px;background:var(--yellow);transition:width .4s}
-.prog-fill.purple{background:var(--purple2)}
-.prog-fill.green{background:var(--green2)}
 .last-saved{font-size:11px;color:var(--text3);margin-top:8px;text-align:right}
 .cl-group-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;margin-bottom:10px;box-shadow:var(--shadow)}
 .cl-group-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;padding:6px 4px 10px;border-bottom:2px solid var(--border);margin-bottom:4px;display:flex;justify-content:space-between;align-items:center}
 .cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 6px;border-radius:var(--rs);transition:background .12s}
 .cl-item:hover{background:var(--bg3)}
 .cl-cb{width:16px;height:16px;flex-shrink:0;margin-top:3px;cursor:pointer;accent-color:var(--black)}
-.cl-text{font-size:13px;flex:1;line-height:1.5;color:var(--text);cursor:pointer}
+.cl-text{font-size:13px;flex:1;line-height:1.5;cursor:pointer}
 .cl-item.done .cl-text{color:var(--text3);text-decoration:line-through}
 .cl-owner{font-size:11px;color:var(--text3);flex-shrink:0;background:var(--bg3);padding:2px 8px;border-radius:20px;font-weight:500}
 .cl-note-btn{font-size:11px;cursor:pointer;padding:2px 7px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text3);flex-shrink:0;transition:all .15s;line-height:1.4}
@@ -102,7 +142,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .cl-note-wrap{display:none;padding:4px 6px 8px 32px}
 .cl-note-wrap.open{display:block}
 .cl-note-wrap textarea{width:100%;font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:7px 10px;resize:none;font-family:inherit;line-height:1.5;outline:none;transition:border .15s}
-.cl-note-wrap textarea:focus{border-color:var(--yellow);background:var(--white)}
+.cl-note-wrap textarea:focus{border-color:var(--yellow);background:#fff}
+
+/* MILESTONES */
 .m-row{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}
 .m-row:last-child{border-bottom:none}
 .m-body{flex:1}
@@ -110,16 +152,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .m-sub{font-size:12px;color:var(--text3);margin-top:2px}
 .m-status{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;flex-shrink:0;cursor:pointer;border:none;transition:opacity .15s}
 .m-status:hover{opacity:.75}
+
+/* KPI / RISKS / STACK */
+.kpi-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.kpi-row:last-child{border-bottom:none}
+.kpi-name{font-size:13px;flex:1}
+.kpi-target{font-size:13px;font-weight:700;min-width:90px;text-align:right}
 .risk-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}
 .risk-row:last-child{border-bottom:none}
 .risk-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .risk-title{font-size:13px;font-weight:700}
 .risk-desc{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.6}
 .risk-owner{font-size:11px;color:var(--text3);margin-top:4px;font-weight:500}
-.kpi-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
-.kpi-row:last-child{border-bottom:none}
-.kpi-name{font-size:13px;flex:1}
-.kpi-target{font-size:13px;font-weight:700;min-width:90px;text-align:right}
 .stack-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .stack-card{background:var(--bg3);border-radius:var(--rs);padding:12px 14px;border:1px solid var(--border)}
 .stack-name{font-size:13px;font-weight:700;margin-bottom:3px}
@@ -130,6 +174,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .raci-table tr:last-child td{border-bottom:none}
 .raci-table tr:hover td{background:var(--bg3)}
 .raci-table td:first-child{font-weight:600}
+
+/* BADGES */
 .badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block}
 .b-blue{background:var(--blue-bg);color:var(--blue-text)}
 .b-green{background:var(--green-bg);color:var(--green-text)}
@@ -141,71 +187,50 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 .b-yellow{background:var(--yellow-light);color:#7A6000}
 .b-purple2{background:#F3EEFA;color:#4A1F8A}
 .b-green2{background:#E6F7EC;color:#0D5C2A}
+
+/* PASZPORT FORM */
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pp-field{display:flex;flex-direction:column;gap:5px}
+.pp-field.full{grid-column:1/-1}
+.pp-label{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
+.pp-hint{font-size:11px;color:var(--text3);font-style:italic}
+.pp-field input,.pp-field textarea,.pp-field select{font-family:inherit;font-size:13px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:9px 12px;outline:none;transition:border .15s;width:100%}
+.pp-field input:focus,.pp-field textarea:focus,.pp-field select:focus{border-color:var(--yellow);background:#fff}
+.pp-field textarea{resize:vertical;min-height:72px;line-height:1.6}
+.pp-yn{display:flex;gap:8px}
+.pp-yn label{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;padding:6px 12px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s}
+.pp-yn label:has(input:checked){background:var(--yellow-light);border-color:var(--yellow-dark);font-weight:600}
+.pp-week-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;align-items:start}
+.pp-week-label{font-size:12px;font-weight:700;color:var(--text2);padding-top:10px}
+.pp-save-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:4px}
+.pp-save-btn{font-size:12px;font-weight:700;padding:8px 20px;border-radius:var(--rs);border:none;background:var(--yellow);color:var(--black);cursor:pointer;transition:opacity .15s}
+.pp-save-btn:hover{opacity:.85}
+.pp-saved-msg{font-size:12px;color:var(--green);font-weight:600;display:none}
+
+/* MODULE DETAIL CARDS */
+.ka-hero{border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ka-hero.purple{background:linear-gradient(135deg,#2D1B4E,#3D2060)}
+.ka-hero.green{background:linear-gradient(135deg,#0A3018,#1A4D2A)}
+.ka-hero-title{font-size:16px;font-weight:700;color:#fff}
+.ka-hero.purple .ka-hero-sub{font-size:12px;color:#C9A8FF;margin-top:2px}
+.ka-hero.green .ka-hero-sub{font-size:12px;color:#7FD9A0;margin-top:2px}
 .tbox{border-left:4px solid #ddd;padding:14px 18px;margin-bottom:12px;background:var(--bg3);border-radius:0 var(--rs) var(--rs) 0}
 .tbox:last-child{margin-bottom:0}
-.tbox-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
+.tbox-title{font-size:13px;font-weight:700;margin-bottom:6px}
 .tbox-body{font-size:13px;color:var(--text2);line-height:1.7}
 .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tech-box{background:var(--bg3);border-radius:var(--rs);padding:12px 14px;border:1px solid var(--border)}
 .tech-lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
-.noitem{font-size:13px;color:var(--text2);line-height:1.9;display:flex;align-items:flex-start;gap:8px;margin-bottom:2px}
-.noitem::before{content:'✕';font-size:11px;font-weight:700;color:var(--red-text);background:var(--red-bg);padding:1px 5px;border-radius:4px;flex-shrink:0;margin-top:3px}
-
-/* KARTA OBSZARU — shared form styles */
-.ka-hero{border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.ka-hero.purple{background:linear-gradient(135deg,#2D1B4E,#3D2060)}
-.ka-hero.green{background:linear-gradient(135deg,#0A3018,#1A4D2A)}
-.ka-hero-title{font-size:16px;font-weight:700;color:var(--white)}
-.ka-hero-sub{font-size:12px;margin-top:2px}
-.ka-hero.purple .ka-hero-sub{color:#C9A8FF}
-.ka-hero.green .ka-hero-sub{color:#7FD9A0}
-.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.pp-field{display:flex;flex-direction:column;gap:5px}
-.pp-field.full{grid-column:1/-1}
-.pp-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.pp-label.purple{color:var(--purple2)}
-.pp-label.green{color:var(--green2)}
-.pp-label.default{color:var(--text3)}
-.pp-hint{font-size:11px;color:var(--text3);font-style:italic}
-.pp-field input,.pp-field textarea,.pp-field select{font-family:inherit;font-size:13px;color:var(--text);background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:9px 12px;outline:none;transition:border .15s;width:100%}
-.pp-field input:focus,.pp-field textarea:focus,.pp-field select:focus{background:var(--white)}
-.pp-field.purple input:focus,.pp-field.purple textarea:focus,.pp-field.purple select:focus{border-color:var(--purple2)}
-.pp-field.green input:focus,.pp-field.green textarea:focus,.pp-field.green select:focus{border-color:var(--green2)}
-.pp-field textarea{resize:vertical;min-height:72px;line-height:1.6}
-.pp-yn{display:flex;gap:8px;flex-wrap:wrap}
-.pp-yn label{display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer;padding:6px 12px;border-radius:var(--rs);border:1px solid var(--border);transition:all .15s}
-.pp-yn.purple label:has(input:checked){background:#F3EEFA;border-color:var(--purple2);font-weight:600;color:var(--purple2)}
-.pp-yn.green label:has(input:checked){background:#E6F7EC;border-color:var(--green2);font-weight:600;color:var(--green2)}
-.pp-week-grid{display:grid;grid-template-columns:160px 1fr;gap:8px 16px;align-items:start}
-.pp-week-label{font-size:12px;font-weight:700;color:var(--text2);padding-top:10px}
-.pp-save-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 0 4px;border-top:1px solid var(--border);margin-top:4px}
-.pp-save-btn{font-size:12px;font-weight:700;padding:8px 20px;border-radius:var(--rs);border:none;cursor:pointer;transition:opacity .15s}
-.pp-save-btn:hover{opacity:.85}
-.pp-save-btn.purple{background:var(--purple2);color:var(--white)}
-.pp-save-btn.green{background:var(--green2);color:var(--white)}
-.pp-save-btn.yellow{background:var(--yellow);color:var(--black)}
-.pp-saved-msg{font-size:12px;font-weight:600;display:none}
-.pp-saved-msg.purple{color:var(--purple2)}
-.pp-saved-msg.green{color:var(--green2)}
-.pp-saved-msg.yellow{color:var(--green)}
-
-/* ODKRYWANIE POTRZEB */
-.odkr-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1.5rem;margin-bottom:10px}
-.odkr-q{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px}
-.odkr-hint{font-size:12px;color:var(--text3);margin-bottom:8px;font-style:italic}
-.checkboxes{display:flex;flex-direction:column;gap:6px}
-.cb-opt{display:flex;align-items:flex-start;gap:8px;font-size:13px;cursor:pointer;padding:6px 8px;border-radius:var(--rs);border:1px solid transparent;transition:all .15s}
-.cb-opt:hover{background:var(--bg2);border-color:var(--border)}
-.cb-opt input{width:15px;height:15px;flex-shrink:0;margin-top:2px;cursor:pointer}
-.cb-opt.purple input{accent-color:var(--purple2)}
-.cb-opt.purple:has(input:checked){background:#F3EEFA;border-color:var(--purple2)}
-.cb-opt span{line-height:1.5}
+.alert-box{border-radius:var(--r);padding:1rem 1.5rem;margin-bottom:1rem}
+.alert-yellow{background:#FFF8D6;border:1px solid var(--yellow-dark)}
+.alert-title{font-size:12px;font-weight:700;color:#7A6000;margin-bottom:5px}
+.alert-body{font-size:13px;color:var(--text2);line-height:1.7}
 
 .footer{text-align:center;padding:2rem 0 1rem;font-size:11px;color:var(--text3)}
 @media(max-width:640px){
   .stats{grid-template-columns:1fr 1fr}
   .tab{font-size:11px;padding:6px 8px}
-  .tech-grid,.stack-grid,.pp-grid,.pp-week-grid{grid-template-columns:1fr}
+  .tech-grid,.stack-grid,.pp-grid,.pp-week-grid,.module-grid{grid-template-columns:1fr}
   .hero,.ka-hero{padding:1.25rem}
   .hero-right{text-align:left}
   .topbar{padding:0 1rem}
@@ -228,7 +253,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
     <span class="logo-text"><span>Tutlo</span> Voicebot</span>
   </div>
   <div class="topbar-meta">
-    <span class="topbar-badge">Modu&#322; 1</span>
+    <span class="topbar-badge">Program AI Champion Q2 2026</span>
     <span class="topbar-date">Kwiecie&#324; 2026</span>
   </div>
 </div>
@@ -237,181 +262,266 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 
 <div class="hero">
   <div class="hero-left">
-    <h1>Karta Projektu &mdash; Voicebot Tutlo</h1>
-    <p>Automatyzacja zarz&#261;dzania terminami spotka&#324; pr&oacute;bnych &middot; W&#322;a&#347;ciciel: Dzia&#322; Operacyjny</p>
+    <h1>Program Voicebot Tutlo &mdash; 3 Modu&#322;y</h1>
+    <p>AI Champion Q2 2026 &middot; W&#322;a&#347;ciciel programu: Dzia&#322; Operacyjny</p>
     <div class="hero-badges">
-      <span class="hbadge hb-yellow">Inicjacja</span>
-      <span class="hbadge hb-white">500+ spotka&#324; / mies.</span>
-      <span class="hbadge hb-white">8&ndash;12 tyg. do MVP</span>
-      <span class="hbadge hb-purple">Backoffice</span>
-      <span class="hbadge hb-green">Rekrutacja</span>
+      <span class="hbadge hb-yellow">Modu&#322; 1 &mdash; Call Center</span>
+      <span class="hbadge hb-green">Modu&#322; 2 &mdash; Rekrutacja</span>
+      <span class="hbadge hb-purple">Modu&#322; 3 &mdash; CS Backoffice</span>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-kpi-label">Cel show-up rate</div>
+    <div class="hero-kpi-label">Show-up rate cel</div>
     <div class="hero-kpi-val">+10 pp</div>
-    <div class="hero-kpi-sub">w 60 dni od wdro&#380;enia</div>
+    <div class="hero-kpi-sub">Modu&#322; 1 &middot; 60 dni od wdro&#380;enia</div>
   </div>
 </div>
 
 <div class="stats">
   <div class="stat stat-accent">
-    <div class="stat-label">Post&#281;p projektu</div>
+    <div class="stat-label">Post&#281;p M1</div>
     <div class="stat-val" id="stat-pct">0%</div>
     <div class="stat-sub" id="stat-sub">0 / 0 zada&#324;</div>
   </div>
   <div class="stat">
     <div class="stat-label">Containment rate</div>
     <div class="stat-val">&gt;80%</div>
-    <div class="stat-sub">bez eskalacji</div>
+    <div class="stat-sub">cel M1</div>
   </div>
   <div class="stat">
-    <div class="stat-label">Latency bota</div>
-    <div class="stat-val">&lt;1,5s</div>
-    <div class="stat-sub">czas odpowiedzi</div>
+    <div class="stat-label">Redukcja CS M3</div>
+    <div class="stat-val">-15%</div>
+    <div class="stat-sub">5291 po&#322;./mies.</div>
   </div>
   <div class="stat">
-    <div class="stat-label">Odzysk slot&oacute;w</div>
-    <div class="stat-val">&gt;40%</div>
-    <div class="stat-sub">po anulowaniu</div>
+    <div class="stat-label">Oszcz&#281;dno&#347;&#263; M2</div>
+    <div class="stat-val">41h</div>
+    <div class="stat-sub">~23 000 z&#322;/rok</div>
   </div>
   <div class="stat">
-    <div class="stat-label">Contact rate</div>
-    <div class="stat-val">&gt;65%</div>
-    <div class="stat-sub">odebranych</div>
+    <div class="stat-label">Rozmowy M2</div>
+    <div class="stat-val">&gt;100</div>
+    <div class="stat-sub">kwalifikacji/mies.</div>
   </div>
 </div>
 
 <!-- TABS -->
-<div class="tabs-wrap">
-  <button class="tab t-yellow" data-tab="paszport">&#127932; Paszport</button>
-  <button class="tab t-yellow" data-tab="opis">O projekcie</button>
-  <button class="tab t-yellow" data-tab="checklist">Checklista</button>
-  <button class="tab t-yellow" data-tab="milestones">Kamienie milowe</button>
-  <button class="tab t-yellow" data-tab="kpi">KPI</button>
-  <button class="tab t-yellow" data-tab="risks">Ryzyka</button>
-  <button class="tab t-yellow" data-tab="stack">Technologie</button>
-  <button class="tab t-yellow" data-tab="raci">Wsp&oacute;&#322;praca</button>
-  <button class="tab t-purple" data-tab="backoffice">&#128188; Backoffice</button>
-  <button class="tab t-green" data-tab="rekrutacja">&#128101; Rekrutacja</button>
+<div class="tabs-section">
+  <div class="tabs-label">Widok programu</div>
+  <div class="tabs-wrap" style="margin-bottom:6px">
+    <button class="tab t-blue active" data-tab="overview">&#127758; Program Overview</button>
+  </div>
+  <div class="tabs-label">Modu&#322; 1 &mdash; Call Center (aktywny)</div>
+  <div class="tabs-wrap" style="margin-bottom:6px">
+    <button class="tab t-yellow" data-tab="paszport">&#127932; Paszport</button>
+    <button class="tab t-yellow" data-tab="opis">O projekcie</button>
+    <button class="tab t-yellow" data-tab="checklist">Checklista</button>
+    <button class="tab t-yellow" data-tab="milestones">Kamienie milowe</button>
+    <button class="tab t-yellow" data-tab="kpi">KPI</button>
+    <button class="tab t-yellow" data-tab="risks">Ryzyka</button>
+    <button class="tab t-yellow" data-tab="stack">Technologie</button>
+    <button class="tab t-yellow" data-tab="raci">Wsp&oacute;&#322;praca</button>
+  </div>
+  <div class="tabs-label">Modu&#322; 2 &mdash; Rekrutacja &middot; Modu&#322; 3 &mdash; CS Backoffice</div>
+  <div class="tabs-wrap">
+    <button class="tab t-green" data-tab="rekrutacja">&#128101; M2 Rekrutacja</button>
+    <button class="tab t-purple" data-tab="backoffice">&#128188; M3 CS Backoffice</button>
+  </div>
 </div>
 
-<!-- PASZPORT -->
+<!-- PROGRAM OVERVIEW -->
+<div id="overview" class="panel active">
+  <div class="module-grid">
+    <div class="module-card m1">
+      <div class="module-num">Modu&#322; 1 &mdash; Aktywny</div>
+      <div class="module-title">Voicebot Call Center</div>
+      <div class="module-sub">Potwierdzenia spotka&#324; pr&oacute;bnych &middot; Outbound + Inbound</div>
+      <div class="module-owner">Owner: Dzia&#322; Operacyjny &middot; 500+ spotka&#324;/mies.</div>
+      <div class="module-kpis">
+        <div class="module-kpi"><span class="module-kpi-name">Show-up rate</span><span class="module-kpi-val">+10 pp</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Containment rate</span><span class="module-kpi-val">&gt;80%</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Latency</span><span class="module-kpi-val">&lt;1,5s</span></div>
+      </div>
+      <span class="module-status status-active">W budowie &mdash; DEMO Q2</span>
+    </div>
+    <div class="module-card m2">
+      <div class="module-num">Modu&#322; 2 &mdash; Zaplanowany</div>
+      <div class="module-title">Voicebot Rekrutacja</div>
+      <div class="module-sub">Potwierdzenie rozmowy kwalifikacyjnej &middot; Przypomnienie SMS/email</div>
+      <div class="module-owner">Owner: Maciej Zi&#281;ba &middot; &gt;100 rozm&oacute;w/mies.</div>
+      <div class="module-kpis">
+        <div class="module-kpi"><span class="module-kpi-name">Kwalifikacji przez bota</span><span class="module-kpi-val">&#8805;70%</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Oszcz&#281;dno&#347;&#263;</span><span class="module-kpi-val">~41h/mies.</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Time to Offer</span><span class="module-kpi-val">-2 dni</span></div>
+      </div>
+      <span class="module-status status-planned">Dane zebrane &middot; Q2 2026</span>
+    </div>
+    <div class="module-card m3">
+      <div class="module-num">Modu&#322; 3 &mdash; Zaplanowany</div>
+      <div class="module-title">Voicebot CS Backoffice</div>
+      <div class="module-sub">Infolinia obs&#322;ugi klienta &middot; Pierwsza linia CS &middot; Inbound</div>
+      <div class="module-owner">Owner: Magda Pawlak &middot; 5291 po&#322;./mies.</div>
+      <div class="module-kpis">
+        <div class="module-kpi"><span class="module-kpi-name">Redukcja po&#322;&#261;cze&#324;</span><span class="module-kpi-val">-15%</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Obs&#322;u&#380;onych (bot+CS)</span><span class="module-kpi-val">&#8805;95%</span></div>
+        <div class="module-kpi"><span class="module-kpi-name">Cel Q2 bot</span><span class="module-kpi-val">~794/mies.</span></div>
+      </div>
+      <span class="module-status status-data">Dane zebrane &middot; Q2 2026</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Wsp&oacute;lna architektura technologiczna</div>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-lbl">Telefonia</div><div style="font-size:13px;color:var(--text2)">Peoplefone (docelowo) &middot; Twilio (DEMO)</div></div>
+      <div class="tech-box"><div class="tech-lbl">G&#322;os AI</div><div style="font-size:13px;color:var(--text2)">ElevenLabs STT+TTS &middot; j&#281;zyk polski</div></div>
+      <div class="tech-box"><div class="tech-lbl">Model j&#281;zykowy</div><div style="font-size:13px;color:var(--text2)">Gemini &middot; logika rozmowy i intencje</div></div>
+      <div class="tech-box"><div class="tech-lbl">Orkiestracja</div><div style="font-size:13px;color:var(--text2)">n8n &middot; &#322;&#261;czy wszystkie systemy</div></div>
+      <div class="tech-box"><div class="tech-lbl">CRM</div><div style="font-size:13px;color:var(--text2)">HubSpot &middot; dane klienta i zapis wynik&oacute;w</div></div>
+      <div class="tech-box"><div class="tech-lbl">Analityka</div><div style="font-size:13px;color:var(--text2)">BigQuery &middot; raporty KPI i optymalizacja</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Harmonogram programu Q2 2026</div>
+    <div class="m-row">
+      <span class="badge b-yellow" style="min-width:70px;text-align:center;flex-shrink:0">Kwiecie&#324;</span>
+      <div class="m-body"><div class="m-title">DEMO Modu&#322; 1</div><div class="m-sub">Nagranie demonstracyjne voicebota call center &middot; Twilio + n8n + Gemini</div></div>
+      <span class="badge b-yellow">Aktywne</span>
+    </div>
+    <div class="m-row">
+      <span class="badge b-blue" style="min-width:70px;text-align:center;flex-shrink:0">Maj</span>
+      <div class="m-body"><div class="m-title">Produkcja Modu&#322; 1</div><div class="m-sub">Wdro&#380;enie na 100% ruchu &middot; Peoplefone + ElevenLabs</div></div>
+      <span class="badge b-gray">Planowane</span>
+    </div>
+    <div class="m-row">
+      <span class="badge b-green2" style="min-width:70px;text-align:center;flex-shrink:0">Maj</span>
+      <div class="m-body"><div class="m-title">&#346;rodowisko Modu&#322; 2 i 3</div><div class="m-sub">Przygotowanie infrastruktury dla Rekrutacji i CS &middot; onboarding team&oacute;w</div></div>
+      <span class="badge b-gray">Planowane</span>
+    </div>
+    <div class="m-row" style="border-bottom:none">
+      <span class="badge b-purple2" style="min-width:70px;text-align:center;flex-shrink:0">Q3</span>
+      <div class="m-body"><div class="m-title">Produkcja Modu&#322; 2 i 3</div><div class="m-sub">Wdro&#380;enie Rekrutacji i CS pod nadzorem owner&oacute;w modul&oacute;w</div></div>
+      <span class="badge b-gray">Planowane</span>
+    </div>
+  </div>
+</div>
+
+<!-- PASZPORT M1 -->
 <div id="paszport" class="panel">
   <div style="background:var(--black);border-radius:var(--r);padding:1.25rem 1.75rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-    <div>
-      <div style="font-size:16px;font-weight:700;color:var(--white)">Paszport Projektu</div>
-      <div style="font-size:12px;color:#888;margin-top:2px">Program AI Champion &middot; Q2 2026 &middot; Wrzuć na GitHub do 10 kwietnia 2026</div>
-    </div>
+    <div><div style="font-size:16px;font-weight:700;color:#fff">Paszport Projektu &mdash; Modu&#322; 1</div><div style="font-size:12px;color:#888;margin-top:2px">Program AI Champion &middot; Q2 2026 &middot; Deadline: 10 kwietnia 2026</div></div>
     <span class="hbadge hb-yellow">AI Champion Q2 2026</span>
   </div>
   <div class="card">
     <div class="card-title">1. Informacje podstawowe</div>
     <div class="pp-grid">
-      <div class="pp-field full"><span class="pp-label default">Nazwa projektu</span><input type="text" id="pp_nazwa" placeholder="np. AI Voicebot — Potwierdzenia Spotka&#324;"></div>
-      <div class="pp-field full"><span class="pp-label default">Strumie&#324; portfela</span>
+      <div class="pp-field full"><span class="pp-label">Nazwa projektu</span><input type="text" id="pp_nazwa" placeholder="np. AI Voicebot — Potwierdzenia Spotka&#324;"></div>
+      <div class="pp-field full"><span class="pp-label">Strumie&#324; portfela</span>
         <select id="pp_strumien"><option value="">-- Wybierz --</option><option>Growth</option><option>Retention &amp; Monetization</option><option>Ops Efficiency</option><option>Product &amp; Platform</option></select>
       </div>
-      <div class="pp-field"><span class="pp-label default">AI Champion</span><input type="text" id="pp_champion" placeholder="Imi&#281; i nazwisko"></div>
-      <div class="pp-field"><span class="pp-label default">Owner biznesowy</span><input type="text" id="pp_owner_biz" placeholder="Ekspert znaj&#261;cy proces"></div>
-      <div class="pp-field full"><span class="pp-label default">Sponsor / Owner strategiczny</span><input type="text" id="pp_sponsor" placeholder="Osoba z zarz&#261;du / Head"></div>
+      <div class="pp-field"><span class="pp-label">AI Champion</span><input type="text" id="pp_champion" placeholder="Imi&#281; i nazwisko"></div>
+      <div class="pp-field"><span class="pp-label">Owner biznesowy</span><input type="text" id="pp_owner_biz" placeholder="Ekspert znaj&#261;cy proces"></div>
+      <div class="pp-field full"><span class="pp-label">Sponsor strategiczny</span><input type="text" id="pp_sponsor" placeholder="Osoba z zarz&#261;du / Head"></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">2. Problem i cel</div>
     <div class="pp-grid">
-      <div class="pp-field full"><span class="pp-label default">Problem, kt&oacute;ry adresujemy</span><span class="pp-hint">Opisz problem biznesowy. Dlaczego to wa&#380;ne?</span><textarea id="pp_problem" placeholder="np. Zbyt niski show-up rate..."></textarea></div>
-      <div class="pp-field full"><span class="pp-label default">Oczekiwany rezultat</span><textarea id="pp_rezultat" placeholder="np. W pe&#322;ni dzia&#322;aj&#261;cy voicebot g&#322;osowy..."></textarea></div>
-      <div class="pp-field full"><span class="pp-label default">Cel biznesowy</span><textarea id="pp_cel_biz" placeholder="np. Wzrost show-up rate o min. 10 pp..."></textarea></div>
-      <div class="pp-field full"><span class="pp-label default">Kto jest u&#380;ytkownikiem?</span><input type="text" id="pp_user" placeholder="np. Klienci Tutlo oraz dzia&#322; operacyjny"></div>
+      <div class="pp-field full"><span class="pp-label">Problem</span><textarea id="pp_problem" placeholder="Zbyt niski show-up rate na spotkaniach pr&oacute;bnych..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label">Oczekiwany rezultat</span><textarea id="pp_rezultat" placeholder="W pe&#322;ni dzia&#322;aj&#261;cy voicebot g&#322;osowy..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label">Cel biznesowy</span><textarea id="pp_cel_biz" placeholder="Wzrost show-up rate o min. 10 pp..."></textarea></div>
+      <div class="pp-field full"><span class="pp-label">U&#380;ytkownik ko&#324;cowy</span><input type="text" id="pp_user" placeholder="Klienci Tutlo oraz dzia&#322; operacyjny"></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">3. Metryki sukcesu</div>
     <div class="pp-grid">
-      <div class="pp-field full"><span class="pp-label default">Metryka g&#322;&#243;wna</span><input type="text" id="pp_metryka1" placeholder="np. Wzrost show-up rate o +10 pp w ci&#261;gu 60 dni"></div>
-      <div class="pp-field"><span class="pp-label default">Metryka dodatkowa 1</span><input type="text" id="pp_metryka2" placeholder="np. Containment rate &gt; 80%"></div>
-      <div class="pp-field"><span class="pp-label default">Metryka dodatkowa 2</span><input type="text" id="pp_metryka3" placeholder="np. Latency bota &lt; 1,5 sek."></div>
-      <div class="pp-field"><span class="pp-label default">Baseline (stan obecny)</span><textarea id="pp_baseline" placeholder="Aktualne warto&#347;ci metryk"></textarea></div>
-      <div class="pp-field"><span class="pp-label default">Cel na koniec Q2</span><textarea id="pp_cel_q2" placeholder="Docelowe warto&#347;ci metryk"></textarea></div>
+      <div class="pp-field full"><span class="pp-label">Metryka g&#322;&#243;wna</span><input type="text" id="pp_metryka1" placeholder="Wzrost show-up rate o +10 pp w 60 dni"></div>
+      <div class="pp-field"><span class="pp-label">Metryka dodatkowa 1</span><input type="text" id="pp_metryka2" placeholder="Containment rate &gt;80%"></div>
+      <div class="pp-field"><span class="pp-label">Metryka dodatkowa 2</span><input type="text" id="pp_metryka3" placeholder="Latency &lt;1,5s"></div>
+      <div class="pp-field"><span class="pp-label">Baseline</span><textarea id="pp_baseline" rows="2" placeholder="Aktualny show-up rate..."></textarea></div>
+      <div class="pp-field"><span class="pp-label">Cel Q2</span><textarea id="pp_cel_q2" rows="2" placeholder="Show-up rate baseline +10 pp..."></textarea></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">4. Zakres i podej&#347;cie</div>
     <div class="pp-grid">
-      <div class="pp-field full"><span class="pp-label default">Podej&#347;cie techniczne</span><textarea id="pp_tech" placeholder="ElevenLabs, Gemini, n8n, Peoplefone, HubSpot, BigQuery"></textarea></div>
-      <div class="pp-field"><span class="pp-label default">Wymaga Platformy?</span><div class="pp-yn"><label><input type="radio" name="pp_platf" value="TAK"> TAK</label><label><input type="radio" name="pp_platf" value="NIE"> NIE</label></div></div>
-      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — opis</span><input type="text" id="pp_platf_opis" placeholder="Opisz integracj&#281;"></div>
-      <div class="pp-field"><span class="pp-label default">Wymaga integracji?</span><div class="pp-yn"><label><input type="radio" name="pp_integr" value="TAK"> TAK</label><label><input type="radio" name="pp_integr" value="NIE"> NIE</label></div></div>
-      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — z czym?</span><input type="text" id="pp_integr_opis" placeholder="np. HubSpot, BigQuery"></div>
+      <div class="pp-field full"><span class="pp-label">Podej&#347;cie techniczne</span><textarea id="pp_tech" placeholder="ElevenLabs, Gemini, n8n, Peoplefone, HubSpot, BigQuery"></textarea></div>
+      <div class="pp-field"><span class="pp-label">Wymaga Platformy?</span><div class="pp-yn"><label><input type="radio" name="pp_platf" value="TAK"> TAK</label><label><input type="radio" name="pp_platf" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label">Opis integracji</span><input type="text" id="pp_platf_opis" placeholder="Opisz integracj&#281;"></div>
+      <div class="pp-field"><span class="pp-label">Wymaga integracji?</span><div class="pp-yn"><label><input type="radio" name="pp_integr" value="TAK"> TAK</label><label><input type="radio" name="pp_integr" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label">Z czym?</span><input type="text" id="pp_integr_opis" placeholder="HubSpot, BigQuery, system rezerwacji"></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">5. Zesp&oacute;&#322;</div>
     <div class="pp-grid">
-      <div class="pp-field"><span class="pp-label default">Osoba 1</span><input type="text" id="pp_team1" placeholder="Imi&#281;, nazwisko, rola"></div>
-      <div class="pp-field"><span class="pp-label default">Osoba 2</span><input type="text" id="pp_team2" placeholder="Imi&#281;, nazwisko, rola"></div>
-      <div class="pp-field"><span class="pp-label default">Osoba 3</span><input type="text" id="pp_team3" placeholder="Imi&#281;, nazwisko, rola"></div>
+      <div class="pp-field"><span class="pp-label">Osoba 1</span><input type="text" id="pp_team1" placeholder="Imi&#281;, nazwisko, rola"></div>
+      <div class="pp-field"><span class="pp-label">Osoba 2</span><input type="text" id="pp_team2" placeholder="Imi&#281;, nazwisko, rola"></div>
+      <div class="pp-field"><span class="pp-label">Osoba 3</span><input type="text" id="pp_team3" placeholder="Imi&#281;, nazwisko, rola"></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">6. Ryzyka</div>
     <div class="pp-grid">
-      <div class="pp-field"><span class="pp-label default">Dane wra&#380;liwe?</span><div class="pp-yn"><label><input type="radio" name="pp_rodo" value="TAK"> TAK</label><label><input type="radio" name="pp_rodo" value="NIE"> NIE</label></div></div>
-      <div class="pp-field"><span class="pp-label default">Je&#347;li TAK — jak zabezpieczone?</span><input type="text" id="pp_rodo_opis" placeholder="np. Nagrania g&#322;osowe — szyfrowanie, retencja 30 dni"></div>
-      <div class="pp-field full"><span class="pp-label default">Inne blokery i zale&#380;no&#347;ci</span><textarea id="pp_blokery" placeholder="np. Brak potwierdzonego systemu rezerwacji"></textarea></div>
+      <div class="pp-field"><span class="pp-label">Dane wra&#380;liwe?</span><div class="pp-yn"><label><input type="radio" name="pp_rodo" value="TAK"> TAK</label><label><input type="radio" name="pp_rodo" value="NIE"> NIE</label></div></div>
+      <div class="pp-field"><span class="pp-label">Zabezpieczenie</span><input type="text" id="pp_rodo_opis" placeholder="np. Nagrania g&#322;osowe — szyfrowanie, retencja 30 dni"></div>
+      <div class="pp-field full"><span class="pp-label">Blokery</span><textarea id="pp_blokery" placeholder="np. Brak potwierdzonego systemu rezerwacji"></textarea></div>
     </div>
   </div>
   <div class="card">
     <div class="card-title">7. Harmonogram</div>
     <div class="pp-week-grid">
-      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field"><textarea id="pp_w1" rows="2" placeholder="Eksploracja, setup, pierwsze prompty"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field"><textarea id="pp_w2" rows="2" placeholder="Pierwszy prototyp"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field"><textarea id="pp_w3" rows="2" placeholder="Iteracja z grup&#261; robocz&#261;"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field"><textarea id="pp_w4" rows="2" placeholder="POC gotowy do przegl&#261;du"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 5<br><span style="font-weight:400;color:var(--text3)">4–8.05</span></div><div class="pp-field"><textarea id="pp_w5" rows="2" placeholder="Prezentacja progresu"></textarea></div>
-      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field"><textarea id="pp_prod" rows="2" placeholder="Osadzenie w &#347;rodowisku produkcyjnym"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 1<small style="display:block;font-weight:400;color:var(--text3)">7–10.04</small></div><div class="pp-field"><textarea id="pp_w1" rows="2" placeholder="Eksploracja, setup"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 2<small style="display:block;font-weight:400;color:var(--text3)">13–17.04</small></div><div class="pp-field"><textarea id="pp_w2" rows="2" placeholder="Pierwszy prototyp"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 3<small style="display:block;font-weight:400;color:var(--text3)">20–24.04</small></div><div class="pp-field"><textarea id="pp_w3" rows="2" placeholder="Iteracja z grup&#261; robocz&#261;"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 4<small style="display:block;font-weight:400;color:var(--text3)">27–30.04</small></div><div class="pp-field"><textarea id="pp_w4" rows="2" placeholder="POC do przegl&#261;du"></textarea></div>
+      <div class="pp-week-label">Tydzie&#324; 5<small style="display:block;font-weight:400;color:var(--text3)">4–8.05</small></div><div class="pp-field"><textarea id="pp_w5" rows="2" placeholder="Prezentacja progresu"></textarea></div>
+      <div class="pp-week-label">Produkcja<small style="display:block;font-weight:400;color:var(--text3)">11–29.05</small></div><div class="pp-field"><textarea id="pp_prod" rows="2" placeholder="Wdro&#380;enie produkcyjne"></textarea></div>
     </div>
   </div>
   <div class="pp-save-bar">
-    <span class="pp-saved-msg yellow" id="pp-saved-msg">&#10003; Zapisano paszport</span>
-    <button class="pp-save-btn yellow" onclick="savePP('pp','yellow')">Zapisz paszport</button>
+    <span class="pp-saved-msg" id="pp-saved-msg">&#10003; Zapisano</span>
+    <button class="pp-save-btn" onclick="savePP()">Zapisz paszport</button>
   </div>
 </div>
 
-<!-- O PROJEKCIE -->
+<!-- O PROJEKCIE M1 -->
 <div id="opis" class="panel">
-  <div class="card"><div class="card-title">Cel i kontekst biznesowy</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px">Voicebot Tutlo to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami <strong style="color:var(--text)">spotka&#324; pr&oacute;bnych</strong>. Bot kontaktuje si&#281; z klientami wychodz&#261;co i przychodz&#261;co.</p>
-    <p style="font-size:13px;color:var(--text2);line-height:1.8">G&#322;&#243;wnym problemem jest zbyt niski <strong style="color:var(--text)">show-up rate</strong>. Przy skali 500+ spotka&#324; miesi&#281;cznie wzrost o 10 pp ma bezpo&#347;rednie prze&#322;o&#380;enie na przychody.</p>
+  <div class="card">
+    <div class="card-title">Cel i kontekst biznesowy</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:12px">Voicebot Tutlo Modu&#322; 1 to automatyczny asystent g&#322;osowy dzia&#322;aj&#261;cy w j&#281;zyku polskim, kt&oacute;rego zadaniem jest zarz&#261;dzanie terminami <strong style="color:var(--text)">spotka&#324; pr&oacute;bnych</strong> z potencjalnymi klientami. Bot dzia&#322;a outbound (dzwoni przed spotkaniem) i inbound (odbiera gdy klient dzwoni).</p>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">G&#322;&#243;wny problem to niski <strong style="color:var(--text)">show-up rate</strong>. Przy 500+ spotkaniach miesi&#281;cznie wzrost o 10 pp ma bezpo&#347;rednie prze&#322;o&#380;enie na przychody.</p>
   </div>
-  <div class="card"><div class="card-title">Trzy g&#322;&#243;wne zadania voicebota</div>
-    <div class="tbox" style="border-left-color:#1A6BC4"><div class="tbox-title">01 — Potwierdzenie obecno&#347;ci</div><div class="tbox-body">Bot dzwoni przed spotkaniem, pyta czy klient si&#281; pojawi. Potwierdzenie rejestrowane w HubSpocie.</div></div>
-    <div class="tbox" style="border-left-color:#F5C800"><div class="tbox-title">02 — Prze&#322;o&#380;enie spotkania</div><div class="tbox-body">Bot proponuje alternatywne terminy z systemu rezerwacji, jeden po drugim. Po akceptacji rezerwuje i aktualizuje HubSpot.</div></div>
-    <div class="tbox" style="border-left-color:#C42020"><div class="tbox-title">03 — Anulowanie spotkania</div><div class="tbox-body">Bot anuluje rezerwacj&#281; i zwalnia slot dla innego klienta. Zdarzenie rejestrowane w HubSpocie.</div></div>
+  <div class="card">
+    <div class="card-title">Trzy g&#322;&#243;wne zadania</div>
+    <div class="tbox" style="border-left-color:#1A6BC4"><div class="tbox-title">01 &mdash; Potwierdzenie obecno&#347;ci</div><div class="tbox-body">Bot dzwoni przed spotkaniem i pyta czy klient si&#281; pojawi. Potwierdzenie rejestrowane w HubSpocie.</div></div>
+    <div class="tbox" style="border-left-color:#F5C800"><div class="tbox-title">02 &mdash; Prze&#322;o&#380;enie spotkania</div><div class="tbox-body">Bot proponuje alternatywne terminy z systemu rezerwacji jeden po drugim. Po akceptacji rezerwuje i aktualizuje HubSpot.</div></div>
+    <div class="tbox" style="border-left-color:#C42020"><div class="tbox-title">03 &mdash; Anulowanie spotkania</div><div class="tbox-body">Bot anuluje rezerwacj&#281;, zwalnia slot dla innego klienta. Zdarzenie rejestrowane w HubSpocie.</div></div>
   </div>
 </div>
 
-<!-- CHECKLISTA -->
+<!-- CHECKLISTA M1 -->
 <div id="checklist" class="panel">
   <div class="prog-wrap">
-    <div class="prog-header"><span class="prog-title">Post&#281;p realizacji projektu</span><span class="prog-count" id="prog-count">0 / 0 zada&#324;</span></div>
+    <div class="prog-header"><span class="prog-title">Post&#281;p realizacji &mdash; Modu&#322; 1</span><span class="prog-count" id="prog-count">0 / 0 zada&#324;</span></div>
     <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
     <div class="last-saved" id="last-saved"></div>
   </div>
   <div id="cl-container"></div>
 </div>
 
-<!-- KAMIENIE MILOWE -->
+<!-- MILESTONES M1 -->
 <div id="milestones" class="panel">
-  <div class="card"><div class="card-title">Harmonogram</div><div id="milestones-list"></div></div>
+  <div class="card"><div class="card-title">Harmonogram &mdash; Modu&#322; 1</div><div id="milestones-list"></div></div>
 </div>
 
-<!-- KPI -->
+<!-- KPI M1 -->
 <div id="kpi" class="panel">
   <div class="card" style="margin-bottom:1rem"><div class="card-title">KPI Biznesowe</div>
     <div class="kpi-row"><span class="kpi-name">Show-up rate</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">+10 pp / 60 dni</span></div>
-    <div class="kpi-row"><span class="kpi-name">Odzysk slot&oacute;w</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&gt;40%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Odzysk slot&oacute;w po anulowaniu</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&gt;40%</span></div>
     <div class="kpi-row"><span class="kpi-name">Czas obsadzenia slotu</span><span class="badge b-purple" style="margin-right:8px">Biznes</span><span class="kpi-target">&lt;2h</span></div>
   </div>
   <div class="card" style="margin-bottom:1rem"><div class="card-title">KPI Operacyjne</div>
@@ -429,19 +539,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
     <div class="kpi-row"><span class="kpi-name">Uptime</span><span class="badge b-amber" style="margin-right:8px">Tech</span><span class="kpi-target">&gt;99,5%</span></div>
   </div>
   <div class="card"><div class="card-title">KPI CX</div>
-    <div class="kpi-row"><span class="kpi-name">Naturalno&#347;&#263; rozmowy</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&ge;4,0</span></div>
+    <div class="kpi-row"><span class="kpi-name">Naturalno&#347;&#263; rozmowy (QA 1–5)</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&#8805;4,0</span></div>
     <div class="kpi-row"><span class="kpi-name">Wymowa dat i godzin</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;98%</span></div>
     <div class="kpi-row"><span class="kpi-name">Trafno&#347;&#263; intencji</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&gt;95%</span></div>
     <div class="kpi-row"><span class="kpi-name">Skargi klient&oacute;w</span><span class="badge b-teal" style="margin-right:8px">CX</span><span class="kpi-target">&lt;2%</span></div>
   </div>
 </div>
 
-<!-- RYZYKA -->
+<!-- RYZYKA M1 -->
 <div id="risks" class="panel">
-  <div class="card"><div class="card-title">Rejestr ryzyk</div><div id="risks-list"></div></div>
+  <div class="card"><div class="card-title">Rejestr ryzyk &mdash; Modu&#322; 1</div><div id="risks-list"></div></div>
 </div>
 
-<!-- STOS -->
+<!-- TECHNOLOGIE -->
 <div id="stack" class="panel">
   <div class="card"><div class="card-title">Mapa technologii</div><div class="stack-grid" id="stack-list"></div></div>
 </div>
@@ -449,7 +559,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
 <!-- RACI -->
 <div id="raci" class="panel">
   <div class="card">
-    <div class="card-title">Macierz RACI</div>
+    <div class="card-title">Macierz RACI &mdash; Modu&#322; 1</div>
     <div style="overflow-x:auto">
       <table class="raci-table">
         <thead><tr><th>Obszar</th><th>Dzia&#322; Operacyjny</th><th>Dzia&#322; CRM</th><th>Dzia&#322; DATA</th><th>IT / Dev</th></tr></thead>
@@ -460,452 +570,262 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,san
   </div>
 </div>
 
-<!-- ===== BACKOFFICE ===== -->
-<div id="backoffice" class="panel">
-  <div class="ka-hero purple">
-    <div>
-      <div class="ka-hero-title">&#128188; Karta Obszaru &mdash; Backoffice / CS</div>
-      <div class="ka-hero-sub">Owner: Magda Pawlak &middot; Wype&#322;niono: 8.04.2026 &middot; AI Champion Q2 2026</div>
-    </div>
-    <span class="hbadge hb-purple">Wype&#322;niono &#10003;</span>
-  </div>
-
-  <!-- FILLED DATA -->
-  <div class="card c-purple">
-    <div class="card-title purple">1. Zesp&oacute;&#322;</div>
-    <div class="pp-grid">
-      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Owner obszaru</div><div style="font-size:13px;font-weight:600">Magda Pawlak</div><div style="font-size:12px;color:var(--text2)">Head of Backoffice / CS</div></div>
-      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Grupa robocza (testerzy)</div><div style="font-size:13px;color:var(--text2)">Mateusz Pi&#281;tak<br>Adrianna Stasiak<br>Miko&#322;aj Dudek<br><em style="font-size:11px;color:var(--text3)">(lista do potwierdzenia)</em></div></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">2. Obszary pracy Backoffice</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Zarz&#261;dzanie kalendarzem i rezerwacjami slot&oacute;w</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Aktualizacja danych klient&oacute;w w CRM (HubSpot)</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Obs&#322;uga anulowa&#324; i przek&#322;ada&#324; spotka&#324;</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Raportowanie i kontrola jako&#347;ci danych</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Komunikacja wewn&#281;trzna i powiadomienia</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Obs&#322;uga reklamacji i eskalacji</div>
-      <div style="display:flex;gap:8px;align-items:flex-start;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Zarz&#261;dzanie dokumentacj&#261; i procedurami</div>
-    </div>
-    <div style="background:#F3EEFA;border-radius:var(--rs);padding:10px 14px;border-left:3px solid var(--purple2)">
-      <div style="font-size:11px;font-weight:700;color:var(--purple2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Dodatkowe obszary CS (kluczowe)</div>
-      <div style="font-size:12px;color:var(--text2);line-height:1.8">
-        Obs&#322;uga zg&#322;osze&#324; od Klient&oacute;w (Infolinia, maile, chatbot) &middot; Reklamacje &middot; RODO &middot; Aneksy i dokumenty &middot; Program polece&#324; &middot; Obs&#322;uga Promocji sprzeda&#380;owych &middot; Wsparcie B2B &middot; Lekcje umawiane &middot; Opinie (TP, RC, Google) &middot; NPS &middot; Moderowanie komentarzy &middot; Proces oceny po lekcji &middot; Tutlo Premium
-      </div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">3. Problem i cel</div>
-    <div class="tbox" style="border-left-color:var(--purple2)">
-      <div class="tbox-title">&#128269; Problem</div>
-      <div class="tbox-body">Obs&#322;uga po&#322;&#261;cze&#324; przychodz&#261;cych bez konieczno&#347;ci dodatkowych rekrutacji — szczeg&oacute;lnie w sezonie. Standaryzacja informacji przekazywanych do Klient&oacute;w. Udzielenie podstawowych informacji bez wykorzystania zasob&oacute;w ludzkich na pierwszej linii CS.</div>
-    </div>
-    <div class="tbox" style="border-left-color:#C9A8FF">
-      <div class="tbox-title">&#127919; Oczekiwane dzia&#322;ania Voicebota</div>
-      <div class="tbox-body">Udzielanie podstawowych informacji w oparciu o pytania Klient&oacute;w. W przypadku niewystarczaj&#261;cej odpowiedzi &mdash; przekierowanie do konsultanta (pierwsza iteracja).</div>
-    </div>
-    <div class="tbox" style="border-left-color:#E0D8F0;margin-bottom:0">
-      <div class="tbox-title">&#128101; U&#380;ytkownik ko&#324;cowy</div>
-      <div class="tbox-body">Klienci Tutlo. Je&#347;li po&#322;&#261;czenie zostanie przekierowane &mdash; obs&#322;uga standardowa przez Backoffice/CS.</div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">4. Kryteria sukcesu</div>
-    <div class="kpi-row"><span class="kpi-name">Redukcja po&#322;&#261;cze&#324; obs&#322;ugiwanych przez ludzi</span><span class="badge b-purple2" style="margin-right:8px">G&#322;&#243;wna</span><span class="kpi-target" style="color:var(--purple2)">-15%</span></div>
-    <div class="kpi-row"><span class="kpi-name">% po&#322;&#261;cze&#324; obs&#322;u&#380;onych (bot + CS &#322;&#261;cznie)</span><span class="badge b-purple2" style="margin-right:8px">Dodatkowa</span><span class="kpi-target" style="color:var(--purple2)">&ge;95%</span></div>
-    <div class="kpi-row"><span class="kpi-name">Baseline &mdash; po&#322;&#261;czenia w lutym 2026</span><span class="badge b-gray" style="margin-right:8px">Baseline</span><span class="kpi-target">5 291</span></div>
-    <div class="kpi-row"><span class="kpi-name">Cel Q2 &mdash; obs&#322;u&#380;one voicebotem bez CS</span><span class="badge b-purple2" style="margin-right:8px">Cel Q2</span><span class="kpi-target" style="color:var(--purple2)">15% = ~794</span></div>
-    <div class="kpi-row" style="border-bottom:none"><span class="kpi-name">NPS na badanej grupie</span><span class="badge b-gray" style="margin-right:8px">Do ustalenia</span><span class="kpi-target">TBD</span></div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">5. Narz&#281;dzia i systemy</div>
-    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
-      <div style="display:flex;gap:8px;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>HubSpot CRM</div>
-      <div style="display:flex;gap:8px;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Wewn&#281;trzny system rezerwacji</div>
-      <div style="display:flex;gap:8px;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>Arkusze Google / Excel</div>
-      <div style="display:flex;gap:8px;font-size:13px"><span style="background:#F3EEFA;color:var(--purple2);padding:1px 7px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0">&#10003;</span>BigQuery / raporty</div>
-    </div>
-    <div style="background:#FFF8D6;border-radius:var(--rs);padding:10px 14px;border-left:3px solid var(--yellow-dark)">
-      <div style="font-size:11px;font-weight:700;color:#7A6000;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">&#9888; Krytyczne dane (Iteracja 1)</div>
-      <div style="font-size:13px;color:var(--text2)">W pierwszej iteracji focus wy&#322;&#261;cznie na systemie <strong style="color:var(--text)">Focus</strong></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">6. Ryzyka i blokery</div>
-    <div class="risk-row">
-      <div class="risk-dot" style="background:#C42020"></div>
-      <div><div class="risk-title">Dane wra&#380;liwe klient&oacute;w</div><div class="risk-desc">Klienci mog&#261; przekazywa&#263; dane w celu weryfikacji. Wymagana konsultacja z Data Protection Officer (DP).</div><div class="risk-owner">Wlasciciel: Magda Pawlak + Dzia&#322; Prawny</div></div>
-    </div>
-    <div class="risk-row" style="border-bottom:none">
-      <div class="risk-dot" style="background:#EF9F27"></div>
-      <div><div class="risk-title">Jako&#347;&#263; narz&#281;dzia</div><div class="risk-desc">Ryzyko niewystarczaj&#261;cej jako&#347;ci odpowiedzi voicebota na pierwszej linii CS.</div><div class="risk-owner">Wlasciciel: IT/Dev + Magda Pawlak</div></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">7. Harmonogram Backoffice</div>
-    <div style="font-size:13px;color:var(--text2)">
-      <div class="m-row"><span class="badge b-gray" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">7–10.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 1</div><div class="m-sub" style="color:var(--text3);font-style:italic">Brak zada&#324; w tym tygodniu</div></div></div>
-      <div class="m-row"><span class="badge b-purple2" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">13–17.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 2</div><div class="m-sub">Spotkanie z grup&#261; robocz&#261; CS &middot; Wyznaczenie poziomu odpowiedzialno&#347;ci &middot; Nadanie dost&#281;pu do narz&#281;dzia</div></div></div>
-      <div class="m-row"><span class="badge b-purple2" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">20–24.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 3</div><div class="m-sub">Implementacja bazy &middot; Rozpocz&#281;cie test&oacute;w</div></div></div>
-      <div class="m-row"><span class="badge b-purple2" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">27–30.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 4</div><div class="m-sub">Testy</div></div></div>
-      <div class="m-row" style="border-bottom:none"><span class="badge b-green" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">11–29.05</span><div class="m-body"><div class="m-title">Produkcja</div><div class="m-sub">Testy na produkcji</div></div></div>
-    </div>
-  </div>
-
-  <div style="background:#FFF8D6;border:1px solid var(--yellow-dark);border-radius:var(--r);padding:1rem 1.5rem;margin-bottom:1rem">
-    <div style="font-size:12px;font-weight:700;color:#7A6000;margin-bottom:6px">&#9888; Wa&#380;na obserwacja strategiczna</div>
-    <div style="font-size:13px;color:var(--text2);line-height:1.7">Backoffice definiuje swój Voicebot jako <strong style="color:var(--text)">infolini&#281; CS przychodz&#261;c&#261;</strong> — to inny zakres ni&#380; Modu&#322; 1 (potwierdzenia spotka&#324;). To potencjalnie <strong style="color:var(--text)">Modu&#322; 2</strong> projektu Voicebot. Wymaga osobnego alignmentu z w&#322;a&#347;cicielem projektu.</div>
-  </div>
-
-  <!-- ODKRYWANIE POTRZEB -->
-  <div class="card c-purple">
-    <div class="card-title purple">1. Odkrycie potrzeb &mdash; co robi Backoffice?</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">Zaznacz wszystkie obszary w kt&oacute;rych Backoffice jest zaanga&#380;owany. To pomo&#380;e okre&#347;li&#263; gdzie Voicebot mo&#380;e wnie&#347;&#263; najwi&#281;ksz&#261; warto&#347;&#263;.</p>
-    <div class="checkboxes" id="bo-areas">
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a1"><span>Zarz&#261;dzanie kalendarzem i rezerwacjami slot&oacute;w lekcji</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a2"><span>Aktualizacja danych klient&oacute;w w CRM (HubSpot)</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a3"><span>Obs&#322;uga anulowa&#324; i przek&#322;ada&#324; spotka&#324;</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a4"><span>Raportowanie i kontrola jako&#347;ci danych</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a5"><span>Komunikacja wewn&#281;trzna i powiadomienia dla zespo&#322;u</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a6"><span>Obs&#322;uga reklamacji i eskalacji od klient&oacute;w</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a7"><span>Zarz&#261;dzanie dokumentacj&#261; i procedurami</span></label>
-      <label class="cb-opt purple"><input type="checkbox" data-key="bo_a8"><span>Inne (opisz poni&#380;ej)</span></label>
-    </div>
-    <div style="margin-top:10px">
-      <div class="pp-field purple"><textarea id="bo_inne" rows="2" placeholder="Opisz inne obszary pracy Backoffice..."></textarea></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">2. Problem i cel</div>
-    <div class="pp-grid">
-      <div class="pp-field full purple">
-        <span class="pp-label purple">Jaki problem chcesz rozwi&#261;za&#263; Voicebotem?</span>
-        <span class="pp-hint">Np. za du&#380;o r&#281;cznej pracy przy aktualizacji kalendarzy, b&#322;&#281;dy w danych, op&oacute;&#378;nienia</span>
-        <textarea id="bo_problem" placeholder="Opisz g&#322;&#243;wny problem operacyjny..."></textarea>
-      </div>
-      <div class="pp-field full purple">
-        <span class="pp-label purple">Co konkretnie ma robi&#263; Voicebot dla Backoffice?</span>
-        <span class="pp-hint">Np. automatycznie zwalnia&#263; sloty po anulowaniu, wysy&#322;a&#263; powiadomienia do konsultant&oacute;w</span>
-        <textarea id="bo_cel" placeholder="Opisz oczekiwane dzia&#322;ania bota..."></textarea>
-      </div>
-      <div class="pp-field full purple">
-        <span class="pp-label purple">Kto w Backoffice b&#281;dzie u&#380;ytkownikiem tego rozwi&#261;zania?</span>
-        <input type="text" id="bo_user" placeholder="np. Koordynatorzy, specjali&#347;ci ds. harmonogram&oacute;w">
-      </div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">3. Kryteria sukcesu</div>
-    <div class="pp-grid">
-      <div class="pp-field purple">
-        <span class="pp-label purple">Metryka g&#322;&#243;wna</span>
-        <input type="text" id="bo_metryka1" placeholder="np. Redukcja r&#281;cznych aktualizacji o X%">
-      </div>
-      <div class="pp-field purple">
-        <span class="pp-label purple">Metryka dodatkowa</span>
-        <input type="text" id="bo_metryka2" placeholder="np. Czas zwolnienia slotu &lt; 5 min">
-      </div>
-      <div class="pp-field purple">
-        <span class="pp-label purple">Baseline (stan obecny)</span>
-        <textarea id="bo_baseline" rows="2" placeholder="Ile czasu zajmuje to r&#281;cznie? Ile b&#322;&#281;d&oacute;w?"></textarea>
-      </div>
-      <div class="pp-field purple">
-        <span class="pp-label purple">Cel na koniec Q2</span>
-        <textarea id="bo_cel_q2" rows="2" placeholder="Co chcemy osi&#261;gn&#261;&#263;?"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">4. Technologie i integracje</div>
-    <div class="pp-grid">
-      <div class="pp-field full purple">
-        <span class="pp-label purple">Z jakimi systemami pracuje Backoffice na co dzie&#324;?</span>
-        <div class="checkboxes" style="margin-top:6px" id="bo-tools">
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t1"><span>HubSpot CRM</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t2"><span>System rezerwacji / kalendarz (wewn&#281;trzny)</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t3"><span>Google Calendar / Outlook</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t4"><span>Arkusze Google / Excel</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t5"><span>Slack / Teams (komunikacja)</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t6"><span>BigQuery / raporty</span></label>
-          <label class="cb-opt purple"><input type="checkbox" data-key="bo_t7"><span>Inne narz&#281;dzie</span></label>
-        </div>
-      </div>
-      <div class="pp-field full purple">
-        <span class="pp-label purple">Jakie dane s&#261; krytyczne dla Backoffice?</span>
-        <span class="pp-hint">Np. termin spotkania, status klienta, nazwisko konsultanta</span>
-        <textarea id="bo_dane" placeholder="Wymie&#324; kluczowe dane..."></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">5. Zesp&oacute;&#322;</div>
-    <div class="pp-grid">
-      <div class="pp-field purple"><span class="pp-label purple">Owner obszaru w Backoffice</span><input type="text" id="bo_owner" placeholder="Imi&#281; i nazwisko"></div>
-      <div class="pp-field purple"><span class="pp-label purple">Osoby do testowania</span><input type="text" id="bo_testers" placeholder="Imi&#281;, nazwisko (2-3 osoby)"></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">6. Ryzyka i blokery</div>
-    <div class="pp-grid">
-      <div class="pp-field purple">
-        <span class="pp-label purple">Dane wra&#380;liwe w procesie?</span>
-        <div class="pp-yn purple">
-          <label><input type="radio" name="bo_rodo" value="TAK"> TAK</label>
-          <label><input type="radio" name="bo_rodo" value="NIE"> NIE</label>
-        </div>
-      </div>
-      <div class="pp-field purple"><span class="pp-label purple">Je&#347;li TAK — jakie i jak zabezpieczone?</span><input type="text" id="bo_rodo_opis" placeholder="np. dane klient&oacute;w, zgody"></div>
-      <div class="pp-field full purple"><span class="pp-label purple">Blokery i zale&#380;no&#347;ci</span><textarea id="bo_blokery" placeholder="Co mo&#380;e zablokowa&#263; wdro&#380;enie po stronie Backoffice?"></textarea></div>
-    </div>
-  </div>
-
-  <div class="card c-purple">
-    <div class="card-title purple">7. Harmonogram Backoffice</div>
-    <div class="pp-week-grid">
-      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field purple"><textarea id="bo_w1" rows="2" placeholder="Mapowanie proces&oacute;w, identyfikacja obszar&oacute;w do automatyzacji"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field purple"><textarea id="bo_w2" rows="2" placeholder="Pierwsze testy integracji z systemem rezerwacji"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field purple"><textarea id="bo_w3" rows="2" placeholder="Testy z zespo&#322;em Backoffice"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field purple"><textarea id="bo_w4" rows="2" placeholder="Akceptacja i sign-off Backoffice"></textarea></div>
-      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field purple"><textarea id="bo_prod" rows="2" placeholder="Wdro&#380;enie na produkcj&#281;"></textarea></div>
-    </div>
-  </div>
-
-  <div class="pp-save-bar">
-    <span class="pp-saved-msg purple" id="bo-saved-msg">&#10003; Zapisano kart&#281; Backoffice</span>
-    <button class="pp-save-btn purple" onclick="savePP('bo','purple')">Zapisz kart&#281; Backoffice</button>
-  </div>
-</div>
-
-<!-- ===== REKRUTACJA ===== -->
+<!-- MODUŁ 2 — REKRUTACJA -->
 <div id="rekrutacja" class="panel">
   <div class="ka-hero green">
     <div>
-      <div class="ka-hero-title">&#128101; Karta Obszaru &mdash; Rekrutacja</div>
-      <div class="ka-hero-sub">Voicebot do komunikacji z kandydatami &middot; Wype&#322;nij poni&#380;szy arkusz</div>
+      <div class="ka-hero-title">&#128101; Modu&#322; 2 &mdash; Voicebot Rekrutacja</div>
+      <div class="ka-hero-sub">Owner: Maciej Zi&#281;ba &middot; Wype&#322;ni&#322;: Damian &#321;ugowski &middot; 8.04.2026</div>
     </div>
-    <span class="hbadge hb-green">AI Champion Q2 2026</span>
+    <span class="hbadge hb-green">Dane zebrane &#10003;</span>
   </div>
 
   <div class="card c-green">
-    <div class="card-title green">1. Cel i kontekst biznesowy</div>
-    <div class="pp-grid">
-      <div class="pp-field full green">
-        <span class="pp-label green">Problem kt&oacute;ry Voicebot ma rozwi&#261;za&#263; w Rekrutacji</span>
-        <span class="pp-hint">Np. kandydaci nie pojawiaj&#261; si&#281; na rozmowach, du&#380;o czasu na potwierdzanie termin&oacute;w telefonicznie</span>
-        <textarea id="rek_problem" placeholder="Opisz problem..."></textarea>
-      </div>
-      <div class="pp-field full green">
-        <span class="pp-label green">Oczekiwany rezultat</span>
-        <textarea id="rek_rezultat" placeholder="np. Bot automatycznie potwierdza terminy rozm&oacute;w kwalifikacyjnych, sk&#322;ada kandydatom propozycj&#281; prze&#322;o&#380;enia gdy nie mog&#261; przyj&#347;&#263;"></textarea>
-      </div>
-      <div class="pp-field full green">
-        <span class="pp-label green">Kto jest u&#380;ytkownikiem?</span>
-        <div class="checkboxes" style="margin-top:6px">
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u1" style="accent-color:var(--green2)"><span>Kandydaci zewn&#281;trzni (potencjalni pracownicy)</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u2" style="accent-color:var(--green2)"><span>Rekruterzy (monitoring, eskalacje)</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u3" style="accent-color:var(--green2)"><span>Hiring managerowie (informacje o statusie)</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_u4" style="accent-color:var(--green2)"><span>Lektorzy / interviewerzy Tutlo</span></label>
-        </div>
-      </div>
+    <div class="card-title green">1. Zesp&oacute;&#322;</div>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">Owner obszaru</div><div style="font-size:13px;font-weight:600">Maciej Zi&#281;ba</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">Wype&#322;ni&#322; formularz</div><div style="font-size:13px;font-weight:600">Damian &#321;ugowski</div><div style="font-size:12px;color:var(--text2)">Onboarding &amp; Employee Experience Partner</div></div>
+      <div class="tech-box" style="grid-column:1/-1"><div class="tech-lbl" style="color:var(--green2)">Testerzy</div><div style="font-size:13px;color:var(--text2)">Maciej Zi&#281;ba &middot; Zofia Mirgos</div></div>
     </div>
   </div>
 
   <div class="card c-green">
-    <div class="card-title green">2. G&#322;&#243;wne zadania Voicebota w Rekrutacji</div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem">Zaznacz kt&oacute;re scenariusze chcesz obs&#322;u&#380;y&#263;:</p>
-    <div class="checkboxes" id="rek-tasks">
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t1" style="accent-color:var(--green2)"><span><strong>Potwierdzenie rozmowy kwalifikacyjnej</strong> &mdash; bot dzwoni do kandydata i pyta czy pojawi si&#281; na rozmowie</span></label>
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t2" style="accent-color:var(--green2)"><span><strong>Prze&#322;o&#380;enie rozmowy</strong> &mdash; kandydat nie mo&#380;e, bot proponuje alternatywne terminy z kalendarza rekrutera</span></label>
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t3" style="accent-color:var(--green2)"><span><strong>Anulowanie i zapis rezygnacji</strong> &mdash; kandydat rezygnuje, bot zwalnia slot i informuje rekrutera</span></label>
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t4" style="accent-color:var(--green2)"><span><strong>Przypomnienie przed rozmow&#261;</strong> &mdash; SMS lub call 24h i 2h przed terminem</span></label>
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t5" style="accent-color:var(--green2)"><span><strong>Zebranie podstawowych informacji od kandydata</strong> &mdash; np. potwierdzenie j&#281;zyka, dost&#281;pno&#347;ci, CV</span></label>
-      <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_t6" style="accent-color:var(--green2)"><span><strong>Eskalacja do rekrutera</strong> &mdash; gdy kandydat ma pytania kt&oacute;rych bot nie obs&#322;uguje</span></label>
+    <div class="card-title green">2. Problem i cel (Iteracja 1)</div>
+    <div class="tbox" style="border-left-color:var(--green2)">
+      <div class="tbox-title">&#128269; Problem</div>
+      <div class="tbox-body">Sporo czasu po&#347;wi&#281;ca si&#281; kandydatom na wst&#281;pny screening telefoniczny, kt&oacute;ry jest powtarzalny. Etap wst&#281;pnej kwalifikacji zajmuje 3–5 dni i jest obs&#322;ugiwany manualnie przez 2 rekruter&oacute;w (~58h/mies. na 100 rozm&oacute;w).</div>
     </div>
-    <div style="margin-top:10px">
-      <div class="pp-field green"><span class="pp-label green">Inne scenariusze</span><textarea id="rek_inne" rows="2" placeholder="Opisz dodatkowe scenariusze..."></textarea></div>
+    <div class="tbox" style="border-left-color:#7FD9A0">
+      <div class="tbox-title">&#127919; Oczekiwany rezultat (Iteracja 1)</div>
+      <div class="tbox-body">Bot automatycznie potwierdza termin rozmowy kwalifikacyjnej (2h przed) + wysy&#322;a przypomnienie SMS i e-mail. Eskalacja do rekrutera gdy kandydat pyta o szczeg&oacute;&#322;y warunk&oacute;w.</div>
     </div>
-  </div>
-
-  <div class="card c-green">
-    <div class="card-title green">3. Kryteria sukcesu</div>
-    <div class="pp-grid">
-      <div class="pp-field green"><span class="pp-label green">Metryka g&#322;&#243;wna</span><input type="text" id="rek_metryka1" placeholder="np. Wzrost show-up rate kandydat&oacute;w o X pp"></div>
-      <div class="pp-field green"><span class="pp-label green">Metryka dodatkowa</span><input type="text" id="rek_metryka2" placeholder="np. % rozmow potwierdzonych automatycznie"></div>
-      <div class="pp-field green"><span class="pp-label green">Baseline (stan obecny)</span><textarea id="rek_baseline" rows="2" placeholder="Ile % kandydat&oacute;w pojawia si&#281; na rozmowach? Ile czasu zajmuje potwierdzanie?"></textarea></div>
-      <div class="pp-field green"><span class="pp-label green">Cel na koniec Q2</span><textarea id="rek_cel_q2" rows="2" placeholder="Docelowe warto&#347;ci..."></textarea></div>
+    <div class="alert-box alert-yellow" style="margin-top:12px;margin-bottom:0">
+      <div class="alert-title">&#128204; Backlog — wizja d&#322;ugoterminowa (poza zakresem Iteracji 1)</div>
+      <div class="alert-body">Screening kandydat&oacute;w (weryfikacja warunk&oacute;w z formularza) &middot; Trener AI do Sales Onboardingu (scenki sprzeda&#380;owe) — do rozwa&#380;enia w Q3/Q4</div>
     </div>
   </div>
 
   <div class="card c-green">
-    <div class="card-title green">4. Technologie i integracje</div>
-    <div class="pp-grid">
-      <div class="pp-field full green">
-        <span class="pp-label green">Systemy u&#380;ywane w Rekrutacji</span>
-        <div class="checkboxes" style="margin-top:6px">
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s1" style="accent-color:var(--green2)"><span>ATS (system rekrutacyjny) &mdash; podaj nazw&#281;</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s2" style="accent-color:var(--green2)"><span>HubSpot CRM</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s3" style="accent-color:var(--green2)"><span>Google Calendar / Outlook</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s4" style="accent-color:var(--green2)"><span>Slack / Teams</span></label>
-          <label class="cb-opt" style="border-color:var(--border)"><input type="checkbox" data-key="rek_s5" style="accent-color:var(--green2)"><span>Inne narz&#281;dzie rekrutacyjne</span></label>
-        </div>
-      </div>
-      <div class="pp-field full green">
-        <span class="pp-label green">Nazwa ATS / systemu rekrutacyjnego (je&#347;li jest)</span>
-        <input type="text" id="rek_ats" placeholder="np. Greenhouse, Workable, Lever, w&#322;asny system">
-      </div>
-      <div class="pp-field full green">
-        <span class="pp-label green">Podej&#347;cie techniczne</span>
-        <span class="pp-hint">Jakie narz&#281;dzia maj&#261; by&#263; u&#380;yte? (wype&#322;ni IT/Dev, ale Rekrutacja mo&#380;e wskaza&#263; preferencje)</span>
-        <textarea id="rek_tech" placeholder="np. ElevenLabs (g&#322;os PL), Gemini (logika), n8n (integracja z ATS i kalendarzem rekrutera)"></textarea>
-      </div>
-    </div>
+    <div class="card-title green">3. Scenariusze Iteracji 1</div>
+    <div class="tbox" style="border-left-color:var(--green2)"><div class="tbox-title">&#10003; Potwierdzenie rozmowy kwalifikacyjnej</div><div class="tbox-body">Bot dzwoni 2h przed rozmow&#261; i pyta czy kandydat si&#281; pojawi.</div></div>
+    <div class="tbox" style="border-left-color:#7FD9A0"><div class="tbox-title">&#10003; Przypomnienie SMS + e-mail</div><div class="tbox-body">Automatyczne przypomnienie wysy&#322;ane przed rozmow&#261; kwalifikacyjn&#261;.</div></div>
+    <div class="tbox" style="border-left-color:#C8E8D0"><div class="tbox-title">&#10003; Eskalacja do rekrutera</div><div class="tbox-body">Gdy kandydat pyta o szczeg&oacute;&#322;y: warunki finansowe, godziny wsp&oacute;&#322;pracy, tryb pracy — transfer do rekrutera.</div></div>
   </div>
 
   <div class="card c-green">
-    <div class="card-title green">5. Zesp&oacute;&#322;</div>
-    <div class="pp-grid">
-      <div class="pp-field green"><span class="pp-label green">AI Champion / Owner w Rekrutacji</span><input type="text" id="rek_owner" placeholder="Imi&#281; i nazwisko"></div>
-      <div class="pp-field green"><span class="pp-label green">Osoby do testowania</span><input type="text" id="rek_testers" placeholder="Rekruterzy testuj&#261;cy bota (2-3 osoby)"></div>
-      <div class="pp-field full green"><span class="pp-label green">Wsp&oacute;&#322;praca z innymi dzia&#322;ami</span><input type="text" id="rek_wspolpraca" placeholder="np. IT/Dev (konfiguracja), Backoffice (system kalendarzy), HR (procesy)"></div>
+    <div class="card-title green">4. Kryteria sukcesu</div>
+    <div class="kpi-row"><span class="kpi-name">Kwalifikacji obs&#322;u&#380;onych autonomicznie</span><span class="badge b-green2" style="margin-right:8px">G&#322;&#243;wna</span><span class="kpi-target" style="color:var(--green2)">&#8805;70%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Oszcz&#281;dno&#347;&#263; czasu</span><span class="badge b-green2" style="margin-right:8px">G&#322;&#243;wna</span><span class="kpi-target" style="color:var(--green2)">~41h/mies.</span></div>
+    <div class="kpi-row"><span class="kpi-name">Oszcz&#281;dno&#347;&#263; finansowa</span><span class="badge b-green2" style="margin-right:8px">G&#322;&#243;wna</span><span class="kpi-target" style="color:var(--green2)">~23 000 z&#322;/rok</span></div>
+    <div class="kpi-row"><span class="kpi-name">Skr&oacute;cenie Time to Offer</span><span class="badge b-green" style="margin-right:8px">Dodatkowa</span><span class="kpi-target" style="color:var(--green2)">-2 dni</span></div>
+    <div class="kpi-row"><span class="kpi-name">Baseline &mdash; Time to Offer</span><span class="badge b-gray" style="margin-right:8px">Baseline</span><span class="kpi-target">12 dni</span></div>
+    <div class="kpi-row" style="border-bottom:none"><span class="kpi-name">Baseline &mdash; czas kwalifikacji</span><span class="badge b-gray" style="margin-right:8px">Baseline</span><span class="kpi-target">3–5 dni / 58h mies.</span></div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-title green">5. Systemy i integracje</div>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">ATS</div><div style="font-size:13px;font-weight:600">Traffit</div><div style="font-size:12px;color:var(--text2)">Integracja kluczowa dla Iteracji 2</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">CRM</div><div style="font-size:13px">HubSpot CRM</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">Kalendarz</div><div style="font-size:13px">Google Calendar / Outlook</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--green2)">Komunikacja</div><div style="font-size:13px">Slack / Teams</div></div>
+    </div>
+    <div style="background:var(--green2-light);border-radius:var(--rs);padding:10px 14px;margin-top:10px;border-left:3px solid var(--green2)">
+      <div style="font-size:11px;font-weight:700;color:var(--green2);text-transform:uppercase;margin-bottom:4px">Wymagania techniczne (Damian)</div>
+      <div style="font-size:13px;color:var(--text2)">Naturalny g&#322;os PL &middot; Integracja z Traffitem &middot; Transkrypcja rozmów &middot; Ocena kandydata wg klucza odpowiedzi &middot; Podsumowanie do rekrutera i Hiring Managera</div>
     </div>
   </div>
 
   <div class="card c-green">
     <div class="card-title green">6. Ryzyka i blokery</div>
-    <div class="pp-grid">
-      <div class="pp-field green">
-        <span class="pp-label green">Dane wra&#380;liwe kandydat&oacute;w?</span>
-        <div class="pp-yn green">
-          <label><input type="radio" name="rek_rodo" value="TAK"> TAK</label>
-          <label><input type="radio" name="rek_rodo" value="NIE"> NIE</label>
-        </div>
-      </div>
-      <div class="pp-field green"><span class="pp-label green">Je&#347;li TAK — jak zabezpieczone?</span><input type="text" id="rek_rodo_opis" placeholder="np. Nagrania rozmów — zgoda RODO, retencja 30 dni"></div>
-      <div class="pp-field full green"><span class="pp-label green">Blokery i zale&#380;no&#347;ci</span><textarea id="rek_blokery" placeholder="Np. brak API w obecnym ATS, brak zgody kandydat&oacute;w na kontakt automatyczny..."></textarea></div>
+    <div class="risk-row">
+      <div class="risk-dot" style="background:#C42020"></div>
+      <div><div class="risk-title">Brak zgody RODO kandydat&oacute;w</div><div class="risk-desc">Kandydaci nie wyrazili zgody na kontakt automatyczny. Wymagana procedura uzyskania zgód przed wdro&#380;eniem.</div><div class="risk-owner">Wlasciciel: Dzia&#322; Prawny + Maciej Zi&#281;ba</div></div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-dot" style="background:#C42020"></div>
+      <div><div class="risk-title">Brak formularza progresywnego w procesie</div><div class="risk-desc">Formularz progresywny nie jest jeszcze wdro&#380;ony — blokuje pe&#322;ny screening przez bota.</div><div class="risk-owner">Wlasciciel: Maciej Zi&#281;ba + IT</div></div>
+    </div>
+    <div class="risk-row">
+      <div class="risk-dot" style="background:#EF9F27"></div>
+      <div><div class="risk-title">Opory kandydat&oacute;w</div><div class="risk-desc">Kandydaci mog&#261; preferowa&#263; ocen&#281; przez cz&#322;owieka, nie bota. Wymaga komunikacji i zarz&#261;dzania zmian&#261;.</div><div class="risk-owner">Wlasciciel: Maciej Zi&#281;ba</div></div>
+    </div>
+    <div class="risk-row" style="border-bottom:none">
+      <div class="risk-dot" style="background:#EF9F27"></div>
+      <div><div class="risk-title">Szybko&#347;&#263; wdro&#380;enia ze strony Prawnego</div><div class="risk-desc">Przedlu&#380;anie wydania zgody z Dzia&#322;u Prawnego mo&#380;e op&oacute;&#378;ni&#263; start.</div><div class="risk-owner">Wlasciciel: Dzia&#322; Prawny</div></div>
     </div>
   </div>
 
   <div class="card c-green">
-    <div class="card-title green">7. Harmonogram Rekrutacja</div>
-    <div class="pp-week-grid">
-      <div class="pp-week-label">Tydzie&#324; 1<br><span style="font-weight:400;color:var(--text3)">7–10.04</span></div><div class="pp-field green"><textarea id="rek_w1" rows="2" placeholder="Mapowanie procesu rekrutacyjnego, identyfikacja scenariuszy"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 2<br><span style="font-weight:400;color:var(--text3)">13–17.04</span></div><div class="pp-field green"><textarea id="rek_w2" rows="2" placeholder="Pierwsze testy bota z kandydatami testowymi"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 3<br><span style="font-weight:400;color:var(--text3)">20–24.04</span></div><div class="pp-field green"><textarea id="rek_w3" rows="2" placeholder="Iteracja z rekruterami, korekty scenariuszy"></textarea></div>
-      <div class="pp-week-label">Tydzie&#324; 4<br><span style="font-weight:400;color:var(--text3)">27–30.04</span></div><div class="pp-field green"><textarea id="rek_w4" rows="2" placeholder="Sign-off Rekrutacji, gotowo&#347;&#263; do pilotu"></textarea></div>
-      <div class="pp-week-label">Produkcja<br><span style="font-weight:400;color:var(--text3)">11–29.05</span></div><div class="pp-field green"><textarea id="rek_prod" rows="2" placeholder="Wdro&#380;enie na produkcj&#281; w procesie rekrutacyjnym"></textarea></div>
+    <div class="card-title green">7. Wsp&oacute;&#322;praca</div>
+    <div style="font-size:13px;color:var(--text2);line-height:1.8">
+      <p style="margin-bottom:6px"><strong style="color:var(--text)">Dzia&#322; Prawny:</strong> Zgody RODO kandydat&oacute;w na kontakt automatyczny</p>
+      <p style="margin-bottom:6px"><strong style="color:var(--text)">Helpdesk IT:</strong> Integracja z Traffitem, konfiguracja narz&#281;dzi</p>
+      <p><strong style="color:var(--text)">Sie&#263; sprzeda&#380;y (managerowie):</strong> Hiring managerowie jako odbiorcy podsumowa&#324;</p>
     </div>
-  </div>
-
-  <div class="pp-save-bar">
-    <span class="pp-saved-msg green" id="rek-saved-msg">&#10003; Zapisano kart&#281; Rekrutacji</span>
-    <button class="pp-save-btn green" onclick="savePP('rek','green')">Zapisz kart&#281; Rekrutacji</button>
   </div>
 </div>
 
-<div class="footer">Tutlo Voicebot &mdash; Karta Projektu v1.0 &middot; AI Champion Q2 2026 &middot; Dzia&#322; Operacyjny</div>
+<!-- MODUŁ 3 — CS BACKOFFICE -->
+<div id="backoffice" class="panel">
+  <div class="ka-hero purple">
+    <div>
+      <div class="ka-hero-title">&#128188; Modu&#322; 3 &mdash; Voicebot CS Backoffice</div>
+      <div class="ka-hero-sub">Owner: Magda Pawlak &middot; Wype&#322;niono: 8.04.2026 &middot; AI Champion Q2 2026</div>
+    </div>
+    <span class="hbadge hb-purple">Dane zebrane &#10003;</span>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">1. Zesp&oacute;&#322;</div>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Owner obszaru</div><div style="font-size:13px;font-weight:600">Magda Pawlak</div><div style="font-size:12px;color:var(--text2)">Head of Backoffice / CS</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Testerzy</div><div style="font-size:13px;color:var(--text2)">Mateusz Pi&#281;tak &middot; Adrianna Stasiak &middot; Miko&#322;aj Dudek<br><em style="font-size:11px;color:var(--text3)">(lista do potwierdzenia)</em></div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">2. Problem i cel</div>
+    <div class="tbox" style="border-left-color:var(--purple2)"><div class="tbox-title">&#128269; Problem</div><div class="tbox-body">Obs&#322;uga po&#322;&#261;cze&#324; przychodz&#261;cych bez konieczno&#347;ci dodatkowych rekrutacji — szczeg&oacute;lnie w sezonie. Standaryzacja informacji. Udzielenie podstawowych odpowiedzi bez angaz&#378;owania pierwszej linii CS.</div></div>
+    <div class="tbox" style="border-left-color:#C9A8FF"><div class="tbox-title">&#127919; Oczekiwany rezultat</div><div class="tbox-body">Bot udziela podstawowych informacji klientom. W przypadku niewystarczaj&#261;cej odpowiedzi — przekierowanie do konsultanta (Iteracja 1).</div></div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">3. Kryteria sukcesu</div>
+    <div class="kpi-row"><span class="kpi-name">Redukcja po&#322;&#261;cze&#324; obs&#322;ugiwanych przez ludzi</span><span class="badge b-purple2" style="margin-right:8px">G&#322;&#243;wna</span><span class="kpi-target" style="color:var(--purple2)">-15%</span></div>
+    <div class="kpi-row"><span class="kpi-name">% po&#322;&#261;cze&#324; obs&#322;u&#380;onych (bot + CS)</span><span class="badge b-purple2" style="margin-right:8px">Dodatkowa</span><span class="kpi-target" style="color:var(--purple2)">&#8805;95%</span></div>
+    <div class="kpi-row"><span class="kpi-name">Baseline &mdash; po&#322;&#261;czenia luty 2026</span><span class="badge b-gray" style="margin-right:8px">Baseline</span><span class="kpi-target">5 291</span></div>
+    <div class="kpi-row" style="border-bottom:none"><span class="kpi-name">Cel Q2 &mdash; obs&#322;u&#380;one przez bota</span><span class="badge b-purple2" style="margin-right:8px">Cel Q2</span><span class="kpi-target" style="color:var(--purple2)">~794/mies.</span></div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">4. Systemy</div>
+    <div class="tech-grid">
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">CRM</div><div style="font-size:13px">HubSpot CRM</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">System rezerwacji</div><div style="font-size:13px">Wewn&#281;trzny system</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Raporty</div><div style="font-size:13px">BigQuery / Arkusze Google</div></div>
+      <div class="tech-box"><div class="tech-lbl" style="color:var(--purple2)">Focus (Iteracja 1)</div><div style="font-size:13px;font-weight:600">System Focus</div><div style="font-size:12px;color:var(--text2)">Jedyny system w pierwszej iteracji</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">5. Ryzyka</div>
+    <div class="risk-row">
+      <div class="risk-dot" style="background:#C42020"></div>
+      <div><div class="risk-title">Dane wra&#380;liwe klient&oacute;w</div><div class="risk-desc">Klienci mog&#261; przekazywa&#263; dane w celu weryfikacji. Wymagana konsultacja z Data Protection Officer.</div><div class="risk-owner">Wlasciciel: Magda Pawlak + Dzia&#322; Prawny</div></div>
+    </div>
+    <div class="risk-row" style="border-bottom:none">
+      <div class="risk-dot" style="background:#EF9F27"></div>
+      <div><div class="risk-title">Jako&#347;&#263; odpowiedzi bota</div><div class="risk-desc">Ryzyko niewystarczaj&#261;cej jako&#347;ci na pierwszej linii CS — wymaga solidnej bazy wiedzy.</div><div class="risk-owner">Wlasciciel: IT/Dev + Magda Pawlak</div></div>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-title purple">6. Harmonogram</div>
+    <div class="m-row"><span class="badge b-gray" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">13–17.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 2</div><div class="m-sub">Spotkanie z grup&#261; robocz&#261; CS &middot; Wyznaczenie odpowiedzialno&#347;ci &middot; Nadanie dost&#281;p&oacute;w</div></div></div>
+    <div class="m-row"><span class="badge b-purple2" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">20–24.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 3</div><div class="m-sub">Implementacja bazy wiedzy &middot; Rozpocz&#281;cie test&oacute;w</div></div></div>
+    <div class="m-row"><span class="badge b-purple2" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">27–30.04</span><div class="m-body"><div class="m-title">Tydzie&#324; 4</div><div class="m-sub">Testy wewn&#281;trzne</div></div></div>
+    <div class="m-row" style="border-bottom:none"><span class="badge b-green" style="min-width:80px;text-align:center;flex-shrink:0;font-size:10px">11–29.05</span><div class="m-body"><div class="m-title">Produkcja</div><div class="m-sub">Testy na &#347;rodowisku produkcyjnym</div></div></div>
+  </div>
+</div>
+
+<div class="footer">Tutlo Voicebot &mdash; Program AI Champion Q2 2026 &middot; 3 Modu&#322;y &middot; Dzia&#322; Operacyjny</div>
 </div>
 
 <script>
 var CL=[
   {g:"Dzialania pilne (przed startem)",items:[
     {id:"p1",t:"Zmierzyc aktualny show-up rate (baseline)",o:"Dzial DATA"},
-    {id:"p2",t:"Potwierdzic system rezerwacji slotow lekcji",o:"Dzial Operacyjny"},
-    {id:"p3",t:"Ustalic timing polaczen",o:"Ops + CRM"},
+    {id:"p2",t:"Potwierdzic system rezerwacji slotow",o:"Dzial Operacyjny"},
+    {id:"p3",t:"Ustalic timing polaczen (ile godzin przed spotkaniem)",o:"Ops + CRM"},
     {id:"p4",t:"Zweryfikowac zgody RODO na kontakt automatyczny",o:"Ops + Prawny"},
-    {id:"p5",t:"Potwierdzic dostepnosc API Peoplefone",o:"IT/Dev"}
+    {id:"p5",t:"Potwierdzic dostepnosc API Peoplefone / Twilio",o:"IT/Dev"},
+    {id:"p6",t:"Zdobyc Gemini API key (aistudio.google.com)",o:"IT/Dev"},
+    {id:"p7",t:"Zalozyc konto Twilio (na DEMO)",o:"IT/Dev"}
   ]},
-  {g:"M1 - Kick-off + Design (tydz. 1-2)",items:[
+  {g:"DEMO — nagranie pokazowe (do piatku)",items:[
+    {id:"d1",t:"Skonfigurowac Twilio: Account SID + Auth Token + numer PL",o:"IT/Dev"},
+    {id:"d2",t:"Wgrac prompt voicebota do Gemini (system prompt)",o:"IT/Dev"},
+    {id:"d3",t:"Przygotowac statyczny JSON z available_slots (dane testowe)",o:"IT/Dev"},
+    {id:"d4",t:"Zbudowac workflow n8n: Twilio + Gemini + TTS",o:"IT/Dev"},
+    {id:"d5",t:"Testowe polaczenie wychodzace — scenariusz potwierdzenia",o:"IT/Dev + Ops"},
+    {id:"d6",t:"Testowe polaczenie — scenariusz przelozenia terminu",o:"IT/Dev + Ops"},
+    {id:"d7",t:"Testowe polaczenie — scenariusz anulowania",o:"IT/Dev + Ops"},
+    {id:"d8",t:"Nagranie demo do prezentacji",o:"Dzial Operacyjny"}
+  ]},
+  {g:"M1 — Kick-off + Design (tydz. 1-2)",items:[
     {id:"m1a",t:"Zebranie wymagan ze wszystkich dzialow",o:"PM"},
     {id:"m1b",t:"Finalizacja architektury i potwierdzenie stacku",o:"IT/Dev"},
     {id:"m1c",t:"Dostepy API: HubSpot, rezerwacje, Peoplefone, ElevenLabs",o:"IT/Dev"},
     {id:"m1d",t:"Repozytorium GitHub + branch strategy",o:"IT/Dev"},
     {id:"m1e",t:"Mapping pol HubSpot do voicebota",o:"Dzial CRM"}
   ]},
-  {g:"M2 - Integracje bazowe (tydz. 3-4)",items:[
+  {g:"M1 — Integracje bazowe (tydz. 3-4)",items:[
     {id:"m2a",t:"n8n: workflow pobierajacy available_slots",o:"IT/Dev"},
     {id:"m2b",t:"n8n: zapis wyniku rozmowy do HubSpot",o:"IT/Dev"},
     {id:"m2c",t:"Trigger HubSpot do n8n",o:"CRM + Dev"},
     {id:"m2d",t:"Schemat tabeli BigQuery",o:"Dzial DATA"}
   ]},
-  {g:"M3 - Voicebot MVP (tydz. 5-6)",items:[
+  {g:"M1 — Voicebot MVP (tydz. 5-6)",items:[
     {id:"m3a",t:"ElevenLabs: konfiguracja glosu PL, test TTS",o:"IT/Dev"},
-    {id:"m3b",t:"Gemini: wgranie prompta, test logiki",o:"IT/Dev"},
-    {id:"m3c",t:"Peoplefone: test polaczen",o:"IT/Dev"},
-    {id:"m3d",t:"Scenariusz potwierdzenia end-to-end",o:"IT/Dev + Ops"}
+    {id:"m3b",t:"Gemini: test logiki available_slots na scenariuszach",o:"IT/Dev"},
+    {id:"m3c",t:"Peoplefone: test polaczen outbound i inbound",o:"IT/Dev"},
+    {id:"m3d",t:"Dzialajacy scenariusz potwierdzenia end-to-end",o:"IT/Dev + Ops"}
   ]},
-  {g:"M4 - Pelny zakres funkcji (tydz. 7-8)",items:[
-    {id:"m4a",t:"Obsluga przelozenia terminu",o:"IT/Dev"},
+  {g:"M1 — Pelny zakres + Testy (tydz. 7-10)",items:[
+    {id:"m4a",t:"Obsluga przelozenia terminu z available_slots",o:"IT/Dev"},
     {id:"m4b",t:"Obsluga anulowania + zwolnienie slotu",o:"IT/Dev"},
-    {id:"m4c",t:"Eskalacja do konsultanta",o:"IT/Dev"},
+    {id:"m4c",t:"Eskalacja do konsultanta (transfer Peoplefone)",o:"IT/Dev"},
     {id:"m4d",t:"SMS follow-up po rozmowie",o:"Dzial CRM"},
-    {id:"m4e",t:"Transkrypcje w HubSpot",o:"IT/Dev"}
+    {id:"m4e",t:"50 scenariuszy UAT: 0 bledow zlych terminow",o:"Ops + Dev"},
+    {id:"m4f",t:"Latency ponizej 1,5s na staging",o:"IT/Dev"}
   ]},
-  {g:"M5 - Testy UAT (tydz. 9-10)",items:[
-    {id:"m5a",t:"50 scenariuszy: 0 bledow zlych terminow",o:"Ops + Dev"},
-    {id:"m5b",t:"Latency ponizej 1,5s",o:"IT/Dev"},
-    {id:"m5c",t:"QA wymowy dat i godzin",o:"Dzial Operacyjny"},
-    {id:"m5d",t:"Korekty po testach",o:"IT/Dev"}
-  ]},
-  {g:"M6-M7 - Pilot i wdrozenie (tydz. 11-12)",items:[
-    {id:"m6a",t:"Sign-off Dzialu Operacyjnego",o:"Dzial Operacyjny"},
-    {id:"m6b",t:"Pilot 10-20% ruchu",o:"Ops + Dev"},
-    {id:"m6c",t:"Dashboard BigQuery gotowy",o:"Dzial DATA"},
-    {id:"m6d",t:"Pelne wdrozenie",o:"IT/Dev + Ops"}
+  {g:"M1 — Pilot i wdrozenie (tydz. 11-12)",items:[
+    {id:"m5a",t:"Sign-off Dzialu Operacyjnego",o:"Dzial Operacyjny"},
+    {id:"m5b",t:"Pilot 10-20% ruchu przez 1 tydzien",o:"Ops + Dev"},
+    {id:"m5c",t:"Dashboard BigQuery gotowy",o:"Dzial DATA"},
+    {id:"m5d",t:"Pelne wdrozenie 100% ruchu",o:"IT/Dev + Ops"}
   ]}
 ];
 var ML=[
-  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2",c:"b-blue",id:"m1"},
-  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4",c:"b-purple",id:"m2"},
-  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6",c:"b-teal",id:"m3"},
-  {n:"M4",t:"Pelny zakres",s:"Tydz. 7-8",c:"b-amber",id:"m4"},
-  {n:"M5",t:"Testy UAT",s:"Tydz. 9-10",c:"b-gray",id:"m5"},
-  {n:"M6",t:"Pilot",s:"Tydz. 11",c:"b-gray",id:"m6"},
-  {n:"M7",t:"Pelne wdrozenie",s:"Tydz. 12",c:"b-gray",id:"m7"}
+  {n:"DEMO",t:"Nagranie pokazowe",s:"Do piatku — Twilio + n8n + Gemini",c:"b-yellow",id:"demo"},
+  {n:"M1",t:"Kick-off + Design",s:"Tydz. 1-2 — Wymagania, architektura",c:"b-blue",id:"m1"},
+  {n:"M2",t:"Integracje bazowe",s:"Tydz. 3-4 — HubSpot, n8n, rezerwacje",c:"b-purple",id:"m2"},
+  {n:"M3",t:"Voicebot MVP",s:"Tydz. 5-6 — ElevenLabs + Gemini + Peoplefone",c:"b-teal",id:"m3"},
+  {n:"M4",t:"Pelny zakres + UAT",s:"Tydz. 7-10 — Wszystkie scenariusze + testy",c:"b-amber",id:"m4"},
+  {n:"M5",t:"Pilot i wdrozenie",s:"Tydz. 11-12 — 100% ruchu",c:"b-green",id:"m5"}
 ];
 var ST=["Do zrobienia","W toku","Zrobione","Zablokowane"];
 var SB=["#F0EFE8","#EAF2FC","#E8F5EA","#FDEAEA"];
 var STC=["#555","#0F4A8A","#1A5C25","#8A0F0F"];
 var RK=[
-  {l:"r",t:"System rezerwacji (R1)",d:"Nie potwierdzono systemu rezerwacji slotow.",o:"Dzial Operacyjny"},
-  {l:"r",t:"Timing triggera (R3)",d:"Nie ustalono kiedy bot ma dzwonic.",o:"Ops + CRM"},
-  {l:"r",t:"RODO (R4)",d:"Nagrywanie rozmow wymaga zgod.",o:"Ops + Prawny"},
-  {l:"y",t:"Jakosc STT (R2)",d:"Walidacja ElevenLabs vs Whisper.",o:"IT/Dev"},
-  {l:"y",t:"Transfer polaczenia (R5)",d:"Czy Peoplefone obsluguje transfer?",o:"IT/Dev"},
-  {l:"y",t:"Nieodebrane polaczenia (R6)",d:"Brak strategii fallback.",o:"Dzial Operacyjny"},
-  {l:"y",t:"Koszt ElevenLabs (R7)",d:"Oszacowac TCO przy 500+ rozmowach.",o:"DATA + Finanse"}
+  {l:"r",t:"System rezerwacji (R1 — Krytyczny)",d:"Nie potwierdzono systemu rezerwacji slotow lekcji. Kluczowe do integracji z n8n.",o:"Dzial Operacyjny"},
+  {l:"r",t:"Timing triggera (R3 — Krytyczny)",d:"Nie ustalono kiedy bot ma dzwonic przed spotkaniem.",o:"Dzial Operacyjny + CRM"},
+  {l:"r",t:"RODO M1 (R4 — Krytyczny)",d:"Nagrywanie rozmow wymaga zgod klientow na kontakt automatyczny.",o:"Ops + Prawny"},
+  {l:"y",t:"Jakosc STT jezyka polskiego (R2)",d:"Walidacja ElevenLabs vs Whisper w testach A/B.",o:"IT/Dev"},
+  {l:"y",t:"Transfer polaczenia Peoplefone (R5)",d:"Czy Peoplefone obsluguje transfer do konsultanta?",o:"IT/Dev"},
+  {l:"y",t:"Nieodebrane polaczenia (R6)",d:"Brak strategii: ponowna proba, SMS fallback.",o:"Dzial Operacyjny"},
+  {l:"y",t:"Koszt ElevenLabs (R7)",d:"Przy 500+ rozmowach/mies. warto oszacowac TCO.",o:"DATA + Finanse"}
 ];
 var SK=[
-  {n:"Peoplefone",r:"Polaczenia glosowe outbound + inbound",l:"Telefonia",c:"b-blue"},
+  {n:"Peoplefone",r:"Polaczenia outbound + inbound (produkcja)",l:"Telefonia",c:"b-blue"},
+  {n:"Twilio",r:"Polaczenia outbound (DEMO)",l:"Telefonia DEMO",c:"b-gray"},
   {n:"ElevenLabs",r:"STT + TTS po polsku",l:"Glos / AI",c:"b-teal"},
-  {n:"Gemini",r:"Logika rozmowy i intencje",l:"LLM",c:"b-purple"},
-  {n:"n8n",r:"Orkiestracja integracji",l:"Automatyzacja",c:"b-amber"},
-  {n:"HubSpot",r:"CRM — dane, triggery, wyniki",l:"CRM",c:"b-green"},
-  {n:"BigQuery",r:"Analityka i raporty KPI",l:"Data",c:"b-blue"},
+  {n:"Gemini",r:"Logika rozmowy, intencje, available_slots",l:"LLM",c:"b-purple"},
+  {n:"n8n",r:"Orkiestracja wszystkich integracji",l:"Automatyzacja",c:"b-amber"},
+  {n:"HubSpot",r:"CRM — dane klienta, triggery, wyniki",l:"CRM",c:"b-green"},
+  {n:"BigQuery",r:"Analityka rozmow i raporty KPI",l:"Data",c:"b-blue"},
   {n:"GitHub",r:"Wersjonowanie kodu i promptow",l:"Dev",c:"b-gray"},
-  {n:"Vercel",r:"Hosting webhookow",l:"Infra",c:"b-gray"},
-  {n:"Transkrypcje",r:"Zapis rozmow do QA",l:"QA",c:"b-gray"},
-  {n:"GDrive",r:"Dokumentacja projektu",l:"Docs",c:"b-gray"}
+  {n:"Vercel",r:"Hosting webhookow i endpointow",l:"Infra",c:"b-gray"},
+  {n:"Transkrypcje",r:"Zapis rozmow do QA",l:"QA",c:"b-gray"}
 ];
 var RC=[
-  {a:"Definicja scenariuszy",op:"R/A",cr:"C",da:"I",dv:"I"},
+  {a:"Definicja scenariuszy M1",op:"R/A",cr:"C",da:"I",dv:"I"},
   {a:"Konfiguracja HubSpot",op:"I",cr:"R/A",da:"I",dv:"C"},
   {a:"Integracja systemu rezerwacji",op:"C",cr:"C",da:"I",dv:"R/A"},
   {a:"Schemat BigQuery",op:"I",cr:"C",da:"R/A",dv:"C"},
   {a:"Konfiguracja ElevenLabs + Peoplefone",op:"C",cr:"I",da:"I",dv:"R/A"},
-  {a:"Testy QA",op:"R/A",cr:"C",da:"I",dv:"I"},
+  {a:"Testy QA M1",op:"R/A",cr:"C",da:"I",dv:"I"},
   {a:"Raportowanie",op:"I",cr:"C",da:"R/A",dv:"I"}
 ];
 var RCC={"R":"b-red","R/A":"b-red","A":"b-amber","C":"b-blue","I":"b-gray"};
@@ -915,38 +835,24 @@ function ld(){try{return JSON.parse(localStorage.getItem("tvb")||"{}")}catch(e){
 function sv(s){localStorage.setItem("tvb",JSON.stringify(s));var el=document.getElementById("last-saved");if(el)el.textContent="Zapisano: "+new Date().toLocaleTimeString("pl-PL")}
 var S=ld();
 
-// LOAD ALL TEXT FIELDS
-var ALL_FIELDS=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod",
-"bo_inne","bo_problem","bo_cel","bo_user","bo_metryka1","bo_metryka2","bo_baseline","bo_cel_q2","bo_dane","bo_owner","bo_testers","bo_rodo_opis","bo_blokery","bo_w1","bo_w2","bo_w3","bo_w4","bo_prod",
-"rek_problem","rek_rezultat","rek_inne","rek_metryka1","rek_metryka2","rek_baseline","rek_cel_q2","rek_ats","rek_tech","rek_owner","rek_testers","rek_wspolpraca","rek_rodo_opis","rek_blokery","rek_w1","rek_w2","rek_w3","rek_w4","rek_prod"];
-ALL_FIELDS.forEach(function(id){
-  var el=document.getElementById(id);
-  if(!el)return;
-  if(S[id]!==undefined)el.value=S[id];
+// PASZPORT
+var PP_FIELDS=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod"];
+PP_FIELDS.forEach(function(id){
+  var el=document.getElementById(id);if(!el)return;
+  if(S[id])el.value=S[id];
   el.addEventListener("input",function(){S[id]=el.value;localStorage.setItem("tvb",JSON.stringify(S))});
 });
-
-// RADIOS
-["pp_platf","pp_integr","pp_rodo","bo_rodo","rek_rodo"].forEach(function(name){
+["pp_platf","pp_integr","pp_rodo"].forEach(function(name){
   if(S[name]){var r=document.querySelector('input[name="'+name+'"][value="'+S[name]+'"]');if(r)r.checked=true}
   document.querySelectorAll('input[name="'+name+'"]').forEach(function(r){
     r.addEventListener("change",function(){S[name]=r.value;localStorage.setItem("tvb",JSON.stringify(S))});
   });
 });
-
-// CHECKBOXES
-document.querySelectorAll('.cb-opt input[type=checkbox]').forEach(function(cb){
-  var k=cb.dataset.key;
-  if(k&&S[k])cb.checked=true;
-  cb.addEventListener("change",function(){S[k]=cb.checked;localStorage.setItem("tvb",JSON.stringify(S))});
-});
-
-function savePP(prefix,color){
-  ALL_FIELDS.filter(function(id){return id.startsWith(prefix)}).forEach(function(id){var el=document.getElementById(id);if(el)S[id]=el.value});
+function savePP(){
+  PP_FIELDS.forEach(function(id){var el=document.getElementById(id);if(el)S[id]=el.value});
   localStorage.setItem("tvb",JSON.stringify(S));
-  var msgId=prefix==="pp"?"pp-saved-msg":prefix==="bo"?"bo-saved-msg":"rek-saved-msg";
-  var msg=document.getElementById(msgId);
-  if(msg){msg.style.display="inline";setTimeout(function(){msg.style.display="none"},3000)}
+  var msg=document.getElementById("pp-saved-msg");
+  msg.style.display="inline";setTimeout(function(){msg.style.display="none"},3000);
 }
 
 // CHECKLIST
@@ -991,7 +897,7 @@ function bm(){
   ML.forEach(function(m){
     var si=S["ms"+m.id]||0;
     var row=document.createElement("div");row.className="m-row";
-    row.innerHTML='<span class="badge '+m.c+'" style="min-width:36px;text-align:center;flex-shrink:0">'+m.n+'</span><div class="m-body"><div class="m-title">'+m.t+'</div><div class="m-sub">'+m.s+'</div></div><button class="m-status" style="background:'+SB[si]+';color:'+STC[si]+'">'+ST[si]+"</button>";
+    row.innerHTML='<span class="badge '+m.c+'" style="min-width:44px;text-align:center;flex-shrink:0">'+m.n+'</span><div class="m-body"><div class="m-title">'+m.t+'</div><div class="m-sub">'+m.s+'</div></div><button class="m-status" style="background:'+SB[si]+';color:'+STC[si]+'">'+ST[si]+"</button>";
     row.querySelector(".m-status").addEventListener("click",function(){S["ms"+m.id]=((S["ms"+m.id]||0)+1)%ST.length;sv(S);bm()});
     ml.appendChild(row);
   });
@@ -1019,8 +925,6 @@ RC.forEach(function(r){
   rb.appendChild(tr);
 });
 
-// TABS — first tab of each color group gets its color on click
-var TAB_COLORS={"paszport":"t-yellow","opis":"t-yellow","checklist":"t-yellow","milestones":"t-yellow","kpi":"t-yellow","risks":"t-yellow","stack":"t-yellow","raci":"t-yellow","backoffice":"t-purple","rekrutacja":"t-green"};
 document.querySelectorAll(".tab").forEach(function(t){
   t.addEventListener("click",function(){
     document.querySelectorAll(".tab").forEach(function(x){x.classList.remove("active")});
@@ -1029,10 +933,8 @@ document.querySelectorAll(".tab").forEach(function(t){
     document.getElementById(t.dataset.tab).classList.add("active");
   });
 });
-
-// activate first tab
-document.querySelector('.tab[data-tab="paszport"]').classList.add("active");
-document.getElementById("paszport").classList.add("active");
+document.querySelector('.tab[data-tab="overview"]').classList.add("active");
+document.getElementById("overview").classList.add("active");
 </script>
 </body>
 </html>
