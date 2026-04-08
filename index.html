@@ -808,16 +808,17 @@ var RK=[
   {l:"y",t:"Koszt ElevenLabs (R7)",d:"Przy 500+ rozmowach/mies. warto oszacowac TCO.",o:"DATA + Finanse"}
 ];
 var SK=[
-  {n:"Peoplefone",r:"Polaczenia outbound + inbound (produkcja)",l:"Telefonia",c:"b-blue"},
-  {n:"Twilio",r:"Polaczenia outbound (DEMO)",l:"Telefonia DEMO",c:"b-gray"},
-  {n:"ElevenLabs",r:"STT + TTS po polsku",l:"Glos / AI",c:"b-teal"},
-  {n:"Gemini",r:"Logika rozmowy, intencje, available_slots",l:"LLM",c:"b-purple"},
-  {n:"n8n",r:"Orkiestracja wszystkich integracji",l:"Automatyzacja",c:"b-amber"},
-  {n:"HubSpot",r:"CRM — dane klienta, triggery, wyniki",l:"CRM",c:"b-green"},
-  {n:"BigQuery",r:"Analityka rozmow i raporty KPI",l:"Data",c:"b-blue"},
-  {n:"GitHub",r:"Wersjonowanie kodu i promptow",l:"Dev",c:"b-gray"},
-  {n:"Vercel",r:"Hosting webhookow i endpointow",l:"Infra",c:"b-gray"},
-  {n:"Transkrypcje",r:"Zapis rozmow do QA",l:"QA",c:"b-gray"}
+  {n:"GitHub",r:"Wersjonowanie kodu, promptow i konfiguracji",l:"Dev",c:"b-gray",status:"active"},
+  {n:"Vercel",r:"Hosting webhookow, endpointow i dashboardu",l:"Infra",c:"b-gray",status:"active"},
+  {n:"n8n",r:"Orkiestracja wszystkich integracji i automatyzacji",l:"Automatyzacja",c:"b-amber",status:"active"},
+  {n:"Cloud (Claude)",r:"Budowa promtow, workflow, dokumentacji i kodu",l:"AI Dev",c:"b-purple",status:"active"},
+  {n:"Peoplefone",r:"Polaczenia outbound + inbound (produkcja)",l:"Telefonia",c:"b-blue",status:"suggested"},
+  {n:"Twilio",r:"Polaczenia outbound na potrzeby DEMO",l:"Telefonia DEMO",c:"b-gray",status:"suggested"},
+  {n:"ElevenLabs",r:"Synteza mowy PL (TTS) + rozpoznawanie mowy (STT)",l:"Glos / AI",c:"b-teal",status:"suggested"},
+  {n:"Gemini",r:"Logika rozmowy, intencje klienta, available_slots",l:"LLM",c:"b-purple",status:"suggested"},
+  {n:"HubSpot",r:"CRM — dane klienta, triggery, zapis wynikow rozmow",l:"CRM",c:"b-green",status:"suggested"},
+  {n:"BigQuery",r:"Analityka rozmow, raporty KPI, optymalizacja",l:"Data",c:"b-blue",status:"suggested"},
+  {n:"Transkrypcje",r:"Zapis przebiegu rozmow do QA i treningu",l:"QA",c:"b-gray",status:"suggested"}
 ];
 var RC=[
   {a:"Definicja scenariuszy M1",op:"R/A",cr:"C",da:"I",dv:"I"},
@@ -912,9 +913,32 @@ RK.forEach(function(r){
 });
 
 var sl=document.getElementById("stack-list");
-SK.forEach(function(s){
-  var d=document.createElement("div");d.className="stack-card";
-  d.innerHTML='<div class="stack-name">'+s.n+' <span class="badge '+s.c+'" style="font-size:10px">'+s.l+"</span></div><div class='stack-role'>"+s.r+"</div>";
+var active=SK.filter(function(s){return s.status==="active"});
+var suggested=SK.filter(function(s){return s.status==="suggested"});
+
+var activeHeader=document.createElement("div");
+activeHeader.style.cssText="grid-column:1/-1;display:flex;align-items:center;gap:8px;margin-bottom:4px;margin-top:4px";
+activeHeader.innerHTML='<span style="font-size:11px;font-weight:700;color:#1A5C25;background:#E8F5EA;padding:3px 10px;border-radius:20px">&#10003; Już aktywne</span><div style="flex:1;height:1px;background:var(--border)"></div>';
+sl.appendChild(activeHeader);
+
+active.forEach(function(s){
+  var d=document.createElement("div");
+  d.className="stack-card";
+  d.style.borderLeft="3px solid #2D7D3A";
+  d.innerHTML='<div class="stack-name">'+s.n+' <span class="badge '+s.c+'" style="font-size:10px">'+s.l+'</span> <span style="font-size:10px;font-weight:700;color:#1A5C25;background:#E8F5EA;padding:2px 7px;border-radius:20px">Aktywne</span></div><div class="stack-role">'+s.r+'</div>';
+  sl.appendChild(d);
+});
+
+var suggestedHeader=document.createElement("div");
+suggestedHeader.style.cssText="grid-column:1/-1;display:flex;align-items:center;gap:8px;margin-bottom:4px;margin-top:12px";
+suggestedHeader.innerHTML='<span style="font-size:11px;font-weight:700;color:#7A6000;background:#FFF8D6;padding:3px 10px;border-radius:20px">&#9888; Sugerowane (niezbędne)</span><div style="flex:1;height:1px;background:var(--border)"></div>';
+sl.appendChild(suggestedHeader);
+
+suggested.forEach(function(s){
+  var d=document.createElement("div");
+  d.className="stack-card";
+  d.style.borderLeft="3px solid #D4A800";
+  d.innerHTML='<div class="stack-name">'+s.n+' <span class="badge '+s.c+'" style="font-size:10px">'+s.l+'</span> <span style="font-size:10px;font-weight:700;color:#7A6000;background:#FFF8D6;padding:2px 7px;border-radius:20px">Sugerowane</span></div><div class="stack-role">'+s.r+'</div>';
   sl.appendChild(d);
 });
 
