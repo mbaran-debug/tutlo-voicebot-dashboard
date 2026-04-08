@@ -836,11 +836,43 @@ function ld(){try{return JSON.parse(localStorage.getItem("tvb")||"{}")}catch(e){
 function sv(s){localStorage.setItem("tvb",JSON.stringify(s));var el=document.getElementById("last-saved");if(el)el.textContent="Zapisano: "+new Date().toLocaleTimeString("pl-PL")}
 var S=ld();
 
-// PASZPORT
-var PP_FIELDS=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod"];
-PP_FIELDS.forEach(function(id){
+// PASZPORT — prefill
+var PP_DEFAULTS={
+  pp_nazwa:"AI Voicebot — Potwierdzenia Spotkan Probnych (Modul 1)",
+  pp_strumien:"Ops Efficiency",
+  pp_champion:"Michal Baran",
+  pp_owner_biz:"Dzial Operacyjny — wlasciciel procesu spotkan probnych",
+  pp_sponsor:"Head of Operations / Czlonek Zarzadu Tutlo",
+  pp_problem:"Zbyt niski show-up rate na spotkaniach probnych z potencjalnymi klientami szkoly jezyka angielskiego Tutlo. Przy skali powyzej 500 spotkan miesiecznie, klienci nie pojawiaja sie na umowionych terminach — generuje to straty sprzedazowe i marnuje czas lektorow. Brak automatycznego systemu potwierdzen powoduje ze konsultanci recznie kontaktuja sie z klientami, co jest nieefektywne i nie skaluje sie.",
+  pp_rezultat:"W pelni dzialajacy voicebot glosowy (outbound + inbound) integrujacy sie z systemem rezerwacji i HubSpotem. Bot automatycznie potwierdza obecnosc, proponuje zmiane terminu (z weryfikacja dostepnych slotow w czasie rzeczywistym) oraz obsluguje anulowania — zwalniajac slot dla innego klienta. Wszystkie zdarzenia zapisywane w HubSpocie.",
+  pp_cel_biz:"Wzrost show-up rate o minimum 10 punktow procentowych w ciagu 60 dni od wdrozenia. Odzysk minimum 40% slotow po anulowaniach. Redukcja czasu obslugi potwierdzen przez konsultantow o min. 80%.",
+  pp_user:"Klienci Tutlo (potencjalni kursanci) jako rozmowcy z botem. Dzial Operacyjny jako wlasciciel procesu i odbiorca raportow. Dzial CRM jako administrator HubSpot.",
+  pp_metryka1:"Wzrost show-up rate o +10 pp w ciagu 60 dni od pelnego wdrozenia",
+  pp_metryka2:"Containment Rate powyzej 80% (rozmowy bez eskalacji do konsultanta)",
+  pp_metryka3:"Odzysk slotow po anulowaniu powyzej 40% w ciagu 2 godzin",
+  pp_baseline:"Show-up rate: do zmierzenia przed startem (zadanie dla Dzialu DATA). Czas potwierdzenia: manualny, sredni czas powyzej 24h. Liczba spotkan probnych: 500+ miesiecznie.",
+  pp_cel_q2:"Show-up rate: baseline + min. 10 pp. Containment rate: powyzej 80%. Odzysk slotow: powyzej 40%. Latency bota: ponizej 1,5 sekundy. Uptime: powyzej 99,5%.",
+  pp_tech:"ElevenLabs (STT + TTS, glos polski), Gemini (LLM — logika rozmowy i intencje), n8n (orkiestracja integracji), Peoplefone (telefonia outbound + inbound, produkcja), Twilio (telefonia DEMO), HubSpot (CRM), BigQuery (analityka), GitHub (wersjonowanie), Vercel (hosting), Claude / Cloud (budowa promptow i kodu).",
+  pp_platf_opis:"Integracja z wewnetrznym systemem rezerwacji slotow lekcji (do potwierdzenia — system Focus lub inny). API do odczytu available_slots i zapisu rezerwacji/anulowan w czasie rzeczywistym.",
+  pp_integr_opis:"HubSpot (trigger + zapis wynikow rozmowy), system rezerwacji (available_slots), BigQuery (zapis do analityki), Peoplefone/Twilio (inicjacja polaczen)",
+  pp_team1:"Michal Baran — AI Champion, Owner projektu, Dzial Operacyjny",
+  pp_team2:"Dzial CRM — konfiguracja HubSpot, mapping pol, triggery",
+  pp_team3:"IT/Dev — integracje n8n, konfiguracja ElevenLabs + Peoplefone",
+  pp_rodo_opis:"Nagrania glosowe klientow — szyfrowanie w transporcie i spoczynku, retencja maksymalnie 30 dni, wymagana zgoda klienta na kontakt automatyczny. Konsultacja z Data Protection Officer przed uruchomieniem.",
+  pp_blokery:"R1: Nie potwierdzono systemu rezerwacji slotow (Focus?). R3: Nie ustalono timingu triggera (ile godzin przed spotkaniem bot dzwoni). R4: Brak potwierdzenia zgod RODO klientow na kontakt automatyczny. R5: Weryfikacja czy Peoplefone obsluguje transfer polaczenia do konsultanta.",
+  pp_w1:"Eksploracja i setup — konfiguracja Twilio, Gemini API key, pierwsze testy polaczen wychodzacych w n8n. DEMO nagranie pokazowe.",
+  pp_w2:"Pierwszy prototyp — dzialajacy scenariusz potwierdzenia end-to-end. Integracja n8n z HubSpot (trigger + zapis wyniku). Testy wszystkich 3 scenariuszy (potwierdzenie, przelozenie, anulowanie).",
+  pp_w3:"Iteracja z grupa robocza — testy z zespolem operacyjnym, korekty logiki rozmowy, QA wymowy dat i godzin (TTS). Konfiguracja ElevenLabs (zastapienie Twilio TTS).",
+  pp_w4:"POC gotowy do przegladu — pelna integracja z systemem rezerwacji (available_slots w czasie rzeczywistym). 50 scenariuszy UAT: 0 bledow zlych terminow. Latency ponizej 1,5s.",
+  pp_w5:"Prezentacja progresu — sign-off Dzialu Operacyjnego, przygotowanie do pilotu. Konfiguracja Peoplefone (zastapienie Twilio). Dashboard BigQuery gotowy.",
+  pp_prod:"Pilot na 10-20% ruchu przez minimum 1 tydzien — monitoring KPI, zbieranie danych. Pelne wdrozenie na 100% ruchu. Uruchomienie dashboardu analitycznego."
+};
+var PP_FIELDS=Object.keys(PP_DEFAULTS).concat(["pp_metryka3"]);
+var allPP=["pp_nazwa","pp_strumien","pp_champion","pp_owner_biz","pp_sponsor","pp_problem","pp_rezultat","pp_cel_biz","pp_user","pp_metryka1","pp_metryka2","pp_metryka3","pp_baseline","pp_cel_q2","pp_tech","pp_platf_opis","pp_integr_opis","pp_team1","pp_team2","pp_team3","pp_rodo_opis","pp_blokery","pp_w1","pp_w2","pp_w3","pp_w4","pp_w5","pp_prod"];
+allPP.forEach(function(id){
   var el=document.getElementById(id);if(!el)return;
-  if(S[id])el.value=S[id];
+  var val=S[id]!==undefined?S[id]:(PP_DEFAULTS[id]||"");
+  el.value=val;
   el.addEventListener("input",function(){S[id]=el.value;localStorage.setItem("tvb",JSON.stringify(S))});
 });
 ["pp_platf","pp_integr","pp_rodo"].forEach(function(name){
